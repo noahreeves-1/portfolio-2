@@ -23,7 +23,7 @@ const SocialProof = () => {
         <Image src={couchetard} alt="Couche Tard" width={100} height={60} />
         <Image src={redHat} alt="Red Hat" width={80} height={60} />
         <Image src={kornFerry} alt="Korn Ferry" width={100} height={60} />
-        <Image src={rnl} alt="RNL" width={80} height={60} />
+        <Image src={rnl} alt="RNL" width={40} height={60} />
         <Image
           src={businessExpoCenter}
           alt="Business Expo Center"
