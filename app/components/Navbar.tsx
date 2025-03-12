@@ -49,7 +49,7 @@ const Navbar = () => {
                 href="#contact"
                 className="ml-3 px-4 py-2 rounded-md text-sm font-medium text-white bg-black hover:bg-blue-700 focus:outline-none"
               >
-                Contact me
+                Get in touch
               </Link>
             </div>
           </div>

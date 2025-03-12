@@ -14,7 +14,7 @@ const SocialProof = () => {
   return (
     <div className="mt-12">
       <h2 className="text-center text-sm font-semibold text-gray-800">
-        TRUSTED BY STARTUPS AND FORTUNE 500 COMPANIES
+        TRUSTED BY SMALL BUSINESSES AND FORTUNE 500 COMPANIES
       </h2>
       <div className="flex justify-center items-center gap-8">
         <Image src={accenture} alt="Accenture" width={100} height={60} />

@@ -16,14 +16,14 @@ const Hero = () => {
             <span className="text-orange-500">{`traveled`}</span>
             {`, learned to `}
             <span className="text-emerald-500">{`code`}</span>
-            {`, and started a `}
+            {`, and ran a `}
             <span className="text-blue-500">{`startup.`}</span>
           </p>
           <button className="bg-black text-white px-4 py-2 mt-6 rounded-md text-sm font-medium hover:bg-blue-500 hover:cursor-pointer">
             {`Get in touch`}
           </button>
         </div>
-        <div className="w-1/2 h-[400px] pt-12">
+        <div className="w-1/2 h-[400px]">
           <JourneyAnimation />
         </div>
       </div>
