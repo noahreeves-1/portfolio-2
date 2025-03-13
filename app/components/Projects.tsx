@@ -29,6 +29,16 @@ import OpenSaaSLogo from "@/public/opensaas.webp";
 import ReactLogo from "@/public/react.svg";
 import TailwindLogo from "@/public/tailwind.svg";
 import StoryDiscountDashboard from "@/public/storydiscount-dashboard.webp";
+import MuffinApp from "@/public/muffin-app.webp";
+import PythonLogo from "@/public/python.svg";
+import CrawleeLogo from "@/public/crawlee.webp";
+import ApifyLogo from "@/public/apify.svg";
+import NextJSLogo from "@/public/nextjs.svg";
+import TwilioLogo from "@/public/twilio.svg";
+import MongoDBLogo from "@/public/mongodb.svg";
+import PineconeLogo from "@/public/pinecone.webp";
+import StripeLogo from "@/public/stripe.svg";
+import LexcaliburLogo from "@/public/lexcaliburai.svg";
 
 // Map of technology names to their logos
 const techLogos: Record<string, StaticImageData | string> = {
@@ -54,6 +64,14 @@ const techLogos: Record<string, StaticImageData | string> = {
   OpenSaaS: OpenSaaSLogo,
   React: ReactLogo,
   Tailwind: TailwindLogo,
+  Python: PythonLogo,
+  Crawlee: CrawleeLogo,
+  Apify: ApifyLogo,
+  "Next.JS": NextJSLogo,
+  Twilio: TwilioLogo,
+  MongoDB: MongoDBLogo,
+  Pinecone: PineconeLogo,
+  Stripe: StripeLogo,
 };
 
 // Project Details Modal Component
@@ -105,15 +123,15 @@ const ProjectDetailsModal = ({
         {/* Modal Panel */}
         <div className="relative inline-block overflow-hidden text-left align-middle transition-all transform rounded-lg shadow-xl w-full max-w-3xl">
           {/* Header Section - Now using dark gray */}
-          <div className="bg-gray-800 px-6 py-5 relative border-b border-gray-700">
+          <div className="bg-gray-800 px-4 sm:px-6 py-4 sm:py-5 relative border-b border-gray-700">
             {/* Close Button (X) */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 text-white hover:text-gray-300 focus:outline-none"
+              className="absolute top-3 sm:top-4 right-3 sm:right-4 text-white hover:text-gray-300 focus:outline-none"
               aria-label="Close modal"
             >
               <svg
-                className="w-6 h-6"
+                className="w-5 h-5 sm:w-6 sm:h-6"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -128,26 +146,26 @@ const ProjectDetailsModal = ({
               </svg>
             </button>
 
-            <h3 className="text-3xl font-bold leading-6 text-white">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold leading-normal sm:leading-tight text-white pr-8">
               {title} Tech Stack
             </h3>
           </div>
 
           {/* Content Section - Dark Gray Background */}
-          <div className="bg-gray-800 px-6 py-6">
-            <div className="mb-6">
+          <div className="bg-gray-800 px-4 sm:px-6 py-4 sm:py-6">
+            <div className="mb-4 sm:mb-6">
               {/* Tech Stack Categorized */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 {techStack.frontend && techStack.frontend.length > 0 && (
                   <div>
-                    <h4 className="text-xl font-medium text-white mb-3">
+                    <h4 className="text-lg sm:text-xl font-medium text-white mb-2 sm:mb-3">
                       Frontend
                     </h4>
                     <div className="flex flex-wrap gap-2">
                       {techStack.frontend.map((tech, index) => (
                         <span
                           key={index}
-                          className={`px-4 py-1.5 ${pillBg} border ${pillBorder} rounded-full text-white text-sm font-medium transition-colors ${pillHoverBg} flex items-center gap-2`}
+                          className={`px-3.5 sm:px-4 py-1.5 sm:py-2 ${pillBg} border ${pillBorder} rounded-full text-white text-sm sm:text-base font-medium transition-colors ${pillHoverBg} flex items-center gap-1.5 sm:gap-2`}
                         >
                           {techLogos[tech] && (
                             <Image
@@ -155,7 +173,7 @@ const ProjectDetailsModal = ({
                               alt={`${tech} logo`}
                               width={16}
                               height={16}
-                              className="w-4 h-4 object-contain"
+                              className="w-4 h-4 sm:w-5 sm:h-5 object-contain"
                             />
                           )}
                           {tech}
@@ -167,14 +185,14 @@ const ProjectDetailsModal = ({
 
                 {techStack.backend && techStack.backend.length > 0 && (
                   <div>
-                    <h4 className="text-xl font-medium text-white mb-3">
+                    <h4 className="text-lg sm:text-xl font-medium text-white mb-2 sm:mb-3">
                       Backend
                     </h4>
                     <div className="flex flex-wrap gap-2">
                       {techStack.backend.map((tech, index) => (
                         <span
                           key={index}
-                          className={`px-4 py-1.5 ${pillBg} border ${pillBorder} rounded-full text-white text-sm font-medium transition-colors ${pillHoverBg} flex items-center gap-2`}
+                          className={`px-3.5 sm:px-4 py-1.5 sm:py-2 ${pillBg} border ${pillBorder} rounded-full text-white text-sm sm:text-base font-medium transition-colors ${pillHoverBg} flex items-center gap-1.5 sm:gap-2`}
                         >
                           {techLogos[tech] && (
                             <Image
@@ -182,7 +200,7 @@ const ProjectDetailsModal = ({
                               alt={`${tech} logo`}
                               width={16}
                               height={16}
-                              className="w-4 h-4 object-contain"
+                              className="w-4 h-4 sm:w-5 sm:h-5 object-contain"
                             />
                           )}
                           {tech}
@@ -194,14 +212,14 @@ const ProjectDetailsModal = ({
 
                 {techStack.database && techStack.database.length > 0 && (
                   <div>
-                    <h4 className="text-xl font-medium text-white mb-3">
+                    <h4 className="text-lg sm:text-xl font-medium text-white mb-2 sm:mb-3">
                       Database
                     </h4>
                     <div className="flex flex-wrap gap-2">
                       {techStack.database.map((tech, index) => (
                         <span
                           key={index}
-                          className={`px-4 py-1.5 ${pillBg} border ${pillBorder} rounded-full text-white text-sm font-medium transition-colors ${pillHoverBg} flex items-center gap-2`}
+                          className={`px-3.5 sm:px-4 py-1.5 sm:py-2 ${pillBg} border ${pillBorder} rounded-full text-white text-sm sm:text-base font-medium transition-colors ${pillHoverBg} flex items-center gap-1.5 sm:gap-2`}
                         >
                           {techLogos[tech] && (
                             <Image
@@ -209,7 +227,7 @@ const ProjectDetailsModal = ({
                               alt={`${tech} logo`}
                               width={16}
                               height={16}
-                              className="w-4 h-4 object-contain"
+                              className="w-4 h-4 sm:w-5 sm:h-5 object-contain"
                             />
                           )}
                           {tech}
@@ -221,14 +239,14 @@ const ProjectDetailsModal = ({
 
                 {techStack.devops && techStack.devops.length > 0 && (
                   <div>
-                    <h4 className="text-xl font-medium text-white mb-3">
+                    <h4 className="text-lg sm:text-xl font-medium text-white mb-2 sm:mb-3">
                       DevOps
                     </h4>
                     <div className="flex flex-wrap gap-2">
                       {techStack.devops.map((tech, index) => (
                         <span
                           key={index}
-                          className={`px-4 py-1.5 ${pillBg} border ${pillBorder} rounded-full text-white text-sm font-medium transition-colors ${pillHoverBg} flex items-center gap-2`}
+                          className={`px-3.5 sm:px-4 py-1.5 sm:py-2 ${pillBg} border ${pillBorder} rounded-full text-white text-sm sm:text-base font-medium transition-colors ${pillHoverBg} flex items-center gap-1.5 sm:gap-2`}
                         >
                           {techLogos[tech] && (
                             <Image
@@ -236,7 +254,7 @@ const ProjectDetailsModal = ({
                               alt={`${tech} logo`}
                               width={16}
                               height={16}
-                              className="w-4 h-4 object-contain"
+                              className="w-4 h-4 sm:w-5 sm:h-5 object-contain"
                             />
                           )}
                           {tech}
@@ -248,14 +266,14 @@ const ProjectDetailsModal = ({
 
                 {techStack.other && techStack.other.length > 0 && (
                   <div>
-                    <h4 className="text-xl font-medium text-white mb-3">
+                    <h4 className="text-lg sm:text-xl font-medium text-white mb-2 sm:mb-3">
                       Other
                     </h4>
                     <div className="flex flex-wrap gap-2">
                       {techStack.other.map((tech, index) => (
                         <span
                           key={index}
-                          className={`px-4 py-1.5 ${pillBg} border ${pillBorder} rounded-full text-white text-sm font-medium transition-colors ${pillHoverBg} flex items-center gap-2`}
+                          className={`px-3.5 sm:px-4 py-1.5 sm:py-2 ${pillBg} border ${pillBorder} rounded-full text-white text-sm sm:text-base font-medium transition-colors ${pillHoverBg} flex items-center gap-1.5 sm:gap-2`}
                         >
                           {techLogos[tech] && (
                             <Image
@@ -263,7 +281,7 @@ const ProjectDetailsModal = ({
                               alt={`${tech} logo`}
                               width={16}
                               height={16}
-                              className="w-4 h-4 object-contain"
+                              className="w-4 h-4 sm:w-5 sm:h-5 object-contain"
                             />
                           )}
                           {tech}
@@ -306,7 +324,7 @@ const ProjectCard = ({
   title: string;
   description: string;
   imageSrc: StaticImageData;
-  logoSrc?: string;
+  logoSrc?: StaticImageData | string;
   features: string[];
   orientation?: "left" | "right";
   bgColor?: string;
@@ -331,6 +349,9 @@ const ProjectCard = ({
     // Check if the logo is StoryDiscount logo and return smaller dimensions
     if (logoSrc === StoryDiscountLogo) {
       return { width: 40, height: 40 };
+    }
+    if (logoSrc === LexcaliburLogo) {
+      return { width: 50, height: 50 };
     }
     // Default size for other logos
     return { width: 120, height: 120 };
@@ -394,6 +415,7 @@ const ProjectCard = ({
       "bg-red-600": "bg-red-700",
       "bg-green-600": "bg-green-700",
       "bg-yellow-600": "bg-yellow-700",
+      "bg-teal-700": "bg-teal-800",
     };
 
     // Return the mapped color or a default
@@ -546,7 +568,7 @@ const Projects = () => {
     title: "Muffin: Food App",
     description:
       "A social media mobile app where users can find meals near them based on their preferences with a TikTok-style UI. Sign up, swipe, and find your next perfect meal. Features include...",
-    imageSrc: StoryDiscountDashboard,
+    imageSrc: MuffinApp,
     logoSrc: MuffinLogo,
     features: [
       "Personalized home feed",
@@ -570,10 +592,10 @@ const Projects = () => {
         "React Query",
         "Redux",
       ],
-      backend: ["Node.js", "NestJS", "Firebase", "SendGrid"],
+      backend: ["Node.js", "NestJS", "Firebase"],
       database: ["PostgreSQL", "Elasticsearch", "Redis", "Cloudinary"],
       devops: ["Docker", "Digital Ocean"],
-      other: ["OpenAI", "Google Maps API"],
+      other: ["OpenAI", "Google Maps API", "SendGrid"],
     },
   };
 
@@ -585,9 +607,9 @@ const Projects = () => {
     logoSrc: StoryDiscountLogo,
     features: [
       "QR code scanning",
-      "Discount redemption",
+      "Coupon redemption",
       "Customer engagement",
-      "Business owner dashboard (Analytics)",
+      "Business owner dashboard (analytics)",
       "& more",
     ],
     stat: {
@@ -598,14 +620,43 @@ const Projects = () => {
     websiteUrl: "https://storydiscount.com",
     techStack: {
       frontend: ["TypeScript", "Tailwind", "React", "OpenSaaS"],
-      backend: ["Node.js", "OpenSaaS", "SendGrid"],
+      backend: ["Node.js", "OpenSaaS"],
       database: ["PostgreSQL", "Cloudinary"],
       devops: ["Docker", "Digital Ocean"],
+      other: ["SendGrid", "Stripe"],
+    },
+  };
+
+  const lexcaliburAiProject = {
+    title: "Lexcalibur AI (Coming Soon)",
+    description:
+      "An AI-powered tool that alerts you whenever new federal and state laws relevant to you are passed. Features include...",
+    imageSrc: StoryDiscountDashboard,
+    logoSrc: LexcaliburLogo,
+    features: [
+      "Web scraping",
+      "Legislation tracking",
+      "AI-powered summarization",
+      "SMS alerts",
+      "& more",
+    ],
+    stat: {
+      value: "X",
+      description: "Users signed up",
+    },
+    bgColor: "bg-teal-700",
+    websiteUrl: "https://lexcalibur.ai",
+    techStack: {
+      frontend: ["TypeScript", "Tailwind", "React", "Next.JS"],
+      backend: ["Python", "Node.js", "NestJS"],
+      database: ["MongoDB", "Pinecone"],
+      devops: ["Docker", "Digital Ocean"],
+      other: ["OpenAI", "Stripe", "Twilio", "SendGrid", "Apify", "Crawlee"],
     },
   };
 
   return (
-    <section id="projects" className="py-16">
+    <section id="projects">
       <h2 className="text-sm font-bold text-center mb-4 text-slate-500">
         MY PROJECTS
       </h2>
@@ -613,6 +664,7 @@ const Projects = () => {
       {/* First Project using the ProjectCard component */}
       <ProjectCard {...muffinProject} orientation="left" />
       <ProjectCard {...storyDiscountProject} orientation="right" />
+      <ProjectCard {...lexcaliburAiProject} orientation="left" />
     </section>
   );
 };

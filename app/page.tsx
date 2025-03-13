@@ -6,6 +6,8 @@ import SocialProof from "./components/SocialProof";
 // import Mapview from "./components/Mapview";
 import Projects from "./components/Projects";
 import WhyMe from "./components/WhyMe";
+import OtherSkills from "./components/OtherSkills";
+
 export default function Home() {
   return (
     <div>
@@ -16,6 +18,7 @@ export default function Home() {
         <WhyMe />
         {/* <Mapview /> */}
         <Projects />
+        <OtherSkills />
       </main>
       <Footer />
     </div>
