@@ -1,5 +1,285 @@
+"use client";
+
 import Image from "next/image";
 import MuffinLogo from "@/public/muffin-white.svg";
+import { useState } from "react";
+import { StaticImageData } from "next/image";
+
+// Tech logos
+import ExpoLogo from "@/public/expo.webp";
+import ReactNativeLogo from "@/public/reactnative.svg";
+import TypeScriptLogo from "@/public/typescript.svg";
+import ReactQueryLogo from "@/public/tanstack.webp";
+import ReduxLogo from "@/public/redux.svg";
+import NodeJSLogo from "@/public/nodejs.svg";
+import NestJSLogo from "@/public/nestjs.svg";
+import FirebaseLogo from "@/public/firebase.svg";
+import SendGridLogo from "@/public/sendgrid.svg";
+import PostgreSQLLogo from "@/public/postgresql.svg";
+import ElasticsearchLogo from "@/public/elasticsearch.svg";
+import RedisLogo from "@/public/redis.svg";
+import DockerLogo from "@/public/docker.svg";
+import DigitalOceanLogo from "@/public/digitalocean.svg";
+import OpenAILogo from "@/public/openai.webp";
+import GoogleMapsLogo from "@/public/google-maps.svg";
+import CloudinaryLogo from "@/public/cloudinary.webp";
+import CssLogo from "@/public/css.svg";
+import StoryDiscountLogo from "@/public/storydiscount.svg";
+import OpenSaaSLogo from "@/public/opensaas.webp";
+import ReactLogo from "@/public/react.svg";
+import TailwindLogo from "@/public/tailwind.svg";
+import StoryDiscountDashboard from "@/public/storydiscount-dashboard.webp";
+
+// Map of technology names to their logos
+const techLogos: Record<string, StaticImageData | string> = {
+  Expo: ExpoLogo,
+  "React Native": ReactNativeLogo,
+  TypeScript: TypeScriptLogo,
+  "React Query": ReactQueryLogo,
+  Redux: ReduxLogo,
+  "Node.js": NodeJSLogo,
+  NestJS: NestJSLogo,
+  Firebase: FirebaseLogo,
+  SendGrid: SendGridLogo,
+  PostgreSQL: PostgreSQLLogo,
+  Elasticsearch: ElasticsearchLogo,
+  Redis: RedisLogo,
+  Docker: DockerLogo,
+  "Digital Ocean": DigitalOceanLogo,
+  OpenAI: OpenAILogo,
+  "Google Maps API": GoogleMapsLogo,
+  Cloudinary: CloudinaryLogo,
+  CSS: CssLogo,
+  "Story Discount": StoryDiscountLogo,
+  OpenSaaS: OpenSaaSLogo,
+  React: ReactLogo,
+  Tailwind: TailwindLogo,
+};
+
+// Project Details Modal Component
+const ProjectDetailsModal = ({
+  isOpen,
+  onClose,
+  title,
+  techStack,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  title: string;
+  techStack: {
+    frontend?: string[];
+    backend?: string[];
+    database?: string[];
+    devops?: string[];
+    other?: string[];
+  };
+  description: string;
+  bgColor?: string;
+}) => {
+  if (!isOpen) return null;
+
+  // Get pill styles - using consistent gray styling
+  const getPillStyles = () => {
+    return {
+      bg: "bg-gray-700",
+      border: "border-gray-600",
+      hoverBg: "hover:bg-gray-600",
+    };
+  };
+
+  const {
+    bg: pillBg,
+    border: pillBorder,
+    hoverBg: pillHoverBg,
+  } = getPillStyles();
+
+  return (
+    <div className="fixed inset-0 z-50 overflow-y-auto">
+      <div className="flex items-center justify-center min-h-screen px-4 py-4 text-center">
+        {/* Overlay */}
+        <div
+          className="fixed inset-0 backdrop-blur-md bg-white/30 transition-opacity"
+          onClick={onClose}
+        ></div>
+
+        {/* Modal Panel */}
+        <div className="relative inline-block overflow-hidden text-left align-middle transition-all transform rounded-lg shadow-xl w-full max-w-3xl">
+          {/* Header Section - Now using dark gray */}
+          <div className="bg-gray-800 px-6 py-5 relative border-b border-gray-700">
+            {/* Close Button (X) */}
+            <button
+              onClick={onClose}
+              className="absolute top-4 right-4 text-white hover:text-gray-300 focus:outline-none"
+              aria-label="Close modal"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+
+            <h3 className="text-3xl font-bold leading-6 text-white">
+              {title} Tech Stack
+            </h3>
+          </div>
+
+          {/* Content Section - Dark Gray Background */}
+          <div className="bg-gray-800 px-6 py-6">
+            <div className="mb-6">
+              {/* Tech Stack Categorized */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {techStack.frontend && techStack.frontend.length > 0 && (
+                  <div>
+                    <h4 className="text-xl font-medium text-white mb-3">
+                      Frontend
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {techStack.frontend.map((tech, index) => (
+                        <span
+                          key={index}
+                          className={`px-4 py-1.5 ${pillBg} border ${pillBorder} rounded-full text-white text-sm font-medium transition-colors ${pillHoverBg} flex items-center gap-2`}
+                        >
+                          {techLogos[tech] && (
+                            <Image
+                              src={techLogos[tech]}
+                              alt={`${tech} logo`}
+                              width={16}
+                              height={16}
+                              className="w-4 h-4 object-contain"
+                            />
+                          )}
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {techStack.backend && techStack.backend.length > 0 && (
+                  <div>
+                    <h4 className="text-xl font-medium text-white mb-3">
+                      Backend
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {techStack.backend.map((tech, index) => (
+                        <span
+                          key={index}
+                          className={`px-4 py-1.5 ${pillBg} border ${pillBorder} rounded-full text-white text-sm font-medium transition-colors ${pillHoverBg} flex items-center gap-2`}
+                        >
+                          {techLogos[tech] && (
+                            <Image
+                              src={techLogos[tech]}
+                              alt={`${tech} logo`}
+                              width={16}
+                              height={16}
+                              className="w-4 h-4 object-contain"
+                            />
+                          )}
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {techStack.database && techStack.database.length > 0 && (
+                  <div>
+                    <h4 className="text-xl font-medium text-white mb-3">
+                      Database
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {techStack.database.map((tech, index) => (
+                        <span
+                          key={index}
+                          className={`px-4 py-1.5 ${pillBg} border ${pillBorder} rounded-full text-white text-sm font-medium transition-colors ${pillHoverBg} flex items-center gap-2`}
+                        >
+                          {techLogos[tech] && (
+                            <Image
+                              src={techLogos[tech]}
+                              alt={`${tech} logo`}
+                              width={16}
+                              height={16}
+                              className="w-4 h-4 object-contain"
+                            />
+                          )}
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {techStack.devops && techStack.devops.length > 0 && (
+                  <div>
+                    <h4 className="text-xl font-medium text-white mb-3">
+                      DevOps
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {techStack.devops.map((tech, index) => (
+                        <span
+                          key={index}
+                          className={`px-4 py-1.5 ${pillBg} border ${pillBorder} rounded-full text-white text-sm font-medium transition-colors ${pillHoverBg} flex items-center gap-2`}
+                        >
+                          {techLogos[tech] && (
+                            <Image
+                              src={techLogos[tech]}
+                              alt={`${tech} logo`}
+                              width={16}
+                              height={16}
+                              className="w-4 h-4 object-contain"
+                            />
+                          )}
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {techStack.other && techStack.other.length > 0 && (
+                  <div>
+                    <h4 className="text-xl font-medium text-white mb-3">
+                      Other
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {techStack.other.map((tech, index) => (
+                        <span
+                          key={index}
+                          className={`px-4 py-1.5 ${pillBg} border ${pillBorder} rounded-full text-white text-sm font-medium transition-colors ${pillHoverBg} flex items-center gap-2`}
+                        >
+                          {techLogos[tech] && (
+                            <Image
+                              src={techLogos[tech]}
+                              alt={`${tech} logo`}
+                              width={16}
+                              height={16}
+                              className="w-4 h-4 object-contain"
+                            />
+                          )}
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 // Project Card component for reusability
 const ProjectCard = ({
@@ -15,11 +295,17 @@ const ProjectCard = ({
     description: "User engagement compared to similar apps",
   },
   websiteUrl = "#",
-  learnMoreUrl = "#",
+  techStack = {
+    frontend: [],
+    backend: [],
+    database: [],
+    devops: [],
+    other: [],
+  },
 }: {
   title: string;
   description: string;
-  imageSrc: string;
+  imageSrc: StaticImageData;
   logoSrc?: string;
   features: string[];
   orientation?: "left" | "right";
@@ -29,8 +315,29 @@ const ProjectCard = ({
     description: string;
   };
   websiteUrl?: string;
-  learnMoreUrl?: string;
+  techStack?: {
+    frontend?: string[];
+    backend?: string[];
+    database?: string[];
+    devops?: string[];
+    other?: string[];
+  };
 }) => {
+  // Modal state
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Determine logo size based on the logo source
+  const getLogoSize = () => {
+    // Check if the logo is StoryDiscount logo and return smaller dimensions
+    if (logoSrc === StoryDiscountLogo) {
+      return { width: 40, height: 40 };
+    }
+    // Default size for other logos
+    return { width: 120, height: 120 };
+  };
+
+  const logoSize = getLogoSize();
+
   // Calculate stats background color (one shade lighter)
   const getStatsBackgroundColor = () => {
     if (!bgColor) return "bg-blue-500";
@@ -39,8 +346,8 @@ const ProjectCard = ({
     const match = bgColor.match(/bg-(\w+)-(\d+)/);
     if (!match) return "bg-blue-500";
 
-    const [, colorName, shade] = match;
-    const lighterShade = parseInt(shade) - 100;
+    const [, colorName] = match;
+    const lighterShade = parseInt(match[2]) - 100;
 
     // Ensure the shade is valid (not below 50)
     if (lighterShade < 50) return `bg-${colorName}-50`;
@@ -56,29 +363,41 @@ const ProjectCard = ({
     const match = bgColor.match(/bg-(\w+)-(\d+)/);
     if (!match) return "bg-blue-800";
 
-    const [, colorName, shade] = match;
-    const darkerShade = parseInt(shade) + 200;
+    const [, colorName] = match;
 
-    // Ensure the shade is valid (not above 900)
-    if (darkerShade > 900) return `bg-${colorName}-900`;
+    // Use a more reliable mapping for bullet colors
+    const colorMapping: Record<string, string> = {
+      blue: "bg-blue-800",
+      orange: "bg-orange-800",
+      purple: "bg-purple-900",
+      red: "bg-red-800",
+      green: "bg-green-800",
+      yellow: "bg-yellow-800",
+      indigo: "bg-indigo-800",
+      teal: "bg-teal-800",
+      pink: "bg-pink-800",
+    };
 
-    return `bg-${colorName}-${darkerShade}`;
+    // Return a mapped color if available, otherwise use a safe fallback
+    return colorMapping[colorName] || "bg-gray-800";
   };
 
   // Get a darker background color for the image container
   const getImageContainerBgColor = () => {
     if (!bgColor) return "bg-blue-700";
 
-    const match = bgColor.match(/bg-(\w+)-(\d+)/);
-    if (!match) return "bg-blue-700";
+    // Use a direct mapping approach instead of dynamic calculation
+    const colorMap: Record<string, string> = {
+      "bg-blue-600": "bg-blue-700",
+      "bg-orange-500": "bg-orange-600",
+      "bg-purple-700": "bg-purple-800",
+      "bg-red-600": "bg-red-700",
+      "bg-green-600": "bg-green-700",
+      "bg-yellow-600": "bg-yellow-700",
+    };
 
-    const [, colorName, shade] = match;
-    const containerShade = parseInt(shade) + 100;
-
-    // Ensure the shade is valid (not above 900)
-    if (containerShade > 900) return `bg-${colorName}-900`;
-
-    return `bg-${colorName}-${containerShade}`;
+    // Return the mapped color or a default
+    return colorMap[bgColor] || "bg-gray-700";
   };
 
   // Get border color for stat container - darker shade
@@ -88,8 +407,8 @@ const ProjectCard = ({
     const match = bgColor.match(/bg-(\w+)-(\d+)/);
     if (!match) return "border-blue-800";
 
-    const [, colorName, shade] = match;
-    const borderShade = parseInt(shade) + 100;
+    const [, colorName] = match;
+    const borderShade = parseInt(match[2]) + 100;
 
     // Ensure the shade is valid (not above 900)
     if (borderShade > 900) return `border-${colorName}-900`;
@@ -102,86 +421,122 @@ const ProjectCard = ({
   const imageContainerBgColor = getImageContainerBgColor();
   const statBorderColor = getStatBorderColor();
 
+  // For debugging
+  console.log("Final imageContainerBgColor:", imageContainerBgColor);
+  console.log("Original bgColor:", bgColor);
+
+  // Pick a forced background color only for the purple-700 case
+  const forcedBgColor =
+    bgColor === "bg-purple-700" ? "bg-purple-800" : imageContainerBgColor;
+
   return (
-    <div className={`${bgColor} py-24`}>
-      <div className="max-w-6xl mx-auto px-4">
-        <div
-          className={`flex flex-col ${
-            orientation === "right" ? "md:flex-row-reverse" : "md:flex-row"
-          } gap-8 items-center`}
-        >
-          {/* Project Image */}
-          <div className="w-full md:w-1/2">
-            <div
-              className={`${imageContainerBgColor} px-24 rounded-4xl shadow-xl py-8`}
-            >
-              <Image
-                src={imageSrc}
-                alt={title}
-                width={280}
-                height={400}
-                className="w-full h-auto rounded border border-gray-700"
-              />
-            </div>
-          </div>
-
-          {/* Project Details */}
-          <div className="w-full md:w-1/2 text-white">
-            <h3 className="text-4xl font-semibold mb-4">{title}</h3>
-            <p className="mb-4">{description}</p>
-
-            {/* Features List */}
-            <ul className="space-y-2 mb-24">
-              {features.map((feature, index) => (
-                <li key={index} className="flex items-center">
-                  <div
-                    className={`h-2 w-2 ${bulletColor} rounded-full mr-3 flex-shrink-0`}
-                  ></div>
-                  <span>{feature}</span>
-                </li>
-              ))}
-            </ul>
-
-            {/* Stats Section */}
-            <div className="mt-8">
-              <div className="flex items-center mb-4">
-                <div
-                  className={`inline-block ${statsBackgroundColor} py-2 px-4 rounded mr-4 border ${statBorderColor}`}
-                >
-                  <div className="text-3xl font-bold">{stat.value}</div>
-                </div>
-                <p className="">{stat.description}</p>
-              </div>
-
-              {/* Divider Line */}
-              <div className="border-t border-white opacity-30 mb-6"></div>
-
-              {/* Action Links */}
-              <div className="flex items-center gap-4 justify-between">
-                <a
-                  href={websiteUrl}
-                  target="_blank"
-                  className={`text-white font-medium px-4 py-2 rounded`}
-                >
+    <>
+      <div className={`${bgColor} py-24`}>
+        <div className="max-w-6xl mx-auto px-4">
+          <div
+            className={`flex flex-col ${
+              orientation === "right" ? "md:flex-row-reverse" : "md:flex-row"
+            } gap-8 items-center`}
+          >
+            {/* Project Image */}
+            <div className="w-full md:w-1/2">
+              <div
+                className={`${forcedBgColor} px-12 py-8 rounded-3xl shadow-xl flex items-center justify-center`}
+              >
+                <div className="overflow-hidden rounded-xl max-h-[500px] flex justify-center">
                   <Image
-                    src={logoSrc || MuffinLogo}
-                    alt="Website"
-                    width={120}
-                    height={120}
+                    src={imageSrc}
+                    alt={title}
+                    width={750}
+                    height={500}
+                    className="max-h-[500px] w-auto object-contain rounded-xl"
                   />
-                </a>
-                <a
-                  href={learnMoreUrl}
-                  className="text-white underline hover:text-blue-100 transition"
-                >
-                  Learn more →
-                </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Project Details */}
+            <div className="w-full md:w-1/2 text-white">
+              <h3 className="text-4xl font-semibold mb-4">{title}</h3>
+              <p className="mb-4">{description}</p>
+
+              {/* Features List */}
+              <ul className="space-y-2 mb-24">
+                {features.map((feature, index) => (
+                  <li key={index} className="flex items-center">
+                    <div
+                      className={`h-2 w-2 ${bulletColor} rounded-full mr-3 flex-shrink-0`}
+                    ></div>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Stats Section */}
+              <div className="mt-8">
+                <div className="flex items-center mb-4">
+                  <div
+                    className={`inline-block ${statsBackgroundColor} py-2 px-4 rounded mr-4 border ${statBorderColor}`}
+                  >
+                    <div className="text-3xl font-bold">{stat.value}</div>
+                  </div>
+                  <p className="">{stat.description}</p>
+                </div>
+
+                {/* Divider Line */}
+                <div className="border-t border-white opacity-30 mb-6"></div>
+
+                {/* Action Links */}
+                <div className="flex items-center gap-4 justify-between">
+                  <a
+                    href={websiteUrl}
+                    target="_blank"
+                    className={`text-white font-medium px-4 py-2 rounded`}
+                  >
+                    <Image
+                      src={logoSrc || MuffinLogo}
+                      alt="Website"
+                      width={logoSize.width}
+                      height={logoSize.height}
+                      className="object-contain"
+                    />
+                  </a>
+                  <button
+                    onClick={() => setIsModalOpen(true)}
+                    className="text-white underline hover:text-blue-100 transition flex items-center gap-1 cursor-pointer"
+                  >
+                    <span>Tech Stack</span>
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M13 7l5 5m0 0l-5 5m5-5H6"
+                      />
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+
+      {/* Project Details Modal */}
+      <ProjectDetailsModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title={title}
+        description={description}
+        techStack={techStack}
+      />
+    </>
   );
 };
 
@@ -191,7 +546,7 @@ const Projects = () => {
     title: "Muffin: Food App",
     description:
       "A social media mobile app where users can find meals near them based on their preferences with a TikTok-style UI. Sign up, swipe, and find your next perfect meal. Features include...",
-    imageSrc: "/projects/spottedin.png",
+    imageSrc: StoryDiscountDashboard,
     logoSrc: MuffinLogo,
     features: [
       "Personalized home feed",
@@ -206,7 +561,47 @@ const Projects = () => {
     },
     bgColor: "bg-orange-500",
     websiteUrl: "https://muffinapp.io",
-    learnMoreUrl: "/projects/muffin",
+    techStack: {
+      frontend: [
+        "TypeScript",
+        "CSS",
+        "Expo",
+        "React Native",
+        "React Query",
+        "Redux",
+      ],
+      backend: ["Node.js", "NestJS", "Firebase", "SendGrid"],
+      database: ["PostgreSQL", "Elasticsearch", "Redis", "Cloudinary"],
+      devops: ["Docker", "Digital Ocean"],
+      other: ["OpenAI", "Google Maps API"],
+    },
+  };
+
+  const storyDiscountProject = {
+    title: "StoryDiscount.com",
+    description:
+      "A QR-based marketing tool for small businesses to share their founding story and get customers to scan a QR code to receive a discount. Features include...",
+    imageSrc: StoryDiscountDashboard,
+    logoSrc: StoryDiscountLogo,
+    features: [
+      "QR code scanning",
+      "Discount redemption",
+      "Customer engagement",
+      "Business owner dashboard (Analytics)",
+      "& more",
+    ],
+    stat: {
+      value: "2",
+      description: "Small businesses using the app",
+    },
+    bgColor: "bg-purple-700",
+    websiteUrl: "https://storydiscount.com",
+    techStack: {
+      frontend: ["TypeScript", "Tailwind", "React", "OpenSaaS"],
+      backend: ["Node.js", "OpenSaaS", "SendGrid"],
+      database: ["PostgreSQL", "Cloudinary"],
+      devops: ["Docker", "Digital Ocean"],
+    },
   };
 
   return (
@@ -217,6 +612,7 @@ const Projects = () => {
 
       {/* First Project using the ProjectCard component */}
       <ProjectCard {...muffinProject} orientation="left" />
+      <ProjectCard {...storyDiscountProject} orientation="right" />
     </section>
   );
 };
