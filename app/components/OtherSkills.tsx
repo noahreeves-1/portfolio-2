@@ -21,6 +21,8 @@ import PowerPoint from "@/public/powerpoint.svg";
 import SharePoint from "@/public/sharepoint.svg";
 import Slack from "@/public/slack.svg";
 import Jira from "@/public/jira.svg";
+import Git from "@/public/git.svg";
+import GitHub from "@/public/github.svg";
 
 // Map skill names to their corresponding logos
 const skillLogos: Record<string, StaticImageData> = {
@@ -43,6 +45,8 @@ const skillLogos: Record<string, StaticImageData> = {
   SharePoint,
   Slack,
   Jira,
+  Git,
+  GitHub,
 };
 
 // Define categories for organization
@@ -54,6 +58,10 @@ const skillCategories = [
   {
     name: "Databases & Backend",
     skills: ["MySQL", "SQL Server", "Supabase"],
+  },
+  {
+    name: "Version Control & Collaboration",
+    skills: ["Git", "GitHub"],
   },
   {
     name: "Cloud & Deployment",
@@ -77,15 +85,13 @@ const OtherSkills = () => {
   return (
     <section className="py-24 bg-gray-100">
       <div className="max-w-6xl mx-auto px-4 md:px-6">
-        <h2 className="text-sm font-bold text-center mb-8 text-gray-800">
-          {`OTHER SKILLS`}
-        </h2>
+        <h2 className="text-sm font-bold text-center mb-8">{`OTHER SKILLS`}</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {skillCategories.map((category) => (
             <div
               key={category.name}
-              className="bg-gray-700 rounded-xl p-6 shadow-md border border-gray-600 hover:shadow-lg transition-shadow"
+              className="bg-gray-800 rounded-xl p-6 shadow-md border border-gray-600 hover:shadow-lg transition-shadow"
             >
               <h4 className="text-lg font-medium mb-4 pb-2 border-b border-gray-600 text-white">
                 {category.name}
