@@ -9,6 +9,9 @@ import ecolab from "@public/ecolab.webp";
 import couchetard from "@public/couche-tard.webp";
 import rnl from "@public/rnl.webp";
 import redHat from "@public/red-hat.webp";
+import navyFederal from "@public/navy-federal-credit-union.svg";
+import salesforce from "@public/salesforce.svg";
+import twc from "@public/twc.webp";
 
 const SocialProof = () => {
   return (
@@ -17,31 +20,24 @@ const SocialProof = () => {
         TRUSTED BY SMALL BUSINESSES AND FORTUNE 500 COMPANIES
       </h2>
       <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6 lg:gap-8 mt-4 px-4">
-        <div className="w-20 h-12 md:w-24 md:h-20 flex items-center justify-center">
+        <div className="w-20 h-18 md:w-18 md:h-18 flex items-center justify-center">
           <Image
             src={accenture}
             alt="Accenture"
             className="max-w-full max-h-full object-contain"
           />
         </div>
-        <div className="w-16 h-12 md:w-18 md:h-14 flex items-center justify-center">
+        <div className="w-16 h-12 md:w-14 md:h-14 flex items-center justify-center">
           <Image
             src={att}
             alt="AT&T"
             className="max-w-full max-h-full object-contain"
           />
         </div>
-        <div className="w-20 h-12 md:w-22 md:h-14 flex items-center justify-center">
+        <div className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center">
           <Image
-            src={ecolab}
-            alt="Ecolab"
-            className="max-w-full max-h-full object-contain"
-          />
-        </div>
-        <div className="w-20 h-12 md:w-24 md:h-14 flex items-center justify-center">
-          <Image
-            src={couchetard}
-            alt="Couche Tard"
+            src={salesforce}
+            alt="Salesforce"
             className="max-w-full max-h-full object-contain"
           />
         </div>
@@ -52,10 +48,38 @@ const SocialProof = () => {
             className="max-w-full max-h-full object-contain"
           />
         </div>
-        <div className="w-20 h-12 md:w-24 md:h-14 flex items-center justify-center">
+        <div className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center">
+          <Image
+            src={navyFederal}
+            alt="Navy Federal Credit Union"
+            className="max-w-full max-h-full object-contain"
+          />
+        </div>
+        <div className="w-20 h-12 md:w-20 md:h-14 flex items-center justify-center">
+          <Image
+            src={ecolab}
+            alt="Ecolab"
+            className="max-w-full max-h-full object-contain"
+          />
+        </div>
+        <div className="w-24 h-12 md:w-24 md:h-14 flex items-center justify-center">
           <Image
             src={kornFerry}
             alt="Korn Ferry"
+            className="max-w-full max-h-full object-contain"
+          />
+        </div>
+        <div className="w-12 h-12 flex items-center justify-center">
+          <Image
+            src={twc}
+            alt="TWC"
+            className="max-w-full max-h-full object-contain"
+          />
+        </div>
+        <div className="w-20 h-12 md:w-24 md:h-14 flex items-center justify-center">
+          <Image
+            src={couchetard}
+            alt="Couche Tard"
             className="max-w-full max-h-full object-contain"
           />
         </div>
