@@ -1,3 +1,5 @@
+"use client";
+
 import JourneyAnimation from "./JourneyAnimation";
 
 const Hero = () => {
@@ -19,7 +21,14 @@ const Hero = () => {
             {`, and ran a `}
             <span className="text-blue-500">{`startup.`}</span>
           </p>
-          <button className="bg-black text-white px-4 py-2 mt-4 md:mt-6 rounded-md text-sm font-medium hover:bg-blue-500 hover:cursor-pointer">
+          <button
+            className="bg-black text-white px-4 py-2 mt-4 md:mt-6 rounded-md text-sm font-medium hover:bg-blue-500 hover:cursor-pointer"
+            onClick={() => {
+              document.getElementById("contact")?.scrollIntoView({
+                behavior: "smooth",
+              });
+            }}
+          >
             {`Get in touch`}
           </button>
         </div>
