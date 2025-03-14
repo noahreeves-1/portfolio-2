@@ -1,10 +1,31 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import Rocket from "@/public/rocket.svg";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Add scroll event listener
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Cleanup event listener on component unmount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -32,17 +53,38 @@ const Navbar = () => {
           block: "start",
         });
       }
+    } else if (sectionId === "top") {
+      e.preventDefault();
+      // Close mobile menu if open
+      if (isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+
+      // Smooth scroll to the top of the page
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     }
   };
 
   return (
-    <nav className="bg-white fixed w-full z-10 border-b-stone-200 border-b-1">
+    <nav
+      className={`fixed w-full z-10 border-b-stone-200 border-b-1 transition-all duration-300 ${
+        isScrolled ? "bg-white/80 backdrop-blur-sm" : "bg-white"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
-            <Link href="/" className="flex items-center">
-              <span className="text-xl font-bold text-gray-800">Portfolio</span>
+            <Link
+              href="/"
+              className="flex items-center"
+              onClick={(e) => handleScrollToSection(e, "top")}
+            >
+              <Image src={Rocket} alt="Rocket" className="w-6 h-6" />
+              <span className="ml-4 text-xl font-bold text-gray-800">Noah</span>
             </Link>
           </div>
 
@@ -151,7 +193,11 @@ const Navbar = () => {
         className={`${isMenuOpen ? "block" : "hidden"} md:hidden`}
         id="mobile-menu"
       >
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg">
+        <div
+          className={`px-2 pt-2 pb-3 space-y-1 sm:px-3 shadow-lg ${
+            isScrolled ? "bg-white/80 backdrop-blur-sm" : "bg-white"
+          }`}
+        >
           <Link
             href="#projects"
             className="text-gray-600 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium"
@@ -167,6 +213,13 @@ const Navbar = () => {
             Skills
           </Link>
           <Link
+            href="#mapview"
+            className="text-gray-600 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium"
+            onClick={(e) => handleScrollToSection(e, "#mapview")}
+          >
+            {`Countries`}
+          </Link>
+          {/* <Link
             href="/resume"
             className="text-gray-600 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium"
           >
@@ -178,7 +231,7 @@ const Navbar = () => {
             onClick={(e) => handleScrollToSection(e, "#about")}
           >
             About
-          </Link>
+          </Link> */}
           <Link
             href="#contact"
             className="text-white bg-black hover:bg-blue-700 block px-3 py-2 rounded-md text-base font-medium mt-4"
