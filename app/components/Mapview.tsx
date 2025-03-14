@@ -20,6 +20,7 @@ const GeoJSON = dynamic(
 const MapView = () => {
   const [isMounted, setIsMounted] = useState(false);
   const [mapData, setMapData] = useState<FeatureCollection | null>(null);
+  const [zoomLevel, setZoomLevel] = useState(3);
 
   useEffect(() => {
     setIsMounted(true);
@@ -31,6 +32,23 @@ const MapView = () => {
       .catch((error) => {
         console.error("Failed to load map data:", error);
       });
+
+    // Set initial zoom level based on screen width
+    const handleResize = () => {
+      const isMobile = window.innerWidth < 768; // Common breakpoint for mobile
+      setZoomLevel(isMobile ? 1 : 3);
+    };
+
+    // Set initial zoom
+    handleResize();
+
+    // Add event listener for window resize
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   const addCountryColor = (countryName: string): string => {
@@ -96,7 +114,7 @@ const MapView = () => {
         <MapContainer
           className="leaflet-container"
           center={[40.505, -0.09]}
-          zoom={3}
+          zoom={zoomLevel}
           minZoom={1}
           scrollWheelZoom={false}
           maxBounds={[

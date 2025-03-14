@@ -1,9 +1,5 @@
 "use client";
 
-import Collaboration from "@/public/collaboration.svg";
-import ShipIt from "@/public/ship-it.svg";
-import Image from "next/image";
-
 const WhyMe = () => {
   const priorExperience = [
     "Tennis Coach",
@@ -44,13 +40,13 @@ const WhyMe = () => {
               WHY HIRE ME?
             </h3>
 
-            <h2 className="text-center text-xl md:text-3xl font-bold mb-6">
+            <h2 className="text-center text-2xl md:text-3xl font-bold mb-6">
               <p className="text-black">I Bridge the Gap Between </p>
               <p className="text-green-400">Business and Tech</p>
             </h2>
 
             <p className="text-center text-lg max-w-lg mx-auto mb-16">
-              {`As an immigrant who started his career with unpaid internships, worked his way up to a top tier consulting firm, then quit to learn how to code and build a startup, I don't expect anything to be handed to me. With experience in small business marketing, Fortune 500 consulting, software engineering, and startup operations, I am uniquely positioned to take on any challenge in business and tech.`}
+              {`As an immigrant who started his career with unpaid internships, worked his way up to management consulting, then quit to learn how to code and build a startup, I don't expect anything to be handed to me. With experience in small business marketing, Fortune 500 consulting, software engineering, and startup operations, I am uniquely positioned to take on any challenge in business and tech.`}
             </p>
           </div>
 

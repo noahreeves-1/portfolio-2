@@ -5,7 +5,7 @@ import JourneyAnimation from "./JourneyAnimation";
 const Hero = () => {
   return (
     <div
-      className="relative bg-[#fafafa] bg-[linear-gradient(to_right,#ebebeb_1px,transparent_1px),linear-gradient(to_bottom,#ebebeb_1px,transparent_1px)] bg-[size:36px_36px] pt-16 md:pt-24 pb-8 md:pb-12"
+      className="relative bg-[#fafafa] bg-[linear-gradient(to_right,#ebebeb_1px,transparent_1px),linear-gradient(to_bottom,#ebebeb_1px,transparent_1px)] bg-[size:36px_36px] pt-24 md:pt-24 pb-8 md:pb-12"
       aria-hidden="true"
     >
       <div className="flex flex-col md:flex-row max-w-5xl mx-auto px-4 md:px-6 relative">

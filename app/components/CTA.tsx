@@ -7,13 +7,13 @@ const CTA = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           <div className="max-w-2xl md:w-1/2 flex flex-col justify-center">
-            <h2 className="text-5xl font-semibold mb-6">
+            <h2 className="text-3xl md:text-5xl font-semibold mb-4 md:mb-6">
               {`Let's create something amazing together`}
               <span className="text-gray-500">
                 —bringing your vision to life.
               </span>
             </h2>
-            <p className="text-gray-500">
+            <p className="text-gray-500 text-lg md:text-xl">
               {`As a life-long learner, I'm always looking for new challenges and opportunities to grow and expand my skillset. Let's talk!`}
             </p>
             {/* <a
