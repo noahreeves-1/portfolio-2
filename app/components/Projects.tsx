@@ -39,6 +39,7 @@ import MongoDBLogo from "@/public/mongodb.svg";
 import PineconeLogo from "@/public/pinecone.webp";
 import StripeLogo from "@/public/stripe.svg";
 import LexcaliburLogo from "@/public/lexcaliburai.svg";
+import PrismaLogo from "@/public/prisma.svg";
 
 // Map of technology names to their logos
 const techLogos: Record<string, StaticImageData | string> = {
@@ -72,6 +73,7 @@ const techLogos: Record<string, StaticImageData | string> = {
   MongoDB: MongoDBLogo,
   Pinecone: PineconeLogo,
   Stripe: StripeLogo,
+  Prisma: PrismaLogo,
 };
 
 // Project Details Modal Component
@@ -592,7 +594,7 @@ const Projects = () => {
         "React Query",
         "Redux",
       ],
-      backend: ["Node.js", "NestJS", "Firebase"],
+      backend: ["Node.js", "NestJS", "Firebase", "Prisma"],
       database: ["PostgreSQL", "Elasticsearch", "Redis", "Cloudinary"],
       devops: ["Docker", "Digital Ocean"],
       other: ["OpenAI", "Google Maps API", "SendGrid"],

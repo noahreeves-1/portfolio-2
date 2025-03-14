@@ -8,9 +8,7 @@ import NX from "@/public/nx.svg";
 import Turbo from "@/public/turbo.svg";
 import MySQL from "@/public/mysql.svg";
 import SQLServer from "@/public/sqlserver.svg";
-import Supabase from "@/public/supabase.svg";
 import Flyio from "@/public/flyio.svg";
-import Railway from "@/public/railway.svg";
 import Hadoop from "@/public/hadoop.svg";
 import R from "@/public/r.svg";
 import PowerBI from "@/public/powerbi.svg";
@@ -35,6 +33,35 @@ import Express from "@/public/express.svg";
 import NestJS from "@/public/nestjs.svg";
 import PostgreSQL from "@/public/postgresql.svg";
 import MongoDB from "@/public/mongodb.svg";
+import Nx from "@/public/nx.svg";
+import Firebase from "@/public/firebase.svg";
+// Import additional logos from Projects.tsx
+import ReduxLogo from "@/public/redux.svg";
+import ReactQueryLogo from "@/public/tanstack.webp";
+import CssLogo from "@/public/css.svg";
+import PrismaLogo from "@/public/prisma.svg";
+import ElasticsearchLogo from "@/public/elasticsearch.svg";
+import RedisLogo from "@/public/redis.svg";
+import CloudinaryLogo from "@/public/cloudinary.webp";
+import DigitalOceanLogo from "@/public/digitalocean.svg";
+import OpenAILogo from "@/public/openai.webp";
+import GoogleMapsLogo from "@/public/google-maps.svg";
+import SendGridLogo from "@/public/sendgrid.svg";
+import OpenSaaSLogo from "@/public/opensaas.webp";
+import StripeLogo from "@/public/stripe.svg";
+import PythonLogo from "@/public/python.svg";
+import PineconeLogo from "@/public/pinecone.webp";
+import TwilioLogo from "@/public/twilio.svg";
+import ApifyLogo from "@/public/apify.svg";
+import CrawleeLogo from "@/public/crawlee.webp";
+import JavaScriptLogo from "@/public/javascript.svg";
+import SupabaseLogo from "@/public/supabase.svg";
+import VercelLogo from "@/public/vercel.svg";
+import RailwayLogo from "@/public/railway.svg";
+import SQLLogo from "@/public/sql.svg";
+import HTMLLogo from "@/public/html5.svg";
+import TypeOrmLogo from "@/public/typeorm.svg";
+import PuppeteerLogo from "@/public/puppeteer.webp";
 
 // Map skill names to their corresponding logos
 const skillLogos: Record<string, StaticImageData> = {
@@ -44,9 +71,7 @@ const skillLogos: Record<string, StaticImageData> = {
   Turbo,
   MySQL,
   "SQL Server": SQLServer,
-  Supabase,
   "Fly.io": Flyio,
-  Railway,
   Hadoop,
   R,
   PowerBI,
@@ -71,6 +96,35 @@ const skillLogos: Record<string, StaticImageData> = {
   NestJS: NestJS,
   PostgreSQL: PostgreSQL,
   MongoDB: MongoDB,
+  Nx,
+  Firebase,
+  // Add additional logos
+  Redux: ReduxLogo,
+  "React Query": ReactQueryLogo,
+  CSS: CssLogo,
+  Prisma: PrismaLogo,
+  TypeORM: TypeOrmLogo,
+  Elasticsearch: ElasticsearchLogo,
+  Redis: RedisLogo,
+  Cloudinary: CloudinaryLogo,
+  "Digital Ocean": DigitalOceanLogo,
+  OpenAI: OpenAILogo,
+  "Google Maps API": GoogleMapsLogo,
+  SendGrid: SendGridLogo,
+  OpenSaaS: OpenSaaSLogo,
+  Stripe: StripeLogo,
+  Python: PythonLogo,
+  Pinecone: PineconeLogo,
+  Twilio: TwilioLogo,
+  Apify: ApifyLogo,
+  Crawlee: CrawleeLogo,
+  JavaScript: JavaScriptLogo,
+  Supabase: SupabaseLogo,
+  Vercel: VercelLogo,
+  Railway: RailwayLogo,
+  SQL: SQLLogo,
+  HTML: HTMLLogo,
+  Puppeteer: PuppeteerLogo,
 };
 
 // Define category type
@@ -93,6 +147,7 @@ const preferredTechStack: SkillCategoryType[] = [
       "Node.js",
       "Express",
       "NestJS",
+      "Firebase",
       "PostgreSQL",
       "MongoDB",
       "Docker",
@@ -103,20 +158,42 @@ const preferredTechStack: SkillCategoryType[] = [
 // Define other technologies
 const otherTechCategories: SkillCategoryType[] = [
   {
+    name: "Languages & Styling",
+    skills: ["Python", "JavaScript", "HTML", "CSS"],
+  },
+  {
     name: "Frameworks & Libraries",
-    skills: ["AdonisJS", "Turbo"],
+    skills: ["AdonisJS", "Turbo", "Nx", "Redux", "React Query", "OpenSaaS"],
   },
   {
     name: "Databases & Backend",
-    skills: ["MySQL", "SQL Server"],
+    skills: [
+      "MySQL",
+      "SQL Server",
+      "Elasticsearch",
+      "Redis",
+      "Cloudinary",
+      "Pinecone",
+      "Supabase",
+      "Prisma",
+      "TypeORM",
+    ],
   },
   {
-    name: "Version Control",
-    skills: ["Git"],
+    name: "Cloud & DevOps",
+    skills: ["Digital Ocean", "Fly.io", "Vercel", "Railway", "Git", "GitHub"],
+  },
+  {
+    name: "APIs & Services",
+    skills: ["OpenAI", "Google Maps API", "SendGrid", "Stripe", "Twilio"],
+  },
+  {
+    name: "Web Scraping",
+    skills: ["Apify", "Crawlee", "Puppeteer"],
   },
   {
     name: "Data & Analytics",
-    skills: ["Hadoop", "R", "PowerBI", "Tableau"],
+    skills: ["SQL", "Hadoop", "R", "PowerBI", "Tableau"],
   },
   {
     name: "Automation & RPA",
@@ -167,10 +244,10 @@ const Skills = () => {
         <h2 className="text-sm font-bold text-center mb-4">{`SKILLS`}</h2>
 
         {/* Preferred Tech Stack */}
-        <div className="mb-12">
-          <h3 className="font-semibold mb-6 text-center text-gray-500">
+        <div className="mb-8">
+          {/* <h3 className="font-semibold mb-6 text-center text-gray-500">
             PREFERRED
-          </h3>
+          </h3> */}
           <div className="">
             {preferredTechStack.map((category) => (
               <SkillCategory
@@ -184,8 +261,8 @@ const Skills = () => {
 
         {/* Other Technologies */}
         <div>
-          <h3 className="font-semibold mb-6 text-center text-gray-500">
-            OTHER
+          <h3 className="font-semibold mb-4 text-center text-gray-500 text-sm">
+            ADDITIONAL
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {otherTechCategories.map((category) => (
