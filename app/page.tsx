@@ -8,6 +8,7 @@ import WhyMe from "./components/WhyMe";
 import Skills from "./components/Skills";
 import Mapview from "./components/Mapview";
 import Contact from "./components/Contact";
+import CTA from "./components/CTA";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
         <Projects />
         <Skills />
         <Mapview />
+        <CTA />
         <Contact />
       </main>
       <Footer />

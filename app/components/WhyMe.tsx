@@ -1,5 +1,9 @@
 "use client";
 
+import Collaboration from "@/public/collaboration.svg";
+import ShipIt from "@/public/ship-it.svg";
+import Image from "next/image";
+
 const WhyMe = () => {
   const priorExperience = [
     "Tennis Coach",
@@ -22,21 +26,40 @@ const WhyMe = () => {
 
   return (
     <section id="why-hire-me" className="mb-8">
-      <div className="py-24 px-4 text-black">
-        <div className="max-w-6xl mx-auto">
-          <h3 className="text-center text-green-400 font-medium mb-4">
-            WHY HIRE ME?
-          </h3>
+      <div className="py-20 px-4 text-black">
+        <div className="flex items-start justify-center max-w-6xl mx-auto">
+          {/* Left side image */}
+          {/* <div className="hidden md:block w-32 h-32 lg:w-40 lg:h-40 flex-shrink-0 self-start mt-24">
+            <Image
+              src={Collaboration}
+              alt="Collaboration"
+              width={150}
+              height={150}
+            />
+          </div> */}
 
-          <h2 className="text-center text-xl md:text-3xl font-bold mb-6">
-            <p className="text-black">I Bridge the Gap Between </p>
-            <p className="text-green-400">Business and Tech</p>
-          </h2>
+          {/* Center text content */}
+          <div className="max-w-4xl mx-4 md:mx-8 flex-grow">
+            <h3 className="text-center text-green-400 font-medium mb-4">
+              WHY HIRE ME?
+            </h3>
 
-          <p className="text-center text-lg max-w-lg mx-auto mb-16">
-            {`As an immigrant who started his career with unpaid internships, worked his way up to a top tier consulting firm, then quit to learn how to code and build a startup, I don't expect anything to be handed to me. With experience in small business marketing, Fortune 500 consulting, software engineering, and startup operations, I am uniquely positioned to take on any challenge in business and tech.`}
-          </p>
+            <h2 className="text-center text-xl md:text-3xl font-bold mb-6">
+              <p className="text-black">I Bridge the Gap Between </p>
+              <p className="text-green-400">Business and Tech</p>
+            </h2>
+
+            <p className="text-center text-lg max-w-lg mx-auto mb-16">
+              {`As an immigrant who started his career with unpaid internships, worked his way up to a top tier consulting firm, then quit to learn how to code and build a startup, I don't expect anything to be handed to me. With experience in small business marketing, Fortune 500 consulting, software engineering, and startup operations, I am uniquely positioned to take on any challenge in business and tech.`}
+            </p>
+          </div>
+
+          {/* Right side image */}
+          {/* <div className="hidden md:block w-32 h-32 lg:w-40 lg:h-40 flex-shrink-0 self-start mt-24">
+            <Image src={ShipIt} alt="Ship It" width={150} height={150} />
+          </div> */}
         </div>
+
         {/* Experience Carousel */}
         <div className="carousel-container w-full">
           <div className="carousel-track animate-scrollX">
