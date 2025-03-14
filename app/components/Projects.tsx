@@ -527,9 +527,9 @@ const ProjectCard = ({
                     onClick={() => setIsModalOpen(true)}
                     className="text-white underline hover:text-blue-100 transition flex items-center gap-1 cursor-pointer"
                   >
-                    <span>Tech Stack</span>
+                    <span className="text-lg">Tech Stack</span>
                     <svg
-                      className="w-4 h-4"
+                      className="w-6 h-6"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -609,7 +609,7 @@ const Projects = () => {
       "QR code scanning",
       "Coupon redemption",
       "Customer engagement",
-      "Business owner dashboard (analytics)",
+      "Business owner dashboard",
       "& more",
     ],
     stat: {
@@ -630,19 +630,18 @@ const Projects = () => {
   const lexcaliburAiProject = {
     title: "Lexcalibur AI (Coming Soon)",
     description:
-      "An AI-powered tool that alerts you whenever new federal and state laws relevant to you are passed. Features include...",
+      "An AI-powered tool that alerts you whenever new federal and state laws are passed that could affect you. Features include...",
     imageSrc: StoryDiscountDashboard,
     logoSrc: LexcaliburLogo,
     features: [
-      "Web scraping",
       "Legislation tracking",
-      "AI-powered summarization",
-      "SMS alerts",
+      "AI-powered summaries",
+      "Personalized SMS alerts",
       "& more",
     ],
     stat: {
       value: "X",
-      description: "Users signed up",
+      description: "Users signed up for instant alerts",
     },
     bgColor: "bg-teal-700",
     websiteUrl: "https://lexcalibur.ai",

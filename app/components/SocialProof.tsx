@@ -17,7 +17,7 @@ const SocialProof = () => {
         TRUSTED BY SMALL BUSINESSES AND FORTUNE 500 COMPANIES
       </h2>
       <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6 lg:gap-8 mt-4 px-4">
-        <div className="w-20 h-12 md:w-24 md:h-14 flex items-center justify-center">
+        <div className="w-20 h-12 md:w-24 md:h-20 flex items-center justify-center">
           <Image
             src={accenture}
             alt="Accenture"
@@ -59,7 +59,7 @@ const SocialProof = () => {
             className="max-w-full max-h-full object-contain"
           />
         </div>
-        <div className="w-16 h-12 md:w-18 md:h-14 flex items-center justify-center">
+        <div className="w-16 h-12 md:w-16 md:h-12 flex items-center justify-center">
           <Image
             src={rnl}
             alt="RNL"

@@ -1,7 +1,28 @@
+"use client";
+
 const WhyMe = () => {
+  const priorExperience = [
+    "Tennis Coach",
+    "Math Tutor",
+    "Cold Caller",
+    "Marketing Intern",
+    "Marketing Lead",
+    "Translator",
+    "Research Assistant",
+    "Customer Support Specialist",
+    "SEO Specialist",
+    "Club President",
+    "Business Analyst",
+    "Data Analyst",
+    "BI Developer",
+    "Management Consultant",
+    "Software Engineer",
+    "Startup Founder",
+  ];
+
   return (
-    <section id="why-me" className="mb-8">
-      <div className="py-16 px-4 text-black">
+    <section id="why-hire-me" className="mb-8">
+      <div className="py-24 px-4 text-black">
         <div className="max-w-6xl mx-auto">
           <h3 className="text-center text-green-400 font-medium mb-4">
             WHY HIRE ME?
@@ -12,10 +33,41 @@ const WhyMe = () => {
             <p className="text-green-400">Business and Tech</p>
           </h2>
 
-          <p className="text-center text-lg max-w-lg mx-auto">
-            {/* {`As someone who started his career as an unpaid marketing intern, I understand the challenges of bridging the gap between business and tech. I've led without a manager, solved Fortune 500 data challenges, self-taught code, and shipped products. I thrive in fast-moving environments, adapt quickly, and build solutions that matter.`} */}
-            {`As an immigrant who started his career with two unpaid internships and worked his way up to management consulting, I am living proof that hard work pays off. With a background in marketing, consulting for Fortune 500s, and the technical skills to build products, I am uniquely positioned to tackle any challenge whether it's in business or technology.`}
+          <p className="text-center text-lg max-w-lg mx-auto mb-16">
+            {`As an immigrant who started his career with unpaid internships, worked his way up to a top tier consulting firm, then quit to learn how to code and build a startup, I don't expect anything to be handed to me. With experience in small business marketing, Fortune 500 consulting, software engineering, and startup operations, I am uniquely positioned to take on any challenge in business and tech.`}
           </p>
+        </div>
+        {/* Experience Carousel */}
+        <div className="carousel-container w-full">
+          <div className="carousel-track animate-scrollX">
+            {/* First set of items */}
+            <div className="carousel-content flex space-x-8 mr-8">
+              {priorExperience.map((experience, index) => (
+                <div
+                  key={`item-1-${index}`}
+                  className="carousel-item px-3 py-2"
+                >
+                  <p className="text-gray-400 font-semibold whitespace-nowrap">
+                    {experience.toUpperCase()}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Duplicate set for seamless looping */}
+            <div className="carousel-content flex space-x-8">
+              {priorExperience.map((experience, index) => (
+                <div
+                  key={`item-2-${index}`}
+                  className="carousel-item px-3 py-2"
+                >
+                  <p className="text-gray-400 font-semibold whitespace-nowrap">
+                    {experience.toUpperCase()}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
