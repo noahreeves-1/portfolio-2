@@ -227,7 +227,7 @@ const CTA = () => {
                   y1="70"
                   x2={x2 - 30}
                   y2="70"
-                  stroke="#4B5563" // Dark gray (gray-600)
+                  stroke="#6B7280" // Lighter gray (gray-500)
                   strokeWidth="2"
                   initial={{
                     strokeDasharray: width,
@@ -362,7 +362,7 @@ const CTA = () => {
                   y1={y1 + 30}
                   x2="60"
                   y2={y2 - 30}
-                  stroke="#4B5563" // Dark gray (gray-600)
+                  stroke="#6B7280" // Lighter gray (gray-500)
                   strokeWidth="2"
                   initial={{
                     strokeDasharray: height,
