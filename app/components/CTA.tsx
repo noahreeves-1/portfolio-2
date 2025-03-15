@@ -233,7 +233,7 @@ const CTA = () => {
                     strokeDasharray: width,
                     strokeDashoffset: width,
                   }}
-                  animate={{
+                  whileInView={{
                     strokeDashoffset: 0,
                     transition: {
                       duration: baseDuration - staggerDelay,
@@ -241,6 +241,7 @@ const CTA = () => {
                       ease: "easeInOut",
                     },
                   }}
+                  viewport={{ once: true, amount: 0.8 }}
                 />
               );
             }
@@ -367,7 +368,7 @@ const CTA = () => {
                     strokeDasharray: height,
                     strokeDashoffset: height,
                   }}
-                  animate={{
+                  whileInView={{
                     strokeDashoffset: 0,
                     transition: {
                       duration: baseDuration - staggerDelay,
@@ -375,6 +376,7 @@ const CTA = () => {
                       ease: "easeInOut",
                     },
                   }}
+                  viewport={{ once: true, amount: 0.2 }}
                 />
               );
             }

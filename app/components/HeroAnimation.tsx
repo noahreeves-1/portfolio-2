@@ -319,7 +319,7 @@ const AmbientParticle = () => {
 };
 
 // Main component that wraps the Canvas
-const JourneyAnimation = () => {
+const HeroAnimation = () => {
   return (
     <div style={{ position: "relative", width: "100%", height: "100%" }}>
       <Canvas
@@ -348,4 +348,4 @@ const JourneyAnimation = () => {
   );
 };
 
-export default JourneyAnimation;
+export default HeroAnimation;

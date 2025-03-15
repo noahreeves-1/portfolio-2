@@ -1,6 +1,6 @@
 "use client";
 
-import JourneyAnimation from "./JourneyAnimation";
+import HeroAnimation from "./HeroAnimation";
 import { motion } from "framer-motion";
 
 const Hero = () => {
@@ -51,7 +51,7 @@ const Hero = () => {
           </motion.button>
         </div>
         <div className="w-full md:w-1/2 h-[300px] md:h-[400px] mt-8 md:mt-0">
-          <JourneyAnimation />
+          <HeroAnimation />
         </div>
       </div>
     </div>
