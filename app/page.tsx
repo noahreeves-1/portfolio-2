@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import SocialProof from "./components/SocialProof";
 import Projects from "./components/Projects";
-import WhyMe from "./components/WhyMe";
+import WhoMe from "./components/WhoMe";
 import Skills from "./components/Skills";
 import Mapview from "./components/Mapview";
 import Contact from "./components/Contact";
@@ -17,7 +17,7 @@ export default function Home() {
       <main>
         <Hero />
         <SocialProof />
-        <WhyMe />
+        <WhoMe />
         <Projects />
         <Skills />
         <Mapview />

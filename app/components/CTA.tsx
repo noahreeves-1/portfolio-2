@@ -484,9 +484,7 @@ const CTA = () => {
           >
             <h2 className="text-3xl md:text-5xl font-semibold mb-4 md:mb-6">
               {`Let's create something amazing together`}
-              <span className="text-gray-500">
-                —bringing your vision to life.
-              </span>
+              <span className="text-gray-500">-from idea to execution.</span>
             </h2>
             <p className="text-gray-500 text-lg">
               {`As a life-long learner, I'm always looking for new challenges and opportunities to grow and expand my skillset. Let's talk!`}

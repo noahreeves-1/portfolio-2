@@ -41,6 +41,7 @@ import StripeLogo from "@/public/stripe.svg";
 import LexcaliburLogo from "@/public/lexcaliburai.svg";
 import PrismaLogo from "@/public/prisma.svg";
 import PuppeteerLogo from "@/public/puppeteer.webp";
+import StealthProduct from "@/public/stealth-product.png";
 // Map of technology names to their logos
 const techLogos: Record<string, StaticImageData | string> = {
   Expo: ExpoLogo,
@@ -75,6 +76,7 @@ const techLogos: Record<string, StaticImageData | string> = {
   Stripe: StripeLogo,
   Prisma: PrismaLogo,
   Puppeteer: PuppeteerLogo,
+  "Stealth Product": StealthProduct,
 };
 
 // Project Details Modal Component
@@ -633,13 +635,13 @@ const Projects = () => {
   const lexcaliburAiProject = {
     title: "Lexcalibur AI (Coming Soon)",
     description:
-      "An AI-powered tool that alerts you whenever new federal and state laws are passed that could affect you. Features include...",
-    imageSrc: StoryDiscountDashboard,
+      "An AI that alerts you when new laws that could affect you are passed. Features include...",
+    imageSrc: StealthProduct,
     logoSrc: LexcaliburLogo,
     features: [
-      "Legislation tracking",
-      "AI-powered summaries",
       "Personalized SMS alerts",
+      "Federal and state laws",
+      "AI-generated summaries",
       "& more",
     ],
     stat: {

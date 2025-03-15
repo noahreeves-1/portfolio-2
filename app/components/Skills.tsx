@@ -1,6 +1,9 @@
+"use client";
+
 import React from "react";
 import { StaticImageData } from "next/image";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 import AdonisJS from "@/public/adonis.svg";
 import ExpressJS from "@/public/express.svg";
@@ -214,51 +217,136 @@ const otherTechCategories: SkillCategoryType[] = [
   },
 ];
 
+// Animation variants for container elements
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+// Animation variants for grid container
+const gridContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+// Animation variants for individual categories
+const categoryVariants = {
+  hidden: { y: 50, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 12,
+    },
+  },
+};
+
+// Animation variants for skill tags
+const skillVariants = {
+  hidden: { scale: 0.8, opacity: 0 },
+  visible: {
+    scale: 1,
+    opacity: 1,
+    transition: {
+      type: "spring",
+      stiffness: 150,
+    },
+  },
+};
+
 interface SkillCategoryProps {
   category: SkillCategoryType;
   className?: string;
 }
 
 const SkillCategory = ({ category, className = "" }: SkillCategoryProps) => (
-  <div
+  <motion.div
+    variants={categoryVariants}
     className={`bg-gray-800 rounded-xl p-6 shadow-md border border-gray-600 hover:shadow-lg transition-shadow ${className}`}
   >
     <h4 className="text-lg font-medium mb-4 pb-2 border-b border-gray-600 text-white">
       {category.name}
     </h4>
-    <div className="flex flex-wrap gap-2">
+    <motion.div
+      className="flex flex-wrap gap-2"
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-50px" }}
+    >
       {category.skills.map((skill: string) => (
-        <span
+        <motion.span
           key={skill}
+          variants={skillVariants}
+          whileHover={{
+            scale: 1.05,
+            boxShadow: "0px 5px 10px rgba(0,0,0,0.2)",
+            y: -5,
+          }}
           className="inline-flex items-center px-3.5 sm:px-4 py-1.5 sm:py-2 bg-gray-600 text-gray-200 rounded-full text-sm sm:text-base font-medium border border-gray-500 hover:bg-gray-500 transition-colors"
         >
-          <Image
-            src={skillLogos[skill]}
-            alt={`${skill} logo`}
-            width={20}
-            height={20}
-            className="w-4 h-4 sm:w-5 sm:h-5 object-contain mr-2"
-          />
+          <motion.div
+            whileHover={{ rotate: [0, -10, 10, -10, 0] }}
+            transition={{ duration: 0.5 }}
+          >
+            <Image
+              src={skillLogos[skill]}
+              alt={`${skill} logo`}
+              width={20}
+              height={20}
+              className="w-4 h-4 sm:w-5 sm:h-5 object-contain mr-2"
+            />
+          </motion.div>
           {skill}
-        </span>
+        </motion.span>
       ))}
-    </div>
-  </div>
+    </motion.div>
+  </motion.div>
 );
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-24 bg-gray-100">
+    <motion.section
+      id="skills"
+      className="py-24 bg-gray-100"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-200px" }}
+      transition={{ duration: 0.8 }}
+    >
       <div className="max-w-6xl mx-auto px-4 md:px-6">
-        <h2 className="text-xl font-bold text-center mb-4 text-slate-800 md:text-3xl">
+        <motion.h2
+          className="text-xl font-bold text-center mb-4 text-slate-800 md:text-3xl"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
           {`SKILLS`}
-        </h2>
+        </motion.h2>
 
         {/* Preferred Tech Stack */}
-        <div className="mb-8">
-          {/* <h3 className="font-semibold mb-6 text-center text-gray-500">
-            PREFERRED
-          </h3> */}
+        <motion.div
+          className="mb-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+        >
           <div className="">
             {preferredTechStack.map((category) => (
               <SkillCategory
@@ -268,21 +356,45 @@ const Skills = () => {
               />
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Other Technologies */}
         <div>
-          <h3 className="font-semibold mb-4 text-center text-gray-500 text-lg">
+          <motion.h3
+            className="font-semibold mb-4 text-center text-gray-500 text-lg"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             ADDITIONAL
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {otherTechCategories.map((category) => (
-              <SkillCategory key={category.name} category={category} />
+          </motion.h3>
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={gridContainerVariants}
+          >
+            {otherTechCategories.map((category, index) => (
+              <motion.div
+                key={category.name}
+                variants={categoryVariants}
+                custom={index}
+                transition={{
+                  delay: index * 0.1,
+                  duration: 0.5,
+                  type: "spring",
+                  stiffness: 80,
+                }}
+              >
+                <SkillCategory category={category} />
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
