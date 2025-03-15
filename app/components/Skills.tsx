@@ -250,7 +250,7 @@ const Skills = () => {
   return (
     <section id="skills" className="py-24 bg-gray-100">
       <div className="max-w-6xl mx-auto px-4 md:px-6">
-        <h2 className="text-sm font-bold text-center mb-4 text-slate-800 md:text-3xl">
+        <h2 className="text-xl font-bold text-center mb-4 text-slate-800 md:text-3xl">
           {`SKILLS`}
         </h2>
 
@@ -272,7 +272,7 @@ const Skills = () => {
 
         {/* Other Technologies */}
         <div>
-          <h3 className="font-semibold mb-4 text-center text-gray-500 text-sm">
+          <h3 className="font-semibold mb-4 text-center text-gray-500 text-lg">
             ADDITIONAL
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

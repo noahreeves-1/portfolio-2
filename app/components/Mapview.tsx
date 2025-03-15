@@ -107,7 +107,7 @@ const MapView = () => {
 
   return (
     <section id="mapview" className="text-center mx-auto pt-24">
-      <h3 className="font-semibold text-sm mb-4">
+      <h3 className="font-semibold mb-4 text-lg md:text-xl">
         COUNTRIES VISITED: <span className="text-blue-500 font-bold">17</span>
       </h3>
       <div id="map" className="h-[500px] mx-auto">

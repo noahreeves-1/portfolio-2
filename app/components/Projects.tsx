@@ -486,7 +486,7 @@ const ProjectCard = ({
               <p className="mb-4">{description}</p>
 
               {/* Features List */}
-              <ul className="space-y-2 mb-24">
+              <ul className="space-y-2 mb-24 pl-4 md:pl-0">
                 {features.map((feature, index) => (
                   <li key={index} className="flex items-center">
                     <div
@@ -667,7 +667,7 @@ const Projects = () => {
 
   return (
     <section id="projects">
-      <h2 className="text-sm font-bold text-center mb-4 text-slate-800 md:text-3xl">
+      <h2 className="text-xl font-bold text-center mb-4 text-slate-800 md:text-3xl">
         MY PROJECTS
       </h2>
 

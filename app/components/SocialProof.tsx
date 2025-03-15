@@ -59,7 +59,7 @@ const SocialProof = () => {
   return (
     <div className="mt-8 md:mt-12">
       <motion.h2
-        className="text-center text-xs md:text-sm font-semibold text-gray-800 px-4"
+        className="text-center text-sm font-semibold text-gray-800 px-4"
         variants={headingVariants}
         initial="hidden"
         animate="visible"
