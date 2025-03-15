@@ -106,7 +106,7 @@ const MapView = () => {
   }
 
   return (
-    <section id="mapview" className="text-center mx-auto py-24">
+    <section id="mapview" className="text-center mx-auto pt-24">
       <h3 className="font-semibold text-sm mb-4">
         COUNTRIES VISITED: <span className="text-blue-500 font-bold">17</span>
       </h3>

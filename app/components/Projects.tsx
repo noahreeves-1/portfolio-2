@@ -667,7 +667,7 @@ const Projects = () => {
 
   return (
     <section id="projects">
-      <h2 className="text-sm font-bold text-center mb-4 text-slate-500 md:text-3xl">
+      <h2 className="text-sm font-bold text-center mb-4 text-slate-800 md:text-3xl">
         MY PROJECTS
       </h2>
 
