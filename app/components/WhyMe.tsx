@@ -21,7 +21,7 @@ const WhyMe = () => {
   ];
 
   return (
-    <section id="why-hire-me" className="mb-8">
+    <section id="why-hire-me" className="my-8">
       <div className="py-20 px-4 text-black">
         <div className="flex items-start justify-center max-w-6xl mx-auto">
           {/* Left side image */}

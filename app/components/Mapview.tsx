@@ -72,7 +72,7 @@ const MapView = () => {
       "Philippines",
     ];
 
-    return highlightedCountries.includes(countryName) ? "#0077b4" : "#F9F9F9";
+    return highlightedCountries.includes(countryName) ? "#475569" : "#F9F9F9";
   };
 
   const countryStyle: StyleFunction = (feature?: Feature) => {
@@ -108,7 +108,7 @@ const MapView = () => {
   return (
     <section id="mapview" className="text-center mx-auto py-24">
       <h3 className="font-semibold text-sm mb-4">
-        COUNTRIES VISITED: <span className="text-blue-700 font-bold">17</span>
+        COUNTRIES VISITED: <span className="text-blue-500 font-bold">17</span>
       </h3>
       <div id="map" className="h-[500px] mx-auto">
         <MapContainer

@@ -40,7 +40,7 @@ import PineconeLogo from "@/public/pinecone.webp";
 import StripeLogo from "@/public/stripe.svg";
 import LexcaliburLogo from "@/public/lexcaliburai.svg";
 import PrismaLogo from "@/public/prisma.svg";
-
+import PuppeteerLogo from "@/public/puppeteer.webp";
 // Map of technology names to their logos
 const techLogos: Record<string, StaticImageData | string> = {
   Expo: ExpoLogo,
@@ -74,6 +74,7 @@ const techLogos: Record<string, StaticImageData | string> = {
   Pinecone: PineconeLogo,
   Stripe: StripeLogo,
   Prisma: PrismaLogo,
+  Puppeteer: PuppeteerLogo,
 };
 
 // Project Details Modal Component
@@ -652,7 +653,15 @@ const Projects = () => {
       backend: ["Python", "Node.js", "NestJS"],
       database: ["MongoDB", "Pinecone"],
       devops: ["Docker", "Digital Ocean"],
-      other: ["OpenAI", "Stripe", "Twilio", "SendGrid", "Apify", "Crawlee"],
+      other: [
+        "OpenAI",
+        "Stripe",
+        "Twilio",
+        "SendGrid",
+        "Apify",
+        "Crawlee",
+        "Puppeteer",
+      ],
     },
   };
 

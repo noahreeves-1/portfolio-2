@@ -69,9 +69,8 @@ const Contact = () => {
     setSubmitStatus(null);
 
     try {
-      // Replace with your actual email sending logic
-      // This could be an API route in Next.js (/api/send-email)
-      const response = await fetch("/api/send-email", {
+      // Using the correct API endpoint for Resend
+      const response = await fetch("/api/send", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

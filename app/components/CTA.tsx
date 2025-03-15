@@ -13,7 +13,7 @@ const CTA = () => {
                 —bringing your vision to life.
               </span>
             </h2>
-            <p className="text-gray-500 text-lg md:text-xl">
+            <p className="text-gray-500 text-lg">
               {`As a life-long learner, I'm always looking for new challenges and opportunities to grow and expand my skillset. Let's talk!`}
             </p>
             {/* <a

@@ -3,7 +3,6 @@ import accenture from "@public/accenture.webp";
 import businessExpoCenter from "@public/business-expo-center.webp";
 import glassDoctor from "@public/glass-doctor.webp";
 import kornFerry from "@public/korn-ferry.webp";
-import muffin from "@public/muffin.svg";
 import att from "@public/att.webp";
 import ecolab from "@public/ecolab.webp";
 import couchetard from "@public/couche-tard.webp";
@@ -104,13 +103,13 @@ const SocialProof = () => {
             className="max-w-full max-h-full object-contain"
           />
         </div>
-        <div className="w-16 h-12 md:w-18 md:h-14 flex items-center justify-center">
+        {/* <div className="w-16 h-12 md:w-18 md:h-14 flex items-center justify-center">
           <Image
             src={muffin}
             alt="Muffin"
             className="max-w-full max-h-full object-contain"
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );

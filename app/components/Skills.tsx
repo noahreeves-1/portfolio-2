@@ -62,6 +62,7 @@ import SQLLogo from "@/public/sql.svg";
 import HTMLLogo from "@/public/html5.svg";
 import TypeOrmLogo from "@/public/typeorm.svg";
 import PuppeteerLogo from "@/public/puppeteer.webp";
+import ResendLogo from "@/public/resend.svg";
 
 // Map skill names to their corresponding logos
 const skillLogos: Record<string, StaticImageData> = {
@@ -125,6 +126,7 @@ const skillLogos: Record<string, StaticImageData> = {
   SQL: SQLLogo,
   HTML: HTMLLogo,
   Puppeteer: PuppeteerLogo,
+  Resend: ResendLogo,
 };
 
 // Define category type
@@ -149,7 +151,6 @@ const preferredTechStack: SkillCategoryType[] = [
       "NestJS",
       "Firebase",
       "PostgreSQL",
-      "MongoDB",
       "Docker",
     ],
   },
@@ -170,11 +171,12 @@ const otherTechCategories: SkillCategoryType[] = [
     skills: [
       "MySQL",
       "SQL Server",
+      "Supabase",
+      "MongoDB",
       "Elasticsearch",
       "Redis",
       "Cloudinary",
       "Pinecone",
-      "Supabase",
       "Prisma",
       "TypeORM",
     ],
@@ -185,7 +187,14 @@ const otherTechCategories: SkillCategoryType[] = [
   },
   {
     name: "APIs & Services",
-    skills: ["OpenAI", "Google Maps API", "SendGrid", "Stripe", "Twilio"],
+    skills: [
+      "OpenAI",
+      "Stripe",
+      "SendGrid",
+      "Twilio",
+      "Resend",
+      "Google Maps API",
+    ],
   },
   {
     name: "Web Scraping",
