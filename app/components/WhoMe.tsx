@@ -27,7 +27,7 @@ const WhoMe = () => {
   };
 
   return (
-    <section id="why-hire-me" className="my-8">
+    <section id="about-me" className="my-8">
       <div className="pt-20 px-4 text-black">
         <motion.div
           className="flex items-start justify-center max-w-6xl mx-auto"

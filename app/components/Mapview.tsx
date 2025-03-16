@@ -36,7 +36,7 @@ const MapView = () => {
     // Set initial zoom level based on screen width
     const handleResize = () => {
       const isMobile = window.innerWidth < 768; // Common breakpoint for mobile
-      setZoomLevel(isMobile ? 1 : 3);
+      setZoomLevel(isMobile ? 2 : 3);
     };
 
     // Set initial zoom

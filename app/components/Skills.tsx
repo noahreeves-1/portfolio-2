@@ -44,7 +44,7 @@ import CssLogo from "@/public/css.svg";
 import PrismaLogo from "@/public/prisma.svg";
 import ElasticsearchLogo from "@/public/elasticsearch.svg";
 import RedisLogo from "@/public/redis.svg";
-import CloudinaryLogo from "@/public/cloudinary.webp";
+import CloudinaryLogo from "@/public/cloudinary.svg";
 import DigitalOceanLogo from "@/public/digitalocean.svg";
 import OpenAILogo from "@/public/openai.webp";
 import GoogleMapsLogo from "@/public/google-maps.svg";
@@ -165,10 +165,6 @@ const otherTechCategories: SkillCategoryType[] = [
     skills: ["Python", "JavaScript", "HTML", "CSS"],
   },
   {
-    name: "Frameworks & Libraries",
-    skills: ["AdonisJS", "Turbo", "Nx", "Redux", "React Query", "OpenSaaS"],
-  },
-  {
     name: "Databases & Backend",
     skills: [
       "MySQL",
@@ -184,36 +180,36 @@ const otherTechCategories: SkillCategoryType[] = [
     ],
   },
   {
-    name: "Cloud & DevOps",
-    skills: ["Digital Ocean", "Fly.io", "Vercel", "Railway", "Git", "GitHub"],
-  },
-  {
-    name: "APIs & Services",
-    skills: [
-      "OpenAI",
-      "Stripe",
-      "SendGrid",
-      "Twilio",
-      "Resend",
-      "Google Maps API",
-    ],
+    name: "Data & Analytics",
+    skills: ["SQL", "Hadoop", "R", "PowerBI", "Tableau"],
   },
   {
     name: "Web Scraping",
     skills: ["Apify", "Crawlee", "Puppeteer"],
   },
-  {
-    name: "Data & Analytics",
-    skills: ["SQL", "Hadoop", "R", "PowerBI", "Tableau"],
-  },
-  {
-    name: "Automation & RPA",
-    skills: ["BluePrism"],
-  },
-  {
-    name: "Office & Productivity",
-    skills: ["Slack", "Jira", "Excel", "PowerPoint", "SharePoint"],
-  },
+  // {
+  //   name: "Cloud & DevOps",
+  //   skills: ["Digital Ocean", "Fly.io", "Vercel", "Railway", "Git", "GitHub"],
+  // },
+  // {
+  //   name: "APIs & Services",
+  //   skills: [
+  //     "OpenAI",
+  //     "Stripe",
+  //     "SendGrid",
+  //     "Twilio",
+  //     "Resend",
+  //     "Google Maps API",
+  //   ],
+  // },
+  // {
+  //   name: "Automation & RPA",
+  //   skills: ["BluePrism"],
+  // },
+  // {
+  //   name: "Office & Productivity",
+  //   skills: ["Slack", "Jira", "Excel", "PowerPoint", "SharePoint"],
+  // },
 ];
 
 // Animation variants for container elements
@@ -224,18 +220,6 @@ const containerVariants = {
     transition: {
       staggerChildren: 0.1,
       delayChildren: 0.2,
-    },
-  },
-};
-
-// Animation variants for grid container
-const gridContainerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.3,
     },
   },
 };
@@ -335,7 +319,7 @@ const Skills = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          {`SKILLS`}
+          {`Skills`}
         </motion.h2>
 
         {/* Preferred Tech Stack */}
@@ -366,31 +350,78 @@ const Skills = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            ADDITIONAL
+            Additional Skills
           </motion.h3>
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={gridContainerVariants}
-          >
-            {otherTechCategories.map((category, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Left Column */}
+            <div className="space-y-8">
+              {/* Languages & Styling */}
               <motion.div
-                key={category.name}
                 variants={categoryVariants}
-                custom={index}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
                 transition={{
-                  delay: index * 0.1,
                   duration: 0.5,
                   type: "spring",
                   stiffness: 80,
                 }}
               >
-                <SkillCategory category={category} />
+                <SkillCategory category={otherTechCategories[0]} />
               </motion.div>
-            ))}
-          </motion.div>
+
+              {/* Web Scraping - positioned under Languages & Styling */}
+              <motion.div
+                variants={categoryVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                transition={{
+                  delay: 0.1,
+                  duration: 0.5,
+                  type: "spring",
+                  stiffness: 80,
+                }}
+              >
+                <SkillCategory category={otherTechCategories[3]} />
+              </motion.div>
+            </div>
+
+            {/* Middle Column */}
+            <motion.div
+              variants={categoryVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              transition={{
+                delay: 0.2,
+                duration: 0.5,
+                type: "spring",
+                stiffness: 80,
+              }}
+            >
+              {/* Databases & Backend */}
+              <SkillCategory category={otherTechCategories[1]} />
+            </motion.div>
+
+            {/* Right Column */}
+            <motion.div
+              variants={categoryVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              transition={{
+                delay: 0.3,
+                duration: 0.5,
+                type: "spring",
+                stiffness: 80,
+              }}
+              className="md:col-span-1"
+            >
+              {/* Data & Analytics */}
+              <SkillCategory category={otherTechCategories[2]} />
+            </motion.div>
+          </div>
         </div>
       </div>
     </motion.section>

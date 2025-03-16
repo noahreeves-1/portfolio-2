@@ -92,6 +92,13 @@ const Navbar = () => {
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-4">
               <Link
+                href="#about-me"
+                className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+                onClick={(e) => handleScrollToSection(e, "#about-me")}
+              >
+                About Me
+              </Link>
+              <Link
                 href="#projects"
                 className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
                 onClick={(e) => handleScrollToSection(e, "#projects")}

@@ -537,7 +537,7 @@ const ProjectCard = ({
                   <a
                     href={websiteUrl}
                     target="_blank"
-                    className={`text-white font-medium px-4 py-2 rounded`}
+                    className={`text-white font-medium px-4 py-2 rounded flex items-center gap-4`}
                   >
                     <img
                       src={
@@ -552,10 +552,13 @@ const ProjectCard = ({
                       height={logoSize.height}
                       className="object-contain"
                     />
+                    <p className="text-lg transition font-normal underline">
+                      Website
+                    </p>
                   </a>
                   <button
                     onClick={() => setIsModalOpen(true)}
-                    className="text-white underline hover:text-blue-100 transition flex items-center gap-1 cursor-pointer"
+                    className="text-white hover:text-blue-100 transition flex items-center gap-1 cursor-pointer"
                   >
                     <span className="text-lg">Tech Stack</span>
                     <svg
@@ -695,7 +698,7 @@ const Projects = () => {
   return (
     <section id="projects">
       <h2 className="text-xl font-bold text-center mb-4 text-slate-800 md:text-3xl">
-        MY PROJECTS
+        My Projects
       </h2>
 
       {/* First Project using the ProjectCard component */}
