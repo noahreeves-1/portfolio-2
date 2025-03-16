@@ -411,16 +411,29 @@ const CTA = () => {
                   variants={iconAnimation(index)}
                 >
                   {step.useSvgFile ? (
-                    <foreignObject width="24" height="24" x="48" y={cy - 12}>
-                      <div className="w-6 h-6">
-                        <Image
-                          src={step.svgComponent}
-                          alt={step.name}
-                          width={24}
-                          height={24}
+                    // For SVG files, use a different approach for mobile
+                    <g transform={`translate(48, ${cy - 12})`}>
+                      {step.name === "Design" && (
+                        <path
+                          d="M13 2H5.5C4.12 2 3 3.12 3 4.5V19.5C3 20.88 4.12 22 5.5 22H18.5C19.88 22 21 20.88 21 19.5V9M13 2L21 9M13 2V9H21M14 14.5C14 15.33 13.33 16 12.5 16C11.67 16 11 15.33 11 14.5C11 13.67 11.67 13 12.5 13C13.33 13 14 13.67 14 14.5Z"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          fill="none"
                         />
-                      </div>
-                    </foreignObject>
+                      )}
+                      {step.name === "Implement" && (
+                        <path
+                          d="M16 18L22 12L16 6M8 6L2 12L8 18"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          fill="none"
+                        />
+                      )}
+                    </g>
                   ) : (
                     <path
                       d={step.icon}
