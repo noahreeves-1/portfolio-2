@@ -150,7 +150,7 @@ const ProjectDetailsModal = ({
               </svg>
             </button>
 
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold leading-normal sm:leading-tight text-white pr-8">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white pr-8">
               {title} Tech Stack
             </h3>
           </div>
@@ -558,7 +558,7 @@ const ProjectCard = ({
                   <a
                     href={websiteUrl}
                     target="_blank"
-                    className={`text-white font-medium px-4 py-2 rounded flex items-center gap-4`}
+                    className={`text-white px-4 py-2 rounded flex items-center gap-4`}
                   >
                     <img
                       src={
@@ -573,13 +573,13 @@ const ProjectCard = ({
                       height={logoSize.height}
                       className="object-contain"
                     />
-                    <p className="text-lg transition font-normal underline">
+                    <span className="text-lg hover:text-blue-100 underline">
                       Website
-                    </p>
+                    </span>
                   </a>
                   <button
                     onClick={() => setIsModalOpen(true)}
-                    className="text-white hover:text-blue-100 transition flex items-center gap-1 cursor-pointer"
+                    className="text-white hover:text-blue-100 flex items-center gap-1 cursor-pointer"
                   >
                     <span className="text-lg">Tech Stack</span>
                     <svg

@@ -4,6 +4,7 @@ import Preparation from "@/public/preparation.svg";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import DesignLogo from "@/public/brush.svg";
+import { StaticImageData } from "next/image";
 
 const CTA = () => {
   // Add state to track screen width for responsive behavior
@@ -129,6 +130,11 @@ const CTA = () => {
       },
     },
   });
+
+  // Helper function to handle SVG src consistently
+  const getSvgSrc = (icon: string | StaticImageData) => {
+    return typeof icon === "string" ? icon : icon.src;
+  };
 
   // Render horizontal timeline for desktop
   const renderHorizontalTimeline = () => {
@@ -270,7 +276,7 @@ const CTA = () => {
                     >
                       <div className="w-full h-full flex items-center justify-center">
                         <img
-                          src={step.icon.src}
+                          src={getSvgSrc(step.icon)}
                           alt={step.name}
                           width={20}
                           height={20}
@@ -420,7 +426,7 @@ const CTA = () => {
                     >
                       <div className="w-full h-full flex items-center justify-center">
                         <img
-                          src={step.icon.src}
+                          src={getSvgSrc(step.icon)}
                           alt={step.name}
                           width={20}
                           height={20}
