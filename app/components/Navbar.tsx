@@ -1,31 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Rocket from "@/public/rocket.svg";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  // Add scroll event listener
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    // Cleanup event listener on component unmount
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -69,13 +50,9 @@ const Navbar = () => {
   };
 
   return (
-    <nav
-      className={`fixed w-full z-10 border-b-stone-200 border-b-1 transition-all duration-300 ${
-        isScrolled ? "bg-white/80 backdrop-blur-sm" : "bg-white"
-      }`}
-    >
+    <nav className="fixed w-full z-50 border-b-stone-200 border-b-1 bg-white shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
+        <div className="flex justify-between h-16 min-h-[64px] items-center">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
             <Link
@@ -197,14 +174,12 @@ const Navbar = () => {
 
       {/* Mobile menu, show/hide based on menu state */}
       <div
-        className={`${isMenuOpen ? "block" : "hidden"} md:hidden`}
+        className={`${
+          isMenuOpen ? "block" : "hidden"
+        } md:hidden absolute w-full bg-white`}
         id="mobile-menu"
       >
-        <div
-          className={`px-2 pt-2 pb-3 space-y-1 sm:px-3 shadow-lg ${
-            isScrolled ? "bg-white/80 backdrop-blur-sm" : "bg-white"
-          }`}
-        >
+        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 shadow-lg bg-white">
           <Link
             href="#projects"
             className="text-gray-600 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium"

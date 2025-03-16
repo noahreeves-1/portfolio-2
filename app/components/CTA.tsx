@@ -270,13 +270,16 @@ const CTA = () => {
   // Render vertical timeline for mobile
   const renderVerticalTimeline = () => {
     return (
-      <div className="w-full mb-10 px-8">
+      <div
+        className="w-full mb-10 px-8 pt-14 flex justify-center relative"
+        style={{ zIndex: 1 }}
+      >
         <div className="relative flex flex-col items-start">
           {sdlcSteps.map((step, index) => (
             <div key={index} className="flex items-center mb-14 relative">
               {/* Circle with icon */}
               <motion.div
-                className="relative flex items-center justify-center w-[60px] h-[60px] rounded-full bg-white border-2 border-blue-400 flex items-center justify-center z-10"
+                className="relative flex items-center justify-center w-[60px] h-[60px] rounded-full bg-white border-2 border-blue-400 flex items-center justify-center z-[1]"
                 initial="initial"
                 whileInView="animate"
                 viewport={{ once: true, amount: 0.2 }}
@@ -331,8 +334,11 @@ const CTA = () => {
   };
 
   return (
-    <section className="py-24 bg-white">
-      <div className="container mx-auto px-4 md:px-6">
+    <section className="py-24 bg-white relative">
+      <div
+        className="container mx-auto px-4 md:px-6 relative"
+        style={{ zIndex: 1 }}
+      >
         {/* SDLC Timeline - conditionally render based on screen size */}
         <motion.div
           initial="hidden"
