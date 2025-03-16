@@ -3,7 +3,6 @@
 import Preparation from "@/public/preparation.svg";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import DesignLogo from "@/public/brush.svg";
 import { StaticImageData } from "next/image";
 
 const CTA = () => {
@@ -65,7 +64,7 @@ const CTA = () => {
     },
     {
       name: "Design",
-      icon: DesignLogo,
+      icon: "/brush.svg",
       useSvgFile: true,
     },
     {
@@ -133,6 +132,7 @@ const CTA = () => {
 
   // Helper function to handle SVG src consistently
   const getSvgSrc = (icon: string | StaticImageData) => {
+    // Just return the icon directly - for file paths this works directly
     return typeof icon === "string" ? icon : icon.src;
   };
 
@@ -267,14 +267,16 @@ const CTA = () => {
                   variants={iconAnimation(index)}
                 >
                   {step.useSvgFile ? (
-                    // Using SVG image element instead of foreignObject for better Safari compatibility
-                    <image
-                      href={getSvgSrc(step.icon)}
-                      x={cx - 12}
-                      y={70 - 12}
-                      width="24"
-                      height="24"
-                    />
+                    // Using a simpler SVG approach for compatibility
+                    <g transform={`translate(${cx - 12}, ${70 - 12})`}>
+                      <svg width="24" height="24" viewBox="0 0 24 24">
+                        <image
+                          href={getSvgSrc(step.icon)}
+                          width="24"
+                          height="24"
+                        />
+                      </svg>
+                    </g>
                   ) : (
                     // Otherwise use path string as before
                     <path
@@ -409,14 +411,16 @@ const CTA = () => {
                   variants={iconAnimation(index)}
                 >
                   {step.useSvgFile ? (
-                    // Using SVG image element instead of foreignObject for better Safari compatibility
-                    <image
-                      href={getSvgSrc(step.icon)}
-                      x={60 - 12}
-                      y={cy - 12}
-                      width="24"
-                      height="24"
-                    />
+                    // Using a simpler SVG approach for compatibility
+                    <g transform={`translate(${60 - 12}, ${cy - 12})`}>
+                      <svg width="24" height="24" viewBox="0 0 24 24">
+                        <image
+                          href={getSvgSrc(step.icon)}
+                          width="24"
+                          height="24"
+                        />
+                      </svg>
+                    </g>
                   ) : (
                     // Otherwise use path string as before
                     <path
