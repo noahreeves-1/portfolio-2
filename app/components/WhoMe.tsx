@@ -78,8 +78,8 @@ const WhoMe = () => {
           </div> */}
         </motion.div>
         <p className="text-center max-w-lg mx-auto mt-6 mb-32 font-semibold">
-          Marketing <span className="text-gray-400">x</span> Consulting{" "}
-          <span className="text-gray-400">x</span> Software Engineering
+          Marketing <span className="text-green-500">x</span> Consulting{" "}
+          <span className="text-green-500">x</span> Software Engineering
         </p>
       </div>
     </section>
