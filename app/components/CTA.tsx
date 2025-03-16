@@ -410,7 +410,12 @@ const CTA = () => {
                   variants={iconAnimation(index)}
                 >
                   {step.useSvgFile ? (
-                    <foreignObject width="24" height="24" x={48} y={cy - 12}>
+                    <foreignObject
+                      width="24"
+                      height="24"
+                      x={60 - 12}
+                      y={cy - 12}
+                    >
                       <div className="w-6 h-6">
                         <img
                           src={step.svgComponent.src}
@@ -428,7 +433,7 @@ const CTA = () => {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       fill="none"
-                      transform={`translate(48, ${cy - 12})`}
+                      transform={`translate(${60 - 12}, ${cy - 12})`}
                     />
                   )}
                 </motion.g>
