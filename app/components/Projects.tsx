@@ -344,6 +344,8 @@ const ProjectCard = ({
     devops: [],
     other: [],
   },
+  hasTopDiagonal = false,
+  hasBottomDiagonal = false,
 }: {
   title: string;
   description: string;
@@ -364,6 +366,8 @@ const ProjectCard = ({
     devops?: string[];
     other?: string[];
   };
+  hasTopDiagonal?: boolean;
+  hasBottomDiagonal?: boolean;
 }) => {
   // Modal state
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -475,10 +479,27 @@ const ProjectCard = ({
   const forcedBgColor =
     bgColor === "bg-purple-700" ? "bg-purple-800" : imageContainerBgColor;
 
+  // Set diagonal styles
+  const diagonalStyles = {
+    container: `relative ${
+      hasTopDiagonal || hasBottomDiagonal ? "overflow-hidden" : ""
+    }`,
+    topDiagonal: hasTopDiagonal
+      ? 'before:absolute before:content-[""] before:w-[200%] before:h-[150px] before:bg-white before:top-0 before:left-[-50%] before:right-[-50%] before:rotate-[-3deg] before:origin-center before:translate-y-[-60%]'
+      : "",
+    bottomDiagonal: hasBottomDiagonal
+      ? 'after:absolute after:content-[""] after:w-[200%] after:h-[150px] after:bg-white after:bottom-0 after:left-[-50%] after:right-[-50%] after:rotate-[-3deg] after:origin-center after:translate-y-[60%]'
+      : "",
+    topPadding: hasTopDiagonal ? "pt-40" : "pt-28",
+    bottomPadding: hasBottomDiagonal ? "pb-40" : "pb-28",
+  };
+
   return (
     <>
-      <div className={`${bgColor} py-24`}>
-        <div className="max-w-6xl mx-auto px-4">
+      <div
+        className={`${bgColor} ${diagonalStyles.topPadding} ${diagonalStyles.bottomPadding} ${diagonalStyles.container} ${diagonalStyles.topDiagonal} ${diagonalStyles.bottomDiagonal}`}
+      >
+        <div className="max-w-6xl mx-auto px-4 relative z-10">
           <div
             className={`flex flex-col ${
               orientation === "right" ? "md:flex-row-reverse" : "md:flex-row"
@@ -630,6 +651,7 @@ const Projects = () => {
       devops: ["Docker", "Digital Ocean"],
       other: ["OpenAI", "Google Maps API", "SendGrid"],
     },
+    hasTopDiagonal: true,
   };
 
   const storyDiscountProject = {
@@ -693,11 +715,12 @@ const Projects = () => {
         "Puppeteer",
       ],
     },
+    hasBottomDiagonal: true,
   };
 
   return (
     <section id="projects">
-      <h2 className="text-xl font-bold text-center mb-4 text-slate-800 md:text-3xl">
+      <h2 className="text-xl font-bold text-center text-slate-800 md:text-3xl">
         My Projects
       </h2>
 

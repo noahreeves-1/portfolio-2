@@ -305,7 +305,7 @@ const Skills = () => {
   return (
     <motion.section
       id="skills"
-      className="py-24 bg-gray-100"
+      className="py-24"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-200px" }}
