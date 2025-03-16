@@ -267,22 +267,14 @@ const CTA = () => {
                   variants={iconAnimation(index)}
                 >
                   {step.useSvgFile ? (
-                    // If using SVG file, render a custom component with appropriate positioning
-                    <foreignObject
+                    // Using SVG image element instead of foreignObject for better Safari compatibility
+                    <image
+                      href={getSvgSrc(step.icon)}
                       x={cx - 12}
                       y={70 - 12}
                       width="24"
                       height="24"
-                    >
-                      <div className="w-full h-full flex items-center justify-center">
-                        <img
-                          src={getSvgSrc(step.icon)}
-                          alt={step.name}
-                          width={20}
-                          height={20}
-                        />
-                      </div>
-                    </foreignObject>
+                    />
                   ) : (
                     // Otherwise use path string as before
                     <path
@@ -417,22 +409,14 @@ const CTA = () => {
                   variants={iconAnimation(index)}
                 >
                   {step.useSvgFile ? (
-                    // If using SVG file, render a custom component with appropriate positioning
-                    <foreignObject
+                    // Using SVG image element instead of foreignObject for better Safari compatibility
+                    <image
+                      href={getSvgSrc(step.icon)}
                       x={60 - 12}
                       y={cy - 12}
                       width="24"
                       height="24"
-                    >
-                      <div className="w-full h-full flex items-center justify-center">
-                        <img
-                          src={getSvgSrc(step.icon)}
-                          alt={step.name}
-                          width={20}
-                          height={20}
-                        />
-                      </div>
-                    </foreignObject>
+                    />
                   ) : (
                     // Otherwise use path string as before
                     <path
