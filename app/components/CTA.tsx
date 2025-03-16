@@ -83,9 +83,11 @@ const CTA = () => {
     },
   ];
 
-  // Base animation duration (in seconds)
-  const baseDuration = 0.6;
-  // const staggerDelay = 0.1;
+  // Animation durations and timing (in seconds)
+  const animationStep = 0.8; // Time between each step in the sequence
+  const markerDuration = 0.3; // Duration of marker animation
+  const lineDuration = 0.4; // Duration of line animation
+  const lineDelay = markerDuration; // Delay for line to start after marker begins
 
   // Animation for the icons
   const iconAnimation = (index: number) => ({
@@ -94,8 +96,8 @@ const CTA = () => {
       opacity: 1,
       scale: 1,
       transition: {
-        duration: 0.3,
-        delay: index === 0 ? 0.3 : index * baseDuration + 0.2,
+        duration: markerDuration,
+        delay: index * animationStep,
         ease: "easeOut",
       },
     },
@@ -109,8 +111,8 @@ const CTA = () => {
       y: 0,
       x: 0,
       transition: {
-        duration: 0.3,
-        delay: index === 0 ? 0.3 : index * baseDuration + 0.2,
+        duration: markerDuration,
+        delay: index * animationStep,
         ease: "easeOut",
       },
     },
@@ -122,8 +124,8 @@ const CTA = () => {
     animate: {
       borderColor: "#3b82f6", // Animate to blue-500
       transition: {
-        duration: 0.3,
-        delay: index === 0 ? 0.3 : index * baseDuration + 0.2,
+        duration: markerDuration,
+        delay: index * animationStep,
         ease: "easeOut",
       },
     },
@@ -190,14 +192,46 @@ const CTA = () => {
       <div className="w-full mb-12 overflow-x-auto">
         <div className="flex justify-center">
           <div className="relative w-full max-w-4xl px-6">
-            {/* Static background line */}
-            <div className="absolute top-[30px] left-0 right-0 h-[2px] bg-gray-300"></div>
+            {/* Main container with a continuous background line */}
+            <div className="relative flex justify-between items-center">
+              {/* Remove the gray background line and keep only blue animated segments */}
+              <div className="absolute top-[30px] h-[2px] left-[30px] right-[30px] z-[1] overflow-hidden">
+                {sdlcSteps.map((_, index) => {
+                  if (index === sdlcSteps.length - 1) return null; // No line after last element
 
-            {/* Main container */}
-            <div className="flex justify-between items-center relative">
-              {/* Circles and labels */}
+                  // Calculate segment width - dividing line into equal parts
+                  const segmentWidth = `${100 / (sdlcSteps.length - 1)}%`;
+
+                  return (
+                    <motion.div
+                      key={`line-${index}`}
+                      className="absolute h-full bg-gray-500"
+                      style={{
+                        left: `${(index / (sdlcSteps.length - 1)) * 100}%`,
+                        width: segmentWidth,
+                        transformOrigin: "left",
+                      }}
+                      initial={{ scaleX: 0 }}
+                      whileInView={{
+                        scaleX: 1,
+                        transition: {
+                          duration: lineDuration,
+                          delay: index * animationStep + lineDelay, // Start after circle animation
+                          ease: "easeOut",
+                        },
+                      }}
+                      viewport={{ once: true, amount: 0.5 }}
+                    />
+                  );
+                })}
+              </div>
+
+              {/* Circles and labels placed on top of the line */}
               {sdlcSteps.map((step, index) => (
-                <div key={index} className="flex flex-col items-center z-10">
+                <div
+                  key={index}
+                  className="flex flex-col items-center relative z-[2]"
+                >
                   <motion.div
                     className="w-[60px] h-[60px] rounded-full bg-white border-2 border-blue-400 flex items-center justify-center"
                     initial="initial"
@@ -226,40 +260,6 @@ const CTA = () => {
                   </motion.div>
                 </div>
               ))}
-
-              {/* Animated line segments - positioned absolutely */}
-              {sdlcSteps.map((_, index) => {
-                if (index === sdlcSteps.length - 1) return null; // No line after last element
-
-                // Calculate position for this segment
-                const leftPosition = `calc(${
-                  index * (100 / (sdlcSteps.length - 1))
-                }% + 30px)`;
-                const width = `calc(${100 / (sdlcSteps.length - 1)}% - 60px)`;
-
-                return (
-                  <motion.div
-                    key={`line-${index}`}
-                    className="absolute h-[2px] bg-gray-600"
-                    style={{
-                      top: "30px",
-                      left: leftPosition,
-                      width: width,
-                      transformOrigin: "left",
-                    }}
-                    initial={{ scaleX: 0 }}
-                    whileInView={{
-                      scaleX: 1,
-                      transition: {
-                        duration: 0.4,
-                        delay: 0.3 + index * 0.3,
-                        ease: "easeOut",
-                      },
-                    }}
-                    viewport={{ once: true, amount: 0.5 }}
-                  />
-                );
-              })}
             </div>
           </div>
         </div>
@@ -276,7 +276,7 @@ const CTA = () => {
             <div key={index} className="flex items-center mb-14 relative">
               {/* Circle with icon */}
               <motion.div
-                className="relative flex items-center justify-center w-[60px] h-[60px] rounded-full bg-white border-3 z-10"
+                className="relative flex items-center justify-center w-[60px] h-[60px] rounded-full bg-white border-2 border-blue-400 flex items-center justify-center z-10"
                 initial="initial"
                 whileInView="animate"
                 viewport={{ once: true, amount: 0.2 }}
@@ -306,16 +306,16 @@ const CTA = () => {
 
               {/* Vertical connecting line (except for last item) */}
               {index < sdlcSteps.length - 1 && (
-                <div className="absolute top-[60px] w-[3px] bg-gray-200 h-[80px] left-[30px] z-0">
+                <div className="absolute top-[59px] w-[2px] bg-gray-200 h-[82px] left-[29px] z-0">
                   <motion.div
-                    className="w-full bg-gray-500 origin-top"
+                    className="w-full bg-gray-500 origin-top absolute top-0 left-0"
                     style={{ height: "100%", transformOrigin: "top" }}
                     initial={{ scaleY: 0 }}
                     whileInView={{
                       scaleY: 1,
                       transition: {
-                        duration: 0.5,
-                        delay: index * 0.2,
+                        duration: lineDuration,
+                        delay: index * animationStep + lineDelay, // Start after circle animation
                         ease: "easeInOut",
                       },
                     }}
