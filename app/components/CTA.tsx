@@ -443,6 +443,8 @@ const CTA = () => {
                       strokeLinejoin="round"
                       fill="none"
                       transform={`translate(${60 - 12}, ${cy - 12})`}
+                      height={20}
+                      width={20}
                     />
                   )}
                 </motion.g>
