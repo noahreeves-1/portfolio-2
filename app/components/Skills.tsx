@@ -2,7 +2,6 @@
 
 import React from "react";
 import { StaticImageData } from "next/image";
-import Image from "next/image";
 import { motion } from "framer-motion";
 
 import AdonisJS from "@/public/adonis.svg";
@@ -303,8 +302,8 @@ const SkillCategory = ({ category, className = "" }: SkillCategoryProps) => (
             whileHover={{ rotate: [0, -10, 10, -10, 0] }}
             transition={{ duration: 0.5 }}
           >
-            <Image
-              src={skillLogos[skill]}
+            <img
+              src={skillLogos[skill].src}
               alt={`${skill} logo`}
               width={20}
               height={20}
