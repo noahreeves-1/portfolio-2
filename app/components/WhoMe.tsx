@@ -82,7 +82,7 @@ const WhoMe = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 1.2, delay: 1 }}
+          transition={{ duration: 1.2, delay: 0.5 }}
         >
           Marketing <span className="text-green-500">x</span> Consulting{" "}
           <span className="text-green-500">x</span> Software Engineering
