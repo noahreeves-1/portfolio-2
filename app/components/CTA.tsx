@@ -457,6 +457,9 @@ const CTA = () => {
 
   return (
     <section className="py-24 bg-white">
+      <div className="flex justify-center items-center">
+        <img src="/brush.svg" alt="Brush" height={20} width={20} />
+      </div>
       <div className="container mx-auto px-4 md:px-6">
         {/* SDLC Timeline - conditionally render based on screen size */}
         <motion.div
