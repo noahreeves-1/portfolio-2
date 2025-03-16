@@ -1,11 +1,10 @@
 "use client";
 
-import Image from "next/image";
-import MuffinLogo from "@/public/muffin-white.svg";
 import { useState } from "react";
 import { StaticImageData } from "next/image";
 
 // Tech logos
+import MuffinLogo from "@/public/muffin-white.svg";
 import ExpoLogo from "@/public/expo.webp";
 import ReactNativeLogo from "@/public/reactnative.svg";
 import TypeScriptLogo from "@/public/typescript.svg";
@@ -173,8 +172,12 @@ const ProjectDetailsModal = ({
                           className={`px-3.5 sm:px-4 py-1.5 sm:py-2 ${pillBg} border ${pillBorder} rounded-full text-white text-sm sm:text-base font-medium transition-colors ${pillHoverBg} flex items-center gap-1.5 sm:gap-2`}
                         >
                           {techLogos[tech] && (
-                            <Image
-                              src={techLogos[tech]}
+                            <img
+                              src={
+                                typeof techLogos[tech] === "string"
+                                  ? (techLogos[tech] as string)
+                                  : (techLogos[tech] as StaticImageData).src
+                              }
                               alt={`${tech} logo`}
                               width={16}
                               height={16}
@@ -200,8 +203,12 @@ const ProjectDetailsModal = ({
                           className={`px-3.5 sm:px-4 py-1.5 sm:py-2 ${pillBg} border ${pillBorder} rounded-full text-white text-sm sm:text-base font-medium transition-colors ${pillHoverBg} flex items-center gap-1.5 sm:gap-2`}
                         >
                           {techLogos[tech] && (
-                            <Image
-                              src={techLogos[tech]}
+                            <img
+                              src={
+                                typeof techLogos[tech] === "string"
+                                  ? (techLogos[tech] as string)
+                                  : (techLogos[tech] as StaticImageData).src
+                              }
                               alt={`${tech} logo`}
                               width={16}
                               height={16}
@@ -227,8 +234,12 @@ const ProjectDetailsModal = ({
                           className={`px-3.5 sm:px-4 py-1.5 sm:py-2 ${pillBg} border ${pillBorder} rounded-full text-white text-sm sm:text-base font-medium transition-colors ${pillHoverBg} flex items-center gap-1.5 sm:gap-2`}
                         >
                           {techLogos[tech] && (
-                            <Image
-                              src={techLogos[tech]}
+                            <img
+                              src={
+                                typeof techLogos[tech] === "string"
+                                  ? (techLogos[tech] as string)
+                                  : (techLogos[tech] as StaticImageData).src
+                              }
                               alt={`${tech} logo`}
                               width={16}
                               height={16}
@@ -254,8 +265,12 @@ const ProjectDetailsModal = ({
                           className={`px-3.5 sm:px-4 py-1.5 sm:py-2 ${pillBg} border ${pillBorder} rounded-full text-white text-sm sm:text-base font-medium transition-colors ${pillHoverBg} flex items-center gap-1.5 sm:gap-2`}
                         >
                           {techLogos[tech] && (
-                            <Image
-                              src={techLogos[tech]}
+                            <img
+                              src={
+                                typeof techLogos[tech] === "string"
+                                  ? (techLogos[tech] as string)
+                                  : (techLogos[tech] as StaticImageData).src
+                              }
                               alt={`${tech} logo`}
                               width={16}
                               height={16}
@@ -281,8 +296,12 @@ const ProjectDetailsModal = ({
                           className={`px-3.5 sm:px-4 py-1.5 sm:py-2 ${pillBg} border ${pillBorder} rounded-full text-white text-sm sm:text-base font-medium transition-colors ${pillHoverBg} flex items-center gap-1.5 sm:gap-2`}
                         >
                           {techLogos[tech] && (
-                            <Image
-                              src={techLogos[tech]}
+                            <img
+                              src={
+                                typeof techLogos[tech] === "string"
+                                  ? (techLogos[tech] as string)
+                                  : (techLogos[tech] as StaticImageData).src
+                              }
                               alt={`${tech} logo`}
                               width={16}
                               height={16}
@@ -471,8 +490,8 @@ const ProjectCard = ({
                 className={`${forcedBgColor} px-12 py-8 rounded-3xl shadow-xl flex items-center justify-center`}
               >
                 <div className="overflow-hidden rounded-xl max-h-[500px] flex justify-center">
-                  <Image
-                    src={imageSrc}
+                  <img
+                    src={typeof imageSrc === "string" ? imageSrc : imageSrc.src}
                     alt={title}
                     width={750}
                     height={500}
@@ -520,8 +539,14 @@ const ProjectCard = ({
                     target="_blank"
                     className={`text-white font-medium px-4 py-2 rounded`}
                   >
-                    <Image
-                      src={logoSrc || MuffinLogo}
+                    <img
+                      src={
+                        typeof logoSrc === "string"
+                          ? logoSrc
+                          : logoSrc
+                          ? (logoSrc as StaticImageData).src
+                          : MuffinLogo.src
+                      }
                       alt="Website"
                       width={logoSize.width}
                       height={logoSize.height}
