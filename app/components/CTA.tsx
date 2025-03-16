@@ -2,8 +2,6 @@
 
 import Preparation from "@/public/preparation.svg";
 import { motion } from "framer-motion";
-import Brush from "@/public/brush.svg";
-import Code from "@/public/code.svg";
 import { useEffect, useState } from "react";
 
 const CTA = () => {
@@ -65,13 +63,13 @@ const CTA = () => {
     },
     {
       name: "Design",
-      svgComponent: Brush,
-      useSvgFile: true,
+      icon: "M21.81 12.83l.7-.7a2 2 0 0 0 0-2.83l-.7-.7a2 2 0 0 1-.59-1.4V5.75a2 2 0 0 0-2-2h-1.45a2 2 0 0 1-1.41-.59l-.7-.7a2 2 0 0 0-2.83 0l-.7.71c-.38.37-.89.58-1.41.58H8.25a2 2 0 0 0-2 2v1.45c0 .53-.21 1.04-.59 1.41l-.7.7a2 2 0 0 0 0 2.83l.7.7c.38.37.59.88.59 1.41v1.45a2 2 0 0 0 2 2h1.45c.52 0 1.03.21 1.41.59l.7.7a2 2 0 0 0 2.83 0l.7-.7c.38-.38.89-.59 1.41-.59h1.45a2 2 0 0 0 2-2v-1.45c0-.53.21-1.04.59-1.41zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8z",
+      useSvgFile: false,
     },
     {
       name: "Implement",
-      svgComponent: Code,
-      useSvgFile: true,
+      icon: "M16 18l6-6-6-6M8 6l-6 6 6 6",
+      useSvgFile: false,
     },
     {
       name: "Test",
@@ -261,33 +259,15 @@ const CTA = () => {
                   custom={index}
                   variants={iconAnimation(index)}
                 >
-                  {step.useSvgFile ? (
-                    <foreignObject
-                      width="24"
-                      height="24"
-                      x={cx - 12}
-                      y={70 - 12}
-                    >
-                      <div className="w-6 h-6">
-                        <img
-                          src={step.svgComponent.src}
-                          alt={step.name}
-                          width={24}
-                          height={24}
-                        />
-                      </div>
-                    </foreignObject>
-                  ) : (
-                    <path
-                      d={step.icon}
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      fill="none"
-                      transform={`translate(${cx - 12}, ${70 - 12})`}
-                    />
-                  )}
+                  <path
+                    d={step.icon}
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    fill="none"
+                    transform={`translate(${cx - 12}, ${70 - 12})`}
+                  />
                 </motion.g>
 
                 {/* Animated Label */}
@@ -409,33 +389,15 @@ const CTA = () => {
                   custom={index}
                   variants={iconAnimation(index)}
                 >
-                  {step.useSvgFile ? (
-                    <foreignObject
-                      width="24"
-                      height="24"
-                      x={60 - 12}
-                      y={cy - 12}
-                    >
-                      <div className="w-6 h-6">
-                        <img
-                          src={step.svgComponent.src}
-                          alt={step.name}
-                          width={24}
-                          height={24}
-                        />
-                      </div>
-                    </foreignObject>
-                  ) : (
-                    <path
-                      d={step.icon}
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      fill="none"
-                      transform={`translate(${60 - 12}, ${cy - 12})`}
-                    />
-                  )}
+                  <path
+                    d={step.icon}
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    fill="none"
+                    transform={`translate(${60 - 12}, ${cy - 12})`}
+                  />
                 </motion.g>
 
                 {/* Label to the right side of circle */}
