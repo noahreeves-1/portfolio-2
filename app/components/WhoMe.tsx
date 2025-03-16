@@ -67,8 +67,8 @@ const WhoMe = () => {
               className="text-center text-lg max-w-lg mx-auto"
               variants={fadeIn}
             >
-              {/* {`Started with unpaid internships, worked my way up to management consulting, then quit to learn how to code and build a startup. I’ve worked across small business marketing, Fortune 500 consulting, software engineering, and startup operations—giving me a rare mix of technical depth and business sense. Whether it’s scaling a product, solving complex problems, or navigating ambiguity, I’m built for tackling challenges head-on.`} */}
-              {`I’ve worked across small business marketing, Fortune 500 consulting, software engineering, and startup operations—giving me a rare mix of technical depth and business sense. Whether it’s scaling a product, solving complex problems, or navigating ambiguity, I’m built for tackling challenges head-on.`}
+              {/* {`Started with unpaid internships, worked my way up to management consulting, then quit to learn how to code and build a startup. I've worked across small business marketing, Fortune 500 consulting, software engineering, and startup operations—giving me a rare mix of technical depth and business sense. Whether it's scaling a product, solving complex problems, or navigating ambiguity, I'm built for tackling challenges head-on.`} */}
+              {`I've worked across small business marketing, Fortune 500 consulting, software engineering, and startup operations—giving me a rare mix of technical depth and business sense. Whether it's scaling a product, solving complex problems, or navigating ambiguity, I'm built for tackling challenges head-on.`}
             </motion.p>
           </div>
 
@@ -77,10 +77,16 @@ const WhoMe = () => {
             <Image src={ShipIt} alt="Ship It" width={150} height={150} />
           </div> */}
         </motion.div>
-        <p className="text-center max-w-lg mx-auto mt-6 mb-32 font-semibold">
+        <motion.p
+          className="text-center max-w-lg mx-auto mt-6 mb-32 font-semibold"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 1.2, delay: 1 }}
+        >
           Marketing <span className="text-green-500">x</span> Consulting{" "}
           <span className="text-green-500">x</span> Software Engineering
-        </p>
+        </motion.p>
       </div>
     </section>
   );
