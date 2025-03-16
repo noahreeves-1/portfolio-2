@@ -3,6 +3,7 @@
 import Preparation from "@/public/preparation.svg";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import DesignLogo from "@/public/brush.svg";
 
 const CTA = () => {
   // Add state to track screen width for responsive behavior
@@ -53,27 +54,33 @@ const CTA = () => {
   const sdlcSteps = [
     {
       name: "Plan",
-      iconSrc: "/icons/plan.svg",
+      icon: "M3 9h18M9 21V9M3 3h18a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z",
+      useSvgFile: false,
     },
     {
       name: "Analyze",
-      iconSrc: "/icons/analyze.svg",
+      icon: "M21 21l-4.3-4.3M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z",
+      useSvgFile: false,
     },
     {
       name: "Design",
-      iconSrc: "/icons/design.svg",
+      icon: DesignLogo,
+      useSvgFile: true,
     },
     {
       name: "Implement",
-      iconSrc: "/icons/implement.svg",
+      icon: "M16 18l6-6-6-6M8 6l-6 6 6 6",
+      useSvgFile: false,
     },
     {
       name: "Test",
-      iconSrc: "/icons/test.svg",
+      icon: "M9 15l2 2 4-4M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14 2zM14 2v6h6",
+      useSvgFile: false,
     },
     {
       name: "Maintain",
-      iconSrc: "/icons/maintain.svg",
+      icon: "M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z",
+      useSvgFile: false,
     },
   ];
 
@@ -253,15 +260,35 @@ const CTA = () => {
                   custom={index}
                   variants={iconAnimation(index)}
                 >
-                  <foreignObject width="24" height="24" x={cx - 12} y={70 - 12}>
-                    <div className="w-6 h-6 flex items-center justify-center">
-                      <img
-                        src={step.iconSrc}
-                        alt={step.name}
-                        className="w-5 h-5"
-                      />
-                    </div>
-                  </foreignObject>
+                  {step.useSvgFile ? (
+                    // If using SVG file, render a custom component with appropriate positioning
+                    <foreignObject
+                      x={cx - 12}
+                      y={70 - 12}
+                      width="24"
+                      height="24"
+                    >
+                      <div className="w-full h-full flex items-center justify-center">
+                        <img
+                          src={step.icon.src}
+                          alt={step.name}
+                          width={20}
+                          height={20}
+                        />
+                      </div>
+                    </foreignObject>
+                  ) : (
+                    // Otherwise use path string as before
+                    <path
+                      d={step.icon}
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      fill="none"
+                      transform={`translate(${cx - 12}, ${70 - 12})`}
+                    />
+                  )}
                 </motion.g>
 
                 {/* Animated Label */}
@@ -383,15 +410,35 @@ const CTA = () => {
                   custom={index}
                   variants={iconAnimation(index)}
                 >
-                  <foreignObject width="24" height="24" x={60 - 12} y={cy - 12}>
-                    <div className="w-6 h-6 flex items-center justify-center">
-                      <img
-                        src={step.iconSrc}
-                        alt={step.name}
-                        className="w-5 h-5"
-                      />
-                    </div>
-                  </foreignObject>
+                  {step.useSvgFile ? (
+                    // If using SVG file, render a custom component with appropriate positioning
+                    <foreignObject
+                      x={60 - 12}
+                      y={cy - 12}
+                      width="24"
+                      height="24"
+                    >
+                      <div className="w-full h-full flex items-center justify-center">
+                        <img
+                          src={step.icon.src}
+                          alt={step.name}
+                          width={20}
+                          height={20}
+                        />
+                      </div>
+                    </foreignObject>
+                  ) : (
+                    // Otherwise use path string as before
+                    <path
+                      d={step.icon}
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      fill="none"
+                      transform={`translate(${60 - 12}, ${cy - 12})`}
+                    />
+                  )}
                 </motion.g>
 
                 {/* Label to the right side of circle */}
