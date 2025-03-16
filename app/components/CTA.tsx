@@ -53,33 +53,27 @@ const CTA = () => {
   const sdlcSteps = [
     {
       name: "Plan",
-      icon: "M3 9h18M9 21V9M3 3h18a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z",
-      useSvgFile: false,
+      iconSrc: "/icons/plan.svg",
     },
     {
       name: "Analyze",
-      icon: "M21 21l-4.3-4.3M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z",
-      useSvgFile: false,
+      iconSrc: "/icons/analyze.svg",
     },
     {
       name: "Design",
-      icon: "M21.81 12.83l.7-.7a2 2 0 0 0 0-2.83l-.7-.7a2 2 0 0 1-.59-1.4V5.75a2 2 0 0 0-2-2h-1.45a2 2 0 0 1-1.41-.59l-.7-.7a2 2 0 0 0-2.83 0l-.7.71c-.38.37-.89.58-1.41.58H8.25a2 2 0 0 0-2 2v1.45c0 .53-.21 1.04-.59 1.41l-.7.7a2 2 0 0 0 0 2.83l.7.7c.38.37.59.88.59 1.41v1.45a2 2 0 0 0 2 2h1.45c.52 0 1.03.21 1.41.59l.7.7a2 2 0 0 0 2.83 0l.7-.7c.38-.38.89-.59 1.41-.59h1.45a2 2 0 0 0 2-2v-1.45c0-.53.21-1.04.59-1.41zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8z",
-      useSvgFile: false,
+      iconSrc: "/icons/design.svg",
     },
     {
       name: "Implement",
-      icon: "M16 18l6-6-6-6M8 6l-6 6 6 6",
-      useSvgFile: false,
+      iconSrc: "/icons/implement.svg",
     },
     {
       name: "Test",
-      icon: "M9 15l2 2 4-4M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14 2zM14 2v6h6",
-      useSvgFile: false,
+      iconSrc: "/icons/test.svg",
     },
     {
       name: "Maintain",
-      icon: "M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z",
-      useSvgFile: false,
+      iconSrc: "/icons/maintain.svg",
     },
   ];
 
@@ -259,15 +253,15 @@ const CTA = () => {
                   custom={index}
                   variants={iconAnimation(index)}
                 >
-                  <path
-                    d={step.icon}
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    fill="none"
-                    transform={`translate(${cx - 12}, ${70 - 12})`}
-                  />
+                  <foreignObject width="24" height="24" x={cx - 12} y={70 - 12}>
+                    <div className="w-6 h-6 flex items-center justify-center">
+                      <img
+                        src={step.iconSrc}
+                        alt={step.name}
+                        className="w-5 h-5"
+                      />
+                    </div>
+                  </foreignObject>
                 </motion.g>
 
                 {/* Animated Label */}
@@ -389,15 +383,15 @@ const CTA = () => {
                   custom={index}
                   variants={iconAnimation(index)}
                 >
-                  <path
-                    d={step.icon}
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    fill="none"
-                    transform={`translate(${60 - 12}, ${cy - 12})`}
-                  />
+                  <foreignObject width="24" height="24" x={60 - 12} y={cy - 12}>
+                    <div className="w-6 h-6 flex items-center justify-center">
+                      <img
+                        src={step.iconSrc}
+                        alt={step.name}
+                        className="w-5 h-5"
+                      />
+                    </div>
+                  </foreignObject>
                 </motion.g>
 
                 {/* Label to the right side of circle */}
