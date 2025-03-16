@@ -189,16 +189,17 @@ const CTA = () => {
     return (
       <div className="w-full mb-12 overflow-x-auto">
         <div className="flex justify-center">
-          <div className="relative w-full max-w-4xl">
-            {/* Main horizontal line - single continuous line */}
-            <div className="absolute top-[30px] left-0 right-0 h-[2px] bg-gray-300 w-full"></div>
+          <div className="relative w-full max-w-4xl px-6">
+            {/* Static background line */}
+            <div className="absolute top-[30px] left-0 right-0 h-[2px] bg-gray-300"></div>
 
-            {/* Circles and icons positioned over the line */}
-            <div className="flex justify-between px-2">
+            {/* Main container */}
+            <div className="flex justify-between items-center relative">
+              {/* Circles and labels */}
               {sdlcSteps.map((step, index) => (
-                <div key={index} className="flex flex-col items-center">
+                <div key={index} className="flex flex-col items-center z-10">
                   <motion.div
-                    className="w-[60px] h-[60px] rounded-full bg-white border-2 border-blue-400 flex items-center justify-center z-10"
+                    className="w-[60px] h-[60px] rounded-full bg-white border-2 border-blue-400 flex items-center justify-center"
                     initial="initial"
                     whileInView="animate"
                     viewport={{ once: true, amount: 0.5 }}
@@ -225,21 +226,41 @@ const CTA = () => {
                   </motion.div>
                 </div>
               ))}
-            </div>
 
-            {/* Animated line overlay */}
-            <motion.div
-              className="absolute top-[30px] left-0 h-[2px] bg-gray-600"
-              initial={{ width: 0 }}
-              whileInView={{
-                width: "100%",
-                transition: {
-                  duration: 1.2,
-                  ease: "easeInOut",
-                },
-              }}
-              viewport={{ once: true, amount: 0.5 }}
-            />
+              {/* Animated line segments - positioned absolutely */}
+              {sdlcSteps.map((_, index) => {
+                if (index === sdlcSteps.length - 1) return null; // No line after last element
+
+                // Calculate position for this segment
+                const leftPosition = `calc(${
+                  index * (100 / (sdlcSteps.length - 1))
+                }% + 30px)`;
+                const width = `calc(${100 / (sdlcSteps.length - 1)}% - 60px)`;
+
+                return (
+                  <motion.div
+                    key={`line-${index}`}
+                    className="absolute h-[2px] bg-gray-600"
+                    style={{
+                      top: "30px",
+                      left: leftPosition,
+                      width: width,
+                      transformOrigin: "left",
+                    }}
+                    initial={{ scaleX: 0 }}
+                    whileInView={{
+                      scaleX: 1,
+                      transition: {
+                        duration: 0.4,
+                        delay: 0.3 + index * 0.3,
+                        ease: "easeOut",
+                      },
+                    }}
+                    viewport={{ once: true, amount: 0.5 }}
+                  />
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
