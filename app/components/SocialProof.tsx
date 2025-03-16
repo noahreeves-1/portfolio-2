@@ -1,11 +1,6 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
-import accenture from "@public/accenture.webp";
-import businessExpoCenter from "@public/business-expo-center.webp";
-import glassDoctor from "@public/glass-doctor.webp";
-import rnl from "@public/rnl.webp";
 
 const SocialProof = () => {
   // Previous roles for carousel display
@@ -88,8 +83,8 @@ const SocialProof = () => {
           className="w-16 h-12 md:w-16 md:h-12 flex items-center justify-center"
           variants={itemVariants}
         >
-          <Image
-            src={rnl}
+          <img
+            src="/rnl.webp"
             alt="RNL"
             className="max-w-full max-h-full object-contain"
           />
@@ -98,8 +93,8 @@ const SocialProof = () => {
           className="w-20 h-12 md:w-24 md:h-14 flex items-center justify-center"
           variants={itemVariants}
         >
-          <Image
-            src={businessExpoCenter}
+          <img
+            src="/business-expo-center.webp"
             alt="Business Expo Center"
             className="max-w-full max-h-full object-contain"
           />
@@ -108,8 +103,8 @@ const SocialProof = () => {
           className="w-20 h-12 md:w-24 md:h-14 flex items-center justify-center"
           variants={itemVariants}
         >
-          <Image
-            src={glassDoctor}
+          <img
+            src="/glass-doctor.webp"
             alt="Glass Doctor"
             className="max-w-full max-h-full object-contain"
           />
@@ -118,15 +113,15 @@ const SocialProof = () => {
           className="w-20 h-18 md:w-18 md:h-18 flex items-center justify-center"
           variants={itemVariants}
         >
-          <Image
-            src={accenture}
+          <img
+            src="/accenture.webp"
             alt="Accenture"
             className="max-w-full max-h-full object-contain"
           />
         </motion.div>
         {/* <div className="w-16 h-12 md:w-18 md:h-14 flex items-center justify-center">
-          <Image
-            src={muffin}
+          <img
+            src="/muffin.webp"
             alt="Muffin"
             className="max-w-full max-h-full object-contain"
           />
