@@ -11,6 +11,11 @@ export const metadata: Metadata = {
   title: "Noah Kim",
   description: "A little bit about me",
 
+  // Favicon configuration
+  icons: {
+    icon: "/favicon.svg",
+  },
+
   // Open Graph / Facebook / iMessage Preview
   openGraph: {
     title: "Noah Kim",
