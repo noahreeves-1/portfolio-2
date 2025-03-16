@@ -3,7 +3,6 @@
 import Preparation from "@/public/preparation.svg";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { StaticImageData } from "next/image";
 
 const CTA = () => {
   // Add state to track screen width for responsive behavior
@@ -86,9 +85,9 @@ const CTA = () => {
 
   // Base animation duration (in seconds)
   const baseDuration = 0.6;
-  const staggerDelay = 0.1;
+  // const staggerDelay = 0.1;
 
-  // Animation for the icons (they appear sequentially)
+  // Animation for the icons
   const iconAnimation = (index: number) => ({
     initial: { opacity: 0, scale: 0 },
     animate: {
@@ -102,7 +101,7 @@ const CTA = () => {
     },
   });
 
-  // Animation for text labels (fade in with icons)
+  // Animation for text labels
   const labelAnimation = (index: number) => ({
     initial: { opacity: 0, y: isMobile ? -5 : -5, x: isMobile ? -5 : 0 },
     animate: {
@@ -111,363 +110,210 @@ const CTA = () => {
       x: 0,
       transition: {
         duration: 0.3,
-        delay: index === 0 ? 0.3 : index * baseDuration + 0.2, // Same timing as icon
+        delay: index === 0 ? 0.3 : index * baseDuration + 0.2,
         ease: "easeOut",
       },
     },
   });
 
-  // Animation for circles (color change when icons appear)
+  // Animation for circles
   const circleAnimation = (index: number) => ({
-    initial: { stroke: "#d1d5db" }, // Start with gray-300
+    initial: { borderColor: "#d1d5db" }, // Start with gray-300
     animate: {
-      stroke: "#3b82f6", // Animate to blue-500
+      borderColor: "#3b82f6", // Animate to blue-500
       transition: {
         duration: 0.3,
-        delay: index === 0 ? 0.3 : index * baseDuration + 0.2, // Same timing as icon
+        delay: index === 0 ? 0.3 : index * baseDuration + 0.2,
         ease: "easeOut",
       },
     },
   });
 
-  // Helper function to handle SVG src consistently
-  const getSvgSrc = (icon: string | StaticImageData) => {
-    // Just return the icon directly - for file paths this works directly
-    return typeof icon === "string" ? icon : icon.src;
+  // Animation for connecting lines
+  /*
+  const lineAnimation = (index: number) => ({
+    initial: { width: 0 },
+    animate: {
+      width: "100%",
+      transition: {
+        duration: baseDuration - staggerDelay,
+        delay: index === 0 ? 0.6 : index * baseDuration + 0.4,
+        ease: "easeInOut",
+      },
+    },
+  });
+  */
+
+  // Vertical line animation for mobile
+  /*
+  const verticalLineAnimation = (index: number) => ({
+    initial: { height: 0 },
+    animate: {
+      height: "100%",
+      transition: {
+        duration: baseDuration - staggerDelay,
+        delay: index === 0 ? 0.6 : index * baseDuration + 0.4,
+        ease: "easeInOut",
+      },
+    },
+  });
+  */
+
+  // Helper function to render SVG icon
+  const renderIcon = (step: (typeof sdlcSteps)[0]) => {
+    if (step.useSvgFile) {
+      return <img src={step.icon} alt={step.name} width={24} height={24} />;
+    } else {
+      return (
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          className="text-gray-700"
+        >
+          <path
+            d={step.icon}
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            fill="none"
+          />
+        </svg>
+      );
+    }
   };
 
   // Render horizontal timeline for desktop
   const renderHorizontalTimeline = () => {
     return (
-      <div className="w-full relative h-[140px]">
-        <svg
-          width="100%"
-          height="100%"
-          viewBox="0 0 1200 140"
-          preserveAspectRatio="xMidYMid meet"
-        >
-          {/* Define clipPaths for each line */}
-          <defs>
-            {sdlcSteps.map((_, index) => {
-              if (index < sdlcSteps.length - 1) {
-                const x1 = 100 + index * 200;
-                const x2 = 100 + (index + 1) * 200;
-                const width = x2 - x1 - 60; // Account for circle radius on both sides
-                return (
-                  <clipPath key={`clip-path-${index}`} id={`clip-${index}`}>
-                    <motion.rect
-                      x={x1 + 30}
-                      y="69"
-                      width={width}
-                      height="3"
-                      initial={{ width: 0 }}
-                      animate={{
-                        width: width,
-                        transition: {
-                          duration: baseDuration - staggerDelay,
-                          delay: index === 0 ? 0.6 : index * baseDuration + 0.4,
-                          ease: "easeInOut",
-                        },
-                      }}
-                    />
-                  </clipPath>
-                );
-              }
-              return null;
-            })}
-          </defs>
+      <div className="w-full mb-12 overflow-x-auto">
+        <div className="flex justify-center">
+          <div className="relative w-full max-w-4xl">
+            {/* Main horizontal line - single continuous line */}
+            <div className="absolute top-[30px] left-0 right-0 h-[2px] bg-gray-300 w-full"></div>
 
-          {/* Base Connecting Lines (grey background lines) */}
-          {sdlcSteps.map((_, index) => {
-            if (index < sdlcSteps.length - 1) {
-              const x1 = 100 + index * 200;
-              const x2 = 100 + (index + 1) * 200;
-              return (
-                <line
-                  key={`base-line-${index}`}
-                  x1={x1 + 30} // Start from right edge of current circle
-                  y1="70"
-                  x2={x2 - 30} // End at left edge of next circle
-                  y2="70"
-                  stroke="#e5e7eb" // Base line color (gray-200)
-                  strokeWidth="2"
-                />
-              );
-            }
-            return null;
-          })}
+            {/* Circles and icons positioned over the line */}
+            <div className="flex justify-between px-2">
+              {sdlcSteps.map((step, index) => (
+                <div key={index} className="flex flex-col items-center">
+                  <motion.div
+                    className="w-[60px] h-[60px] rounded-full bg-white border-2 border-blue-400 flex items-center justify-center z-10"
+                    initial="initial"
+                    whileInView="animate"
+                    viewport={{ once: true, amount: 0.5 }}
+                    variants={circleAnimation(index)}
+                  >
+                    <motion.div
+                      variants={iconAnimation(index)}
+                      initial="initial"
+                      whileInView="animate"
+                      viewport={{ once: true, amount: 0.5 }}
+                    >
+                      {renderIcon(step)}
+                    </motion.div>
+                  </motion.div>
 
-          {/* Circles with color animation */}
-          {sdlcSteps.map((step, index) => {
-            const cx = 100 + index * 200;
-            return (
-              <g key={`step-${index}`}>
-                {/* Circle Background with Animation */}
-                <motion.circle
-                  cx={cx}
-                  cy="70"
-                  r="30"
-                  fill="white"
-                  strokeWidth="3"
-                  initial="initial"
-                  whileInView="animate"
-                  viewport={{ once: true, amount: 0.8 }}
-                  variants={circleAnimation(index)}
-                />
-              </g>
-            );
-          })}
+                  <motion.div
+                    className="mt-3 text-sm font-medium text-gray-700"
+                    variants={labelAnimation(index)}
+                    initial="initial"
+                    whileInView="animate"
+                    viewport={{ once: true, amount: 0.5 }}
+                  >
+                    {step.name}
+                  </motion.div>
+                </div>
+              ))}
+            </div>
 
-          {/* Dark gray animated lines that animate from left to right */}
-          {sdlcSteps.map((_, index) => {
-            if (index < sdlcSteps.length - 1) {
-              const x1 = 100 + index * 200;
-              const x2 = 100 + (index + 1) * 200;
-              const width = x2 - x1 - 60; // Account for circle radius on both sides
-              return (
-                <motion.line
-                  key={`animated-line-${index}`}
-                  x1={x1 + 30}
-                  y1="70"
-                  x2={x2 - 30}
-                  y2="70"
-                  stroke="#6B7280" // Lighter gray (gray-500)
-                  strokeWidth="2"
-                  initial={{
-                    strokeDasharray: width,
-                    strokeDashoffset: width,
-                  }}
-                  whileInView={{
-                    strokeDashoffset: 0,
-                    transition: {
-                      duration: baseDuration - staggerDelay,
-                      delay: index === 0 ? 0.6 : index * baseDuration + 0.4,
-                      ease: "easeInOut",
-                    },
-                  }}
-                  viewport={{ once: true, amount: 0.8 }}
-                />
-              );
-            }
-            return null;
-          })}
-
-          {/* Animated Icons and Labels (appear one by one) */}
-          {sdlcSteps.map((step, index) => {
-            const cx = 100 + index * 200;
-            return (
-              <g key={`content-${index}`}>
-                {/* Icon */}
-                <motion.g
-                  key={`icon-${index}`}
-                  initial="initial"
-                  whileInView="animate"
-                  viewport={{ once: true, amount: 0.8 }}
-                  custom={index}
-                  variants={iconAnimation(index)}
-                >
-                  {step.useSvgFile ? (
-                    // Using a simpler SVG approach for compatibility
-                    <g transform={`translate(${cx - 12}, ${70 - 12})`}>
-                      <svg width="24" height="24" viewBox="0 0 24 24">
-                        <image
-                          href={getSvgSrc(step.icon)}
-                          width="24"
-                          height="24"
-                        />
-                      </svg>
-                    </g>
-                  ) : (
-                    // Otherwise use path string as before
-                    <path
-                      d={step.icon}
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      fill="none"
-                      transform={`translate(${cx - 12}, ${70 - 12})`}
-                    />
-                  )}
-                </motion.g>
-
-                {/* Animated Label */}
-                <motion.text
-                  x={cx}
-                  y="120"
-                  textAnchor="middle"
-                  fill="#374151" // text-gray-700
-                  className="text-sm font-medium"
-                  initial="initial"
-                  whileInView="animate"
-                  viewport={{ once: true, amount: 0.8 }}
-                  variants={labelAnimation(index)}
-                >
-                  {step.name}
-                </motion.text>
-              </g>
-            );
-          })}
-        </svg>
+            {/* Animated line overlay */}
+            <motion.div
+              className="absolute top-[30px] left-0 h-[2px] bg-gray-600"
+              initial={{ width: 0 }}
+              whileInView={{
+                width: "100%",
+                transition: {
+                  duration: 1.2,
+                  ease: "easeInOut",
+                },
+              }}
+              viewport={{ once: true, amount: 0.5 }}
+            />
+          </div>
+        </div>
       </div>
     );
   };
 
   // Render vertical timeline for mobile
   const renderVerticalTimeline = () => {
-    const verticalSpacing = 80; // Vertical spacing between circles
-    const svgHeight = (sdlcSteps.length - 1) * verticalSpacing + 200; // Calculate total height needed
-
     return (
-      <div
-        className="w-full relative mx-auto flex justify-center"
-        style={{ height: `${svgHeight}px` }}
-      >
-        <svg
-          width="250"
-          height={svgHeight}
-          viewBox={`0 0 250 ${svgHeight}`}
-          preserveAspectRatio="xMidYMid meet"
-        >
-          {/* Base Connecting Lines (grey background lines) */}
-          {sdlcSteps.map((_, index) => {
-            if (index < sdlcSteps.length - 1) {
-              const y1 = 70 + index * verticalSpacing;
-              const y2 = 70 + (index + 1) * verticalSpacing;
-              return (
-                <line
-                  key={`base-line-${index}`}
-                  x1="60"
-                  y1={y1 + 30} // Start from bottom edge of current circle
-                  x2="60"
-                  y2={y2 - 30} // End at top edge of next circle
-                  stroke="#e5e7eb" // Base line color (gray-200)
-                  strokeWidth="2"
-                />
-              );
-            }
-            return null;
-          })}
-
-          {/* Dark gray animated lines that animate from top to bottom */}
-          {sdlcSteps.map((_, index) => {
-            if (index < sdlcSteps.length - 1) {
-              const y1 = 70 + index * verticalSpacing;
-              const y2 = 70 + (index + 1) * verticalSpacing;
-              const height = y2 - y1 - 60; // Account for circle radius on both sides
-              return (
-                <motion.line
-                  key={`animated-line-${index}`}
-                  x1="60"
-                  y1={y1 + 30}
-                  x2="60"
-                  y2={y2 - 30}
-                  stroke="#6B7280" // Lighter gray (gray-500)
-                  strokeWidth="2"
-                  initial={{
-                    strokeDasharray: height,
-                    strokeDashoffset: height,
-                  }}
-                  whileInView={{
-                    strokeDashoffset: 0,
-                    transition: {
-                      duration: baseDuration - staggerDelay,
-                      delay: index === 0 ? 0.6 : index * baseDuration + 0.4,
-                      ease: "easeInOut",
-                    },
-                  }}
-                  viewport={{ once: true, amount: 0.2 }}
-                />
-              );
-            }
-            return null;
-          })}
-
-          {/* Steps (circles, icons, and labels) */}
-          {sdlcSteps.map((step, index) => {
-            const cy = 70 + index * verticalSpacing;
-            return (
-              <g key={`step-${index}`}>
-                {/* Circle Background with Animation */}
-                <motion.circle
-                  cx="60"
-                  cy={cy}
-                  r="30"
-                  fill="white"
-                  strokeWidth="3"
-                  initial="initial"
-                  whileInView="animate"
-                  viewport={{ once: true, amount: 0.2 }}
-                  variants={circleAnimation(index)}
-                />
-
+      <div className="w-full mb-10 px-8">
+        <div className="relative flex flex-col items-start">
+          {sdlcSteps.map((step, index) => (
+            <div key={index} className="flex items-center mb-14 relative">
+              {/* Circle with icon */}
+              <motion.div
+                className="relative flex items-center justify-center w-[60px] h-[60px] rounded-full bg-white border-3 z-10"
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={circleAnimation(index)}
+              >
                 {/* Icon */}
-                <motion.g
-                  key={`icon-${index}`}
-                  initial="initial"
-                  whileInView="animate"
-                  viewport={{ once: true, amount: 0.2 }}
-                  custom={index}
+                <motion.div
                   variants={iconAnimation(index)}
-                >
-                  {step.useSvgFile ? (
-                    // Using a simpler SVG approach for compatibility
-                    <g transform={`translate(${60 - 12}, ${cy - 12})`}>
-                      <svg width="24" height="24" viewBox="0 0 24 24">
-                        <image
-                          href={getSvgSrc(step.icon)}
-                          width="24"
-                          height="24"
-                        />
-                      </svg>
-                    </g>
-                  ) : (
-                    // Otherwise use path string as before
-                    <path
-                      d={step.icon}
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      fill="none"
-                      transform={`translate(${60 - 12}, ${cy - 12})`}
-                      height={20}
-                      width={20}
-                    />
-                  )}
-                </motion.g>
-
-                {/* Label to the right side of circle */}
-                <motion.text
-                  x="110"
-                  y={cy + 5} // Centered vertically with the circle
-                  textAnchor="start"
-                  fill="#374151" // text-gray-700
-                  className="text-sm font-medium"
                   initial="initial"
                   whileInView="animate"
                   viewport={{ once: true, amount: 0.2 }}
-                  variants={labelAnimation(index)}
                 >
-                  {step.name}
-                </motion.text>
-              </g>
-            );
-          })}
-        </svg>
+                  {renderIcon(step)}
+                </motion.div>
+              </motion.div>
+
+              {/* Label */}
+              <motion.div
+                className="ml-4 text-sm font-medium text-gray-700"
+                variants={labelAnimation(index)}
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true, amount: 0.2 }}
+              >
+                {step.name}
+              </motion.div>
+
+              {/* Vertical connecting line (except for last item) */}
+              {index < sdlcSteps.length - 1 && (
+                <div className="absolute top-[60px] w-[3px] bg-gray-200 h-[80px] left-[30px] z-0">
+                  <motion.div
+                    className="w-full bg-gray-500 origin-top"
+                    style={{ height: "100%", transformOrigin: "top" }}
+                    initial={{ scaleY: 0 }}
+                    whileInView={{
+                      scaleY: 1,
+                      transition: {
+                        duration: 0.5,
+                        delay: index * 0.2,
+                        ease: "easeInOut",
+                      },
+                    }}
+                    viewport={{ once: true, amount: 0.2 }}
+                  />
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     );
   };
 
   return (
     <section className="py-24 bg-white">
-      <div className="flex justify-center items-center">
-        <img src="/brush.svg" alt="Brush" height={20} width={20} />
-      </div>
       <div className="container mx-auto px-4 md:px-6">
         {/* SDLC Timeline - conditionally render based on screen size */}
         <motion.div
-          className=""
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
