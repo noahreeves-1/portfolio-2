@@ -2,7 +2,7 @@
 
 /* Carousel Styles */
 .carousel-container {
-  height: 60px;
+  height: 40px;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -29,4 +29,17 @@
 
 .animate-scrollX {
   animation: scrollX 100s linear infinite;
+}
+
+@keyframes scrollX-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-scrollX-reverse {
+  animation: scrollX-reverse 100s linear infinite;
 }

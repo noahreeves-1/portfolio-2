@@ -32,7 +32,7 @@ const Hero = () => {
             <span className="text-orange-500">{`traveled`}</span>
             {`, learned to `}
             <span className="text-emerald-500">{`code`}</span>
-            {`, and ran a `}
+            {`, and launched a `}
             <span className="text-blue-500">{`startup.`}</span>
           </motion.p>
 
