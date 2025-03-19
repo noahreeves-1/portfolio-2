@@ -346,6 +346,7 @@ const ProjectCard = ({
   },
   hasTopDiagonal = false,
   hasBottomDiagonal = false,
+  techStackButtonColor = "bg-gray-700",
 }: {
   title: string;
   description: string;
@@ -368,6 +369,7 @@ const ProjectCard = ({
   };
   hasTopDiagonal?: boolean;
   hasBottomDiagonal?: boolean;
+  techStackButtonColor?: string;
 }) => {
   // Modal state
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -576,24 +578,40 @@ const ProjectCard = ({
                     {/* <span className="text-lg hover:text-blue-100 underline">
                       Website
                     </span> */}
-                    <svg
-                      className="w-6 h-6"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M13 7l5 5m0 0l-5 5m5-5H6"
-                      />
-                    </svg>
+                    <div className="group">
+                      <svg
+                        className="w-6 h-6"
+                        style={{
+                          animation: "bounce-x 1s infinite",
+                        }}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M13 7l5 5m0 0l-5 5m5-5H6"
+                        />
+                      </svg>
+                      <style jsx>{`
+                        @keyframes bounce-x {
+                          0%,
+                          100% {
+                            transform: translateX(0);
+                          }
+                          50% {
+                            transform: translateX(4px);
+                          }
+                        }
+                      `}</style>
+                    </div>
                   </a>
                   <button
                     onClick={() => setIsModalOpen(true)}
-                    className="text-white hover:text-blue-100 flex items-center gap-1 cursor-pointer bg-gray-700 px-4 py-2 rounded-full"
+                    className={`text-white hover:text-blue-100 flex items-center gap-1 cursor-pointer ${techStackButtonColor} px-4 py-2 rounded-full`}
                   >
                     <span className="text-lg">Tech Stack</span>
                   </button>
@@ -652,6 +670,7 @@ const Projects = () => {
       other: ["OpenAI", "Google Maps API", "SendGrid"],
     },
     hasTopDiagonal: true,
+    techStackButtonColor: "bg-orange-600",
   };
 
   const storyDiscountProject = {
@@ -680,6 +699,7 @@ const Projects = () => {
       devops: ["Docker", "Digital Ocean"],
       other: ["SendGrid", "Stripe"],
     },
+    techStackButtonColor: "bg-purple-700",
   };
 
   const lexcaliburAiProject = {
@@ -716,6 +736,7 @@ const Projects = () => {
       ],
     },
     hasBottomDiagonal: true,
+    techStackButtonColor: "bg-teal-700",
   };
 
   return (
