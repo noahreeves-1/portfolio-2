@@ -49,7 +49,7 @@ const WhoMe = () => {
           {/* Center text content */}
           <div className="max-w-4xl mx-4 md:mx-8 flex-grow">
             <motion.h3
-              className="text-center text-green-400 font-medium mb-4"
+              className="text-center text-blue-500 font-medium mb-4"
               variants={fadeIn}
             >
               WHO, ME?
@@ -60,7 +60,7 @@ const WhoMe = () => {
               variants={fadeIn}
             >
               <p className="text-black">I Bridge the Gap Between </p>
-              <p className="text-green-400">Business and Tech</p>
+              <p className="text-blue-500">Business and Tech</p>
             </motion.h2>
 
             <motion.p
@@ -84,8 +84,8 @@ const WhoMe = () => {
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 1.2, delay: 0.5 }}
         >
-          Marketing <span className="text-green-500">x</span> Consulting{" "}
-          <span className="text-green-500">x</span> Software Engineering
+          Marketing <span className="text-blue-500">x</span> Consulting{" "}
+          <span className="text-blue-500">x</span> Software Engineering
         </motion.p>
       </div>
     </section>

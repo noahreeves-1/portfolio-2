@@ -573,15 +573,9 @@ const ProjectCard = ({
                       height={logoSize.height}
                       className="object-contain"
                     />
-                    <span className="text-lg hover:text-blue-100 underline">
+                    {/* <span className="text-lg hover:text-blue-100 underline">
                       Website
-                    </span>
-                  </a>
-                  <button
-                    onClick={() => setIsModalOpen(true)}
-                    className="text-white hover:text-blue-100 flex items-center gap-1 cursor-pointer"
-                  >
-                    <span className="text-lg">Tech Stack</span>
+                    </span> */}
                     <svg
                       className="w-6 h-6"
                       fill="none"
@@ -596,6 +590,12 @@ const ProjectCard = ({
                         d="M13 7l5 5m0 0l-5 5m5-5H6"
                       />
                     </svg>
+                  </a>
+                  <button
+                    onClick={() => setIsModalOpen(true)}
+                    className="text-white hover:text-blue-100 flex items-center gap-1 cursor-pointer bg-gray-700 px-4 py-2 rounded-full"
+                  >
+                    <span className="text-lg">Tech Stack</span>
                   </button>
                 </div>
               </div>
@@ -635,7 +635,7 @@ const Projects = () => {
       value: "1K+",
       description: "Downloads with zero ad spend",
     },
-    bgColor: "bg-orange-500",
+    bgColor: "bg-gray-600",
     websiteUrl: "https://muffinapp.io",
     techStack: {
       frontend: [
@@ -671,7 +671,7 @@ const Projects = () => {
       value: "2",
       description: "Small businesses using the app",
     },
-    bgColor: "bg-purple-700",
+    bgColor: "bg-gray-600",
     websiteUrl: "https://storydiscount.com",
     techStack: {
       frontend: ["TypeScript", "Tailwind", "React", "OpenSaaS"],
@@ -698,7 +698,7 @@ const Projects = () => {
       value: "X",
       description: "Users signed up for instant alerts",
     },
-    bgColor: "bg-teal-700",
+    bgColor: "bg-gray-600",
     websiteUrl: "https://lexcalibur.ai",
     techStack: {
       frontend: ["TypeScript", "Tailwind", "React", "Next.JS"],
