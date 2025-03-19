@@ -69,13 +69,18 @@ const Contact = () => {
     setSubmitStatus(null);
 
     try {
-      // Using the correct API endpoint for Resend
       const response = await fetch("/api/send", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
+      });
+
+      const responseData = await response.json();
+      console.log("API Response:", {
+        status: response.status,
+        data: responseData,
       });
 
       if (response.ok) {
@@ -87,7 +92,9 @@ const Contact = () => {
       } else {
         setSubmitStatus({
           type: "error",
-          message: "Failed to send message. Please try again later.",
+          message:
+            responseData.error ||
+            "Failed to send message. Please try again later.",
         });
       }
     } catch (err) {
