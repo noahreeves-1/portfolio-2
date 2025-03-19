@@ -1,0 +1,10 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Technical stack
+TypeScript for everything
+Next.js for frontend/backend
+No databases
+Node tests
