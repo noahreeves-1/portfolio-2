@@ -65,6 +65,8 @@ import HTMLLogo from "@/public/html5.svg";
 import TypeOrmLogo from "@/public/typeorm.svg";
 import PuppeteerLogo from "@/public/puppeteer.webp";
 import ResendLogo from "@/public/resend.svg";
+import NeonLogo from "@/public/neon-logo.png";
+import DrizzleLogo from "@/public/drizzle-icon.png";
 
 // Map skill names to their corresponding logos
 const skillLogos: Record<string, StaticImageData> = {
@@ -129,6 +131,8 @@ const skillLogos: Record<string, StaticImageData> = {
   HTML: HTMLLogo,
   Puppeteer: PuppeteerLogo,
   Resend: ResendLogo,
+  Neon: NeonLogo,
+  "Drizzle ORM": DrizzleLogo,
 };
 
 // Define category type
@@ -170,12 +174,14 @@ const otherTechCategories: SkillCategoryType[] = [
       "MySQL",
       "SQL Server",
       "Supabase",
+      "Neon",
       "MongoDB",
       "Elasticsearch",
       "Redis",
       "Cloudinary",
       "Pinecone",
       "Prisma",
+      "Drizzle ORM",
       "TypeORM",
     ],
   },

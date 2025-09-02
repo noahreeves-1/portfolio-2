@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import Footer from "./components/Footer";
+import DiagonalDivider from "./components/DiagonalDivider";
 import {
   NavbarSkeleton,
   HeroSkeleton,
@@ -40,9 +41,13 @@ export default function Home() {
         <Suspense fallback={null}>
           <WhoMe />
         </Suspense>
-        <Suspense fallback={null}>
-          <Projects />
-        </Suspense>
+        <div className="bg-gray-50">
+          <DiagonalDivider direction="top" color="#f9fafb" backgroundColor="white" />
+          <Suspense fallback={null}>
+            <Projects />
+          </Suspense>
+          <DiagonalDivider direction="bottom" color="#f9fafb" backgroundColor="white" />
+        </div>
         <Suspense fallback={null}>
           <Skills />
         </Suspense>
