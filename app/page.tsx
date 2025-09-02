@@ -1,29 +1,28 @@
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
-import Footer from "./components/Footer";
-import DiagonalDivider from "./components/DiagonalDivider";
+
+// Server Components (imported normally)
+import { Footer } from "./components/layout";
+import { DiagonalDivider } from "./components/ui";
+import { SocialProof, WhoMe, Skills } from "./components/sections";
+
+// Loading skeletons
 import {
   NavbarSkeleton,
   HeroSkeleton,
   ContactSkeleton,
   MapviewSkeleton,
-} from "./components/LoadingSkeletons";
+} from "./components/ui";
 
-// Server Components (can be imported normally if they don't use client features)
-// These will be converted to server components in next steps
+// Client components that still need dynamic imports
+const Navbar = dynamic(() => import("./components/layout/Navbar"));
+const Hero = dynamic(() => import("./components/sections/Hero"));
+const Projects = dynamic(() => import("./components/sections/Projects"));
+const Contact = dynamic(() => import("./components/sections/Contact"));
+const CTA = dynamic(() => import("./components/sections/CTA"));
 
-// Dynamic imports for client components
-const Navbar = dynamic(() => import("./components/Navbar"));
-const Hero = dynamic(() => import("./components/Hero"));
-const SocialProof = dynamic(() => import("./components/SocialProof"));
-const WhoMe = dynamic(() => import("./components/WhoMe"));
-const Projects = dynamic(() => import("./components/Projects"));
-const Skills = dynamic(() => import("./components/Skills"));
-const Contact = dynamic(() => import("./components/Contact"));
-const CTA = dynamic(() => import("./components/CTA"));
-
-// Lazy load Mapview only when needed (heavy Leaflet library)
-const Mapview = dynamic(() => import("./components/Mapview"));
+// Heavy libraries - keep lazy loaded
+const Mapview = dynamic(() => import("./components/features/map/Mapview"));
 
 export default function Home() {
   return (
@@ -35,12 +34,8 @@ export default function Home() {
         <Suspense fallback={<HeroSkeleton />}>
           <Hero />
         </Suspense>
-        <Suspense fallback={null}>
-          <SocialProof />
-        </Suspense>
-        <Suspense fallback={null}>
-          <WhoMe />
-        </Suspense>
+        <SocialProof />
+        <WhoMe />
         <div className="bg-gray-800">
           <DiagonalDivider direction="top" color="#1f2937" backgroundColor="white" />
           <Suspense fallback={null}>
@@ -48,9 +43,7 @@ export default function Home() {
           </Suspense>
           <DiagonalDivider direction="bottom" color="#1f2937" backgroundColor="white" />
         </div>
-        <Suspense fallback={null}>
-          <Skills />
-        </Suspense>
+        <Skills />
         <Suspense fallback={<MapviewSkeleton />}>
           <Mapview />
         </Suspense>

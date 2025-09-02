@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import Image, { StaticImageData } from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { skillLogos } from "./Skills";
+import { skillLogos } from "@/app/lib/data/skills";
 
 interface ProjectModalProps {
   isOpen: boolean;

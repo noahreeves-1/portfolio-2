@@ -1,17 +1,6 @@
-"use client";
+import { Project } from "../types/project";
 
-import { useState } from "react";
-import dynamic from "next/dynamic";
-import { StaticImageData } from "next/image";
-import ProjectHeroCard from "./ProjectHeroCard";
-import ProjectGridCard from "./ProjectGridCard";
-
-// Dynamic import for ProjectModal to reduce initial bundle
-const ProjectModal = dynamic(() => import("./ProjectModal"), {
-  ssr: false,
-});
-
-// Import existing images
+// Import project images
 import MuffinApp from "@/public/muffin-app.webp";
 import MuffinLogo from "@/public/muffin-white.svg";
 import StoryDiscountDashboard from "@/public/storydiscount-dashboard.webp";
@@ -22,42 +11,12 @@ import KnoxlabsInProgress from "@/public/knoxlabs-inprogress-screenshot.png";
 import ClearThinkerIntro from "@/public/clear-thinker-intro.png";
 import ClearThinkerGame from "@/public/clear-thinker-game.png";
 import AIVoiceAgentScreenshot from "@/public/ai-voice-agent-screenshot.png";
+import StealthProduct from "@/public/stealth-product.png";
 
-interface Project {
-  id: string;
-  title: string;
-  description: string;
-  longDescription?: string;
-  imageSrc: StaticImageData | string;
-  additionalImages?: {
-    src: StaticImageData | string;
-    alt: string;
-  }[];
-  logoSrc?: StaticImageData | string;
-  category: string;
-  techStack: {
-    frontend?: string[];
-    backend?: string[];
-    database?: string[];
-    other?: string[];
-  };
-  simpleTechStack: string[];
-  features?: string[];
-  metrics?: {
-    label: string;
-    value: string;
-  }[];
-  websiteUrl?: string;
-  githubUrl?: string;
-  challenges?: string[];
-  learnings?: string[];
-  isFeatured: boolean;
-}
-
-const projects: Project[] = [
+export const projects: Project[] = [
   {
     id: "knoxlabs",
-    title: "Order Management System",
+    title: "KnoxLabs",
     description:
       "Custom internal tool for Meta Partner VR resellers, streamlining sales and operations with unified order management.",
     longDescription:
@@ -262,136 +221,59 @@ const projects: Project[] = [
     id: "muffin",
     title: "Muffin",
     description:
-      "A social media mobile app where users discover meals near them with a TikTok-style UI. Swipe through personalized food content and find your next perfect meal.",
+      "Native B2B food marketplace app connecting restaurants with suppliers, optimizing procurement through group buying.",
     longDescription:
-      "Muffin revolutionizes food discovery by combining social media engagement with location-based restaurant recommendations. Built with React Native and powered by AI, the app learns user preferences to deliver increasingly personalized meal suggestions.",
+      "Muffin revolutionizes restaurant supply chain management by aggregating demand across multiple businesses to negotiate better prices with suppliers. The platform handles everything from order placement to delivery scheduling, reducing costs while improving reliability.",
     imageSrc: MuffinApp,
     logoSrc: MuffinLogo,
-    category: "Mobile App",
+    category: "Marketplace",
     techStack: {
-      frontend: [
-        "TypeScript",
-        "React Native",
-        "Expo",
-        "TanStack Query",
-        "Redux",
-      ],
-      backend: ["Node.js", "NestJS", "Firebase", "Prisma"],
-      database: ["PostgreSQL", "Elasticsearch", "Redis"],
-      other: [
-        "OpenAI",
-        "Google Maps API",
-        "SendGrid",
-        "Cloudinary",
-        "Digital Ocean",
-      ],
+      frontend: ["React Native", "Expo", "TypeScript", "TanStack Query"],
+      backend: ["Node.js", "NestJS", "TypeORM"],
+      database: ["MongoDB", "Redis"],
+      other: ["Twilio", "Google Maps API", "Firebase"],
     },
-    simpleTechStack: [
-      "React Native",
-      "TypeScript",
-      "NestJS",
-      "PostgreSQL",
-      "OpenAI",
-    ],
+    simpleTechStack: ["React Native", "NestJS", "MongoDB", "Expo"],
     features: [
-      "Personalized home feed with AI-powered recommendations",
-      "Location-based search with real-time filtering",
-      "AI-powered image classification for food photos",
-      "Push notifications for nearby restaurant deals",
-      "Social features for sharing and saving meals",
+      "Group buying for better prices",
+      "Real-time inventory management",
+      "Automated reordering system",
+      "Delivery route optimization",
+      "Supplier performance analytics",
     ],
     metrics: [
-      { label: "Downloads", value: "1K+" },
-      { label: "Ad Spend", value: "$0" },
-      { label: "User Rating", value: "4.8★" },
+      { label: "Cost Savings", value: "15-20%" },
+      { label: "Active Restaurants", value: "3" },
     ],
-    websiteUrl: "https://muffinapp.io",
+    isFeatured: false,
+  },
+  {
+    id: "stealth",
+    title: "AI Medical Coding Assistant",
+    description:
+      "Stealth-mode product streamlining medical coding and billing with intelligent automation and accuracy improvements.",
+    longDescription:
+      "Currently in development, this AI-powered platform is designed to transform medical coding efficiency. By analyzing clinical documentation and automatically suggesting appropriate billing codes, it reduces errors and accelerates the revenue cycle for healthcare providers.",
+    imageSrc: StealthProduct,
+    category: "Healthcare Tech",
+    techStack: {
+      frontend: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+      backend: ["Python", "FastAPI"],
+      database: ["PostgreSQL"],
+      other: ["OpenAI", "Healthcare APIs"],
+    },
+    simpleTechStack: ["Next.js", "Python", "PostgreSQL", "OpenAI"],
+    features: [
+      "Automated code suggestions from clinical notes",
+      "Real-time compliance checking",
+      "Integration with existing EMR systems",
+      "Audit trail and documentation",
+      "Performance analytics dashboard",
+    ],
+    metrics: [
+      { label: "Coding Accuracy", value: "95%+" },
+      { label: "Time Saved", value: "40%" },
+    ],
     isFeatured: false,
   },
 ];
-
-const Projects = () => {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const featuredProjects = projects.filter((p) => p.isFeatured);
-  const additionalProjects = projects.filter((p) => !p.isFeatured);
-
-  const handleViewDetails = (project: Project) => {
-    setSelectedProject(project);
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setTimeout(() => setSelectedProject(null), 300);
-  };
-
-  return (
-    <section id="projects" className="py-20 px-4">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-100 mb-4">
-            Featured Work
-          </h2>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-            From consumer mobile apps to enterprise solutions, I build products
-            that solve real problems and deliver exceptional user experiences.
-          </p>
-        </div>
-
-        {/* Featured Projects Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16">
-          {featuredProjects.map((project) => (
-            <ProjectHeroCard
-              key={project.id}
-              title={project.title}
-              description={project.description}
-              imageSrc={project.imageSrc}
-              logoSrc={project.logoSrc}
-              category={project.category}
-              techStack={project.simpleTechStack}
-              features={project.features}
-              metrics={project.metrics}
-              websiteUrl={project.websiteUrl}
-              githubUrl={project.githubUrl}
-              onViewDetails={() => handleViewDetails(project)}
-            />
-          ))}
-        </div>
-
-        {/* Additional Projects Section */}
-        <div className="mb-8">
-          <h3 className="text-2xl font-semibold text-gray-100 mb-6">
-            Other Projects
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {additionalProjects.map((project, index) => (
-              <ProjectGridCard
-                key={project.id}
-                title={project.title}
-                description={project.description}
-                imageSrc={project.imageSrc}
-                category={project.category}
-                techStack={project.simpleTechStack}
-                websiteUrl={project.websiteUrl}
-                githubUrl={project.githubUrl}
-                onViewDetails={() => handleViewDetails(project)}
-                index={index}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Project Details Modal */}
-      <ProjectModal
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        project={selectedProject}
-      />
-    </section>
-  );
-};
-
-export default Projects;

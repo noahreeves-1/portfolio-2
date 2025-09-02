@@ -1,9 +1,6 @@
-"use client";
+import { StaticImageData } from "next/image";
 
-import React from "react";
-import Image, { StaticImageData } from "next/image";
-import { motion } from "framer-motion";
-
+// Import all skill logos
 import AdonisJS from "@/public/adonis.svg";
 import ExpressJS from "@/public/express.svg";
 import NX from "@/public/nx.svg";
@@ -37,7 +34,6 @@ import PostgreSQL from "@/public/postgresql.svg";
 import MongoDB from "@/public/mongodb.svg";
 import Nx from "@/public/nx.svg";
 import Firebase from "@/public/firebase.svg";
-// Import additional logos from Projects.tsx
 import ReduxLogo from "@/public/redux.svg";
 import ReactQueryLogo from "@/public/tanstack.webp";
 import CssLogo from "@/public/css.svg";
@@ -112,22 +108,19 @@ export const skillLogos: Record<string, StaticImageData> = {
   "Next.js": NextJS,
   "Tailwind CSS": TailwindCSS,
   "Node.js": NodeJS,
-  Express: Express,
-  NestJS: NestJS,
-  PostgreSQL: PostgreSQL,
-  MongoDB: MongoDB,
+  Express,
+  NestJS,
+  PostgreSQL,
+  MongoDB,
   Nx,
   Firebase,
-  // Add additional logos
   Redux: ReduxLogo,
-  "React Query": ReactQueryLogo,
+  "TanStack Query": ReactQueryLogo,
   CSS: CssLogo,
   Prisma: PrismaLogo,
-  TypeORM: TypeOrmLogo,
   Elasticsearch: ElasticsearchLogo,
   Redis: RedisLogo,
   Cloudinary: CloudinaryLogo,
-  cloudinary: CloudinaryLogo,
   "Digital Ocean": DigitalOceanLogo,
   OpenAI: OpenAILogo,
   "Google Maps API": GoogleMapsLogo,
@@ -145,11 +138,11 @@ export const skillLogos: Record<string, StaticImageData> = {
   Railway: RailwayLogo,
   SQL: SQLLogo,
   HTML: HTMLLogo,
+  TypeORM: TypeOrmLogo,
   Puppeteer: PuppeteerLogo,
   Resend: ResendLogo,
   Neon: NeonLogo,
   "Drizzle ORM": DrizzleLogo,
-  Drizzle: DrizzleLogo,
   Vite: ViteLogo,
   "React Router": ReactRouterLogo,
   shadcn: ShadcnLogo,
@@ -158,48 +151,44 @@ export const skillLogos: Record<string, StaticImageData> = {
   NextAuth: NextAuthLogo,
   PostHog: PostHogLogo,
   Radix: RadixLogo,
-  "TanStack Query": ReactQueryLogo,
   Turbopack: TurbopackLogo,
-  "AI SDK": VercelLogo,
-  "Vercel AI SDK": VercelLogo,
-  "AI Gateway": VercelLogo,
   Vitest: VitestLogo,
   "React Testing Library": ReactTestingLibraryLogo,
   FastAPI: FastAPILogo,
   "Retell AI SDK": RetellAILogo,
   "Clover API": CloverLogo,
-  Netlify: NetlifyLogo
+  Netlify: NetlifyLogo,
 };
 
-// Define category type
-interface SkillCategoryType {
+export interface Skill {
+  name: string;
+  icon?: StaticImageData;
+}
+
+export interface SkillCategory {
   name: string;
   skills: string[];
 }
 
-// Define preferred tech stack
-const preferredTechStack: SkillCategoryType[] = [
-  {
-    name: "Main Technologies",
-    skills: [
-      "TypeScript",
-      "Python",
-      "React",
-      "React Native",
-      "Expo",
-      "Next.js",
-      "Tailwind CSS",
-      "Node.js",
-      "Express",
-      "NestJS",
-      "PostgreSQL",
-      "Docker",
-    ],
-  },
+// Define primary skill categories with logos
+export const primarySkills: Skill[] = [
+  { name: "TypeScript", icon: skillLogos["TypeScript"] },
+  { name: "React", icon: skillLogos["React"] },
+  { name: "React Native", icon: skillLogos["React Native"] },
+  { name: "Expo", icon: skillLogos["Expo"] },
+  { name: "Next.js", icon: skillLogos["Next.js"] },
+  { name: "Tailwind CSS", icon: skillLogos["Tailwind CSS"] },
+  { name: "Node.js", icon: skillLogos["Node.js"] },
+  { name: "Express", icon: skillLogos["Express"] },
+  { name: "NestJS", icon: skillLogos["NestJS"] },
+  { name: "PostgreSQL", icon: skillLogos["PostgreSQL"] },
+  { name: "MongoDB", icon: skillLogos["MongoDB"] },
+  { name: "Nx", icon: skillLogos["Nx"] },
+  { name: "Firebase", icon: skillLogos["Firebase"] },
 ];
 
-// Define other technologies
-const otherTechCategories: SkillCategoryType[] = [
+// Define other technology categories
+export const otherTechCategories: SkillCategory[] = [
   {
     name: "Frontend Libraries & Tools",
     skills: [
@@ -265,182 +254,25 @@ const otherTechCategories: SkillCategoryType[] = [
     name: "Web Scraping",
     skills: ["Apify", "Crawlee", "Puppeteer"],
   },
-  // {
-  //   name: "Automation & RPA",
-  //   skills: ["BluePrism"],
-  // },
-  // {
-  //   name: "Office & Productivity",
-  //   skills: ["Slack", "Jira", "Excel", "PowerPoint", "SharePoint"],
-  // },
 ];
 
-// Animation variants for container elements
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
-    },
+// Preferred tech stack
+export const preferredTechStack: SkillCategory[] = [
+  {
+    name: "Main Technologies",
+    skills: [
+      "TypeScript",
+      "Python",
+      "React",
+      "React Native",
+      "Expo",
+      "Next.js",
+      "Tailwind CSS",
+      "Node.js",
+      "Express",
+      "NestJS",
+      "PostgreSQL",
+      "Docker",
+    ],
   },
-};
-
-// Animation variants for individual categories
-const categoryVariants = {
-  hidden: { y: 50, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 12,
-    },
-  },
-};
-
-// Animation variants for skill tags
-const skillVariants = {
-  hidden: { scale: 0.8, opacity: 0 },
-  visible: {
-    scale: 1,
-    opacity: 1,
-    transition: {
-      type: "spring",
-      stiffness: 150,
-    },
-  },
-};
-
-interface SkillCategoryProps {
-  category: SkillCategoryType;
-  className?: string;
-}
-
-const SkillCategory = ({ category, className = "" }: SkillCategoryProps) => (
-  <motion.div
-    variants={categoryVariants}
-    className={`bg-gray-800 rounded-xl p-5 shadow-md border border-gray-600 hover:shadow-xl transition-all duration-300 mb-6 ${className}`}
-  >
-    <h4 className="text-lg font-medium mb-3 pb-2 border-b border-gray-600 text-white">
-      {category.name}
-    </h4>
-    <motion.div
-      className="flex flex-wrap gap-2"
-      variants={containerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
-    >
-      {category.skills.map((skill: string) => (
-        <motion.span
-          key={skill}
-          variants={skillVariants}
-          whileHover={{
-            scale: 1.05,
-            boxShadow: "0px 5px 10px rgba(0,0,0,0.2)",
-            y: -5,
-          }}
-          className="inline-flex items-center px-3 sm:px-3.5 py-1.5 sm:py-2 bg-gray-600 text-gray-200 rounded-full text-sm font-medium border border-gray-500 hover:bg-gray-500 transition-colors"
-        >
-          <motion.div
-            whileHover={{ rotate: [0, -10, 10, -10, 0] }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="relative w-4 h-4 sm:w-5 sm:h-5 mr-2">
-              <Image
-                src={skillLogos[skill]}
-                alt={`${skill} logo`}
-                fill
-                className="object-contain"
-                sizes="20px"
-              />
-            </div>
-          </motion.div>
-          {skill}
-        </motion.span>
-      ))}
-    </motion.div>
-  </motion.div>
-);
-
-const Skills = () => {
-  return (
-    <motion.section
-      id="skills"
-      className="py-24"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true, margin: "-200px" }}
-      transition={{ duration: 0.8 }}
-    >
-      <div className="max-w-6xl mx-auto px-4 md:px-6">
-        <motion.h2
-          className="text-xl font-bold text-center mb-4 text-slate-800 md:text-3xl"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          {`Skills`}
-        </motion.h2>
-
-        {/* Preferred Tech Stack */}
-        <motion.div
-          className="mb-8"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
-        >
-          <div className="">
-            {preferredTechStack.map((category) => (
-              <SkillCategory
-                key={category.name}
-                category={category}
-                className="border-blue-500"
-              />
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Other Technologies */}
-        <div>
-          <motion.h3
-            className="font-semibold mb-4 text-center text-gray-500 text-xl md:text-3xl"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            Additional Skills
-          </motion.h3>
-          <div className="columns-1 md:columns-2 lg:columns-3 gap-6">
-            {otherTechCategories.map((category, index) => (
-              <motion.div
-                key={category.name}
-                variants={categoryVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                transition={{
-                  delay: index * 0.05,
-                  duration: 0.5,
-                  type: "spring",
-                  stiffness: 80,
-                }}
-                className="break-inside-avoid"
-              >
-                <SkillCategory category={category} />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </motion.section>
-  );
-};
-
-export default Skills;
+];
