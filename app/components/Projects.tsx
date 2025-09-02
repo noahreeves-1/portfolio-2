@@ -21,6 +21,7 @@ import KnoxlabsScreenshot from "@/public/knoxlabs-screenshot.png";
 import KnoxlabsInProgress from "@/public/knoxlabs-inprogress-screenshot.png";
 import ClearThinkerIntro from "@/public/clear-thinker-intro.png";
 import ClearThinkerGame from "@/public/clear-thinker-game.png";
+import AIVoiceAgentScreenshot from "@/public/ai-voice-agent-screenshot.png";
 
 interface Project {
   id: string;
@@ -56,9 +57,9 @@ interface Project {
 const projects: Project[] = [
   {
     id: "knoxlabs",
-    title: "Order Management System (Meta Partner)",
+    title: "Order Management System",
     description:
-      "Custom internal tool streamlining sales and operations for VR resellers with unified order management.",
+      "Custom internal tool for Meta Partner VR resellers, streamlining sales and operations with unified order management.",
     longDescription:
       "A bespoke web platform designed specifically for VR resellers' unique workflow needs. Consolidates multiple manual processes into a single, efficient dashboard that manages the entire order lifecycle from initial contact to fulfillment.",
     imageSrc: KnoxlabsScreenshot,
@@ -99,12 +100,12 @@ const projects: Project[] = [
   },
   {
     id: "callhound",
-    title: "CallHound AI",
+    title: "AI Customer Service Voice Agent",
     description:
       "AI-powered voice agent that handles customer service calls about store hours, location, and product availability 24/7.",
     longDescription:
       "CallHound AI provides businesses with an intelligent voice agent that seamlessly handles customer inquiries. Built with Retell AI's advanced voice technology and integrated with Clover POS systems for real-time sync, it answers questions about store hours, location, and product inventory, ensuring customers always get accurate, up-to-date information while freeing staff to focus on in-person service.",
-    imageSrc: ClearThinkerIntro, // Placeholder - replace with actual CallHound screenshot
+    imageSrc: AIVoiceAgentScreenshot,
     category: "AI Voice Technology",
     techStack: {
       frontend: [
