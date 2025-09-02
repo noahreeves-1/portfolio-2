@@ -42,9 +42,10 @@ const ProjectHeroCard = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow duration-300"
+      className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={onViewDetails}
     >
       <div className="relative h-64 md:h-80 bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
         <motion.div
@@ -120,7 +121,10 @@ const ProjectHeroCard = ({
 
         <div className="flex items-center gap-3">
           <button
-            onClick={onViewDetails}
+            onClick={(e) => {
+              e.stopPropagation();
+              onViewDetails();
+            }}
             className="px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
           >
             View Details
@@ -130,6 +134,7 @@ const ProjectHeroCard = ({
               href={websiteUrl}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
               className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
             >
               Live Site →
@@ -140,6 +145,7 @@ const ProjectHeroCard = ({
               href={githubUrl}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
               className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
             >
               GitHub

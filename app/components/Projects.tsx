@@ -21,6 +21,7 @@ import KnoxlabsScreenshot from "@/public/knoxlabs-screenshot.png";
 import KnoxlabsInProgress from "@/public/knoxlabs-inprogress-screenshot.png";
 import ClearThinkerIntro from "@/public/clear-thinker-intro.png";
 import ClearThinkerGame from "@/public/clear-thinker-game.png";
+import AIVoiceAgentScreenshot from "@/public/ai-voice-agent-screenshot.png";
 
 interface Project {
   id: string;
@@ -55,6 +56,130 @@ interface Project {
 
 const projects: Project[] = [
   {
+    id: "knoxlabs",
+    title: "Order Management System",
+    description:
+      "Custom internal tool for Meta Partner VR resellers, streamlining sales and operations with unified order management.",
+    longDescription:
+      "A bespoke web platform designed specifically for VR resellers' unique workflow needs. Consolidates multiple manual processes into a single, efficient dashboard that manages the entire order lifecycle from initial contact to fulfillment.",
+    imageSrc: KnoxlabsScreenshot,
+    additionalImages: [
+      {
+        src: KnoxlabsInProgress,
+        alt: "In Progress orders view showing real-time order tracking and status updates",
+      },
+    ],
+    category: "Enterprise",
+    techStack: {
+      frontend: [
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Vite",
+        "React Router",
+        "TanStack Query",
+        "shadcn",
+      ],
+      backend: ["NestJS", "Prisma"],
+      database: ["PostgreSQL", "Supabase"],
+      other: ["AWS S3", "Resend", "Docker", "Fly.io", "PostHog"],
+    },
+    simpleTechStack: ["React", "NestJS", "PostgreSQL", "Supabase", "Fly.io"],
+    features: [
+      "Unified order management system",
+      "Real-time inventory tracking",
+      "Automated workflow notifications",
+      "Custom reporting and analytics",
+      "Role-based access control",
+    ],
+    metrics: [
+      { label: "FTE hours/week saved", value: "~10" },
+      { label: "Headsets/month", value: "500+" },
+    ],
+    isFeatured: true,
+  },
+  {
+    id: "callhound",
+    title: "AI Customer Service Voice Agent",
+    description:
+      "AI-powered voice agent that handles customer service calls about store hours, location, and product availability 24/7.",
+    longDescription:
+      "CallHound AI provides businesses with an intelligent voice agent that seamlessly handles customer inquiries. Built with Retell AI's advanced voice technology and integrated with Clover POS systems for real-time sync, it answers questions about store hours, location, and product inventory, ensuring customers always get accurate, up-to-date information while freeing staff to focus on in-person service.",
+    imageSrc: AIVoiceAgentScreenshot,
+    category: "AI Voice Technology",
+    techStack: {
+      frontend: [
+        "React",
+        "TypeScript",
+        "Vite",
+        "Tailwind CSS",
+        "shadcn",
+        "React Router",
+        "TanStack Query",
+      ],
+      backend: ["Node.js", "Express", "Prisma"],
+      database: ["PostgreSQL", "Supabase"],
+      other: ["Retell AI SDK", "Clover API", "Railway", "Docker"],
+    },
+    simpleTechStack: [
+      "React",
+      "TypeScript",
+      "Express",
+      "PostgreSQL",
+      "Retell AI",
+    ],
+    features: [
+      "24/7 automated customer service",
+      "Natural voice interactions with customers",
+      "Real-time Clover POS sync for business info",
+      "Instant product/inventory availability checks",
+      "Store hours and location information",
+      "Analytics dashboard for call insights",
+    ],
+    metrics: [
+      { label: "Calls Handled per Month", value: "300+" },
+      { label: "Hours Saved per Month", value: "5+" },
+    ],
+    isFeatured: true,
+  },
+  {
+    id: "speedscribe",
+    title: "AI Speed Reading Tutor",
+    description:
+      "AI-powered speed reading comprehension tutor helping U.S. students prepare for the ACT.",
+    longDescription:
+      "Speed Scribe AI leverages advanced language models to create personalized ACT prep experiences. The platform adapts to each student's learning pace and identifies weak areas, providing targeted practice to maximize score improvements.",
+    imageSrc: SpeedScribeScreenshot,
+    category: "EdTech",
+    techStack: {
+      frontend: [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "shadcn",
+        "Framer Motion",
+      ],
+      backend: ["Next.js", "Drizzle", "NextAuth"],
+      database: ["PostgreSQL", "Neon"],
+      other: ["OpenAI", "AI SDK", "TanStack Query", "Vercel"],
+    },
+    simpleTechStack: ["Next.js", "PostgreSQL", "OpenAI", "Neon", "NextAuth"],
+    features: [
+      "Adaptive learning algorithm",
+      "Real ACT passage analysis",
+      "Personalized study plans",
+      "Progress tracking and analytics",
+      "Timed practice sessions",
+    ],
+    metrics: [
+      { label: "WPM Increase", value: "30%+" },
+      { label: "Students Registered", value: "8" },
+    ],
+    websiteUrl: "https://speed-scribe-ai.vercel.app",
+    isFeatured: false,
+  },
+  {
     id: "clearthinker",
     title: "Clear Thinker Challenge",
     description:
@@ -75,8 +200,8 @@ const projects: Project[] = [
         "React",
         "TypeScript",
         "Tailwind CSS",
-        "Radix UI",
-        "shadcn/ui",
+        "Radix",
+        "shadcn",
       ],
       backend: ["Next.js", "AI SDK", "AI Gateway"],
       database: ["Redis"],
@@ -91,7 +216,7 @@ const projects: Project[] = [
       "Teacher dashboard for classroom management",
     ],
     metrics: [
-      { label: "Students", value: "50+" },
+      { label: "Students", value: "30+" },
       { label: "Accuracy Improvement", value: "+35%" },
     ],
     isFeatured: false,
@@ -107,7 +232,7 @@ const projects: Project[] = [
     logoSrc: StoryDiscountLogo,
     category: "SaaS",
     techStack: {
-      frontend: ["TypeScript", "React", "Tailwind", "OpenSaaS"],
+      frontend: ["TypeScript", "React", "Tailwind CSS", "OpenSaaS"],
       backend: ["Node.js", "OpenSaaS"],
       database: ["PostgreSQL", "Cloudinary"],
       other: ["Stripe", "SendGrid"],
@@ -144,10 +269,22 @@ const projects: Project[] = [
     logoSrc: MuffinLogo,
     category: "Mobile App",
     techStack: {
-      frontend: ["TypeScript", "React Native", "Expo", "React Query", "Redux"],
+      frontend: [
+        "TypeScript",
+        "React Native",
+        "Expo",
+        "TanStack Query",
+        "Redux",
+      ],
       backend: ["Node.js", "NestJS", "Firebase", "Prisma"],
-      database: ["PostgreSQL", "Elasticsearch", "Redis", "Cloudinary"],
-      other: ["OpenAI", "Google Maps API", "SendGrid"],
+      database: ["PostgreSQL", "Elasticsearch", "Redis"],
+      other: [
+        "OpenAI",
+        "Google Maps API",
+        "SendGrid",
+        "Cloudinary",
+        "Digital Ocean",
+      ],
     },
     simpleTechStack: [
       "React Native",
@@ -170,92 +307,6 @@ const projects: Project[] = [
     ],
     websiteUrl: "https://muffinapp.io",
     isFeatured: false,
-  },
-  {
-    id: "knoxlabs",
-    title: "Knoxlabs Dashboard",
-    description:
-      "Custom internal tool streamlining sales and operations for Knoxlabs team with unified order management.",
-    longDescription:
-      "A bespoke web platform designed specifically for Knoxlabs' unique workflow needs. Consolidates multiple manual processes into a single, efficient dashboard that manages the entire order lifecycle from initial contact to fulfillment.",
-    imageSrc: KnoxlabsScreenshot,
-    additionalImages: [
-      {
-        src: KnoxlabsInProgress,
-        alt: "In Progress orders view showing real-time order tracking and status updates",
-      },
-    ],
-    category: "Enterprise",
-    techStack: {
-      frontend: [
-        "React",
-        "TypeScript",
-        "Tailwind CSS v4",
-        "Vite",
-        "React Router v7",
-        "TanStack Query",
-        "shadcn/ui",
-      ],
-      backend: ["NestJS", "Prisma ORM", "Supabase Auth"],
-      database: ["PostgreSQL", "Supabase"],
-      other: ["AWS S3", "Resend", "Docker", "Fly.io", "PostHog"],
-    },
-    simpleTechStack: ["React", "NestJS", "PostgreSQL", "Supabase", "Fly.io"],
-    features: [
-      "Unified order management system",
-      "Real-time inventory tracking",
-      "Automated workflow notifications",
-      "Custom reporting and analytics",
-      "Role-based access control",
-    ],
-    metrics: [
-      { label: "FTE hours/week saved", value: "~10" },
-      { label: "Headsets/month", value: "500+" },
-    ],
-    isFeatured: true,
-  },
-  {
-    id: "speedscribe",
-    title: "Speed Scribe AI",
-    description:
-      "AI-powered ACT reading comprehension tutor helping students prepare for college entrance exams.",
-    longDescription:
-      "Speed Scribe AI leverages advanced language models to create personalized ACT prep experiences. The platform adapts to each student's learning pace and identifies weak areas, providing targeted practice to maximize score improvements.",
-    imageSrc: SpeedScribeScreenshot,
-    category: "EdTech",
-    techStack: {
-      frontend: [
-        "Next.js",
-        "React",
-        "TypeScript",
-        "Tailwind CSS",
-        "shadcn/ui",
-        "Framer Motion",
-      ],
-      backend: ["Next.js API Routes", "Drizzle ORM", "NextAuth.js"],
-      database: ["PostgreSQL (Neon)"],
-      other: ["OpenAI GPT-4o", "Vercel AI SDK", "React Query", "Vercel"],
-    },
-    simpleTechStack: [
-      "Next.js",
-      "PostgreSQL",
-      "OpenAI GPT-4o",
-      "Neon",
-      "NextAuth",
-    ],
-    features: [
-      "Adaptive learning algorithm",
-      "Real ACT passage analysis",
-      "Personalized study plans",
-      "Progress tracking and analytics",
-      "Timed practice sessions",
-    ],
-    metrics: [
-      { label: "WPM Increase", value: "40%+" },
-      { label: "Active Users", value: "11" },
-    ],
-    websiteUrl: "https://speed-scribe-ai.vercel.app",
-    isFeatured: true,
   },
 ];
 
@@ -280,10 +331,10 @@ const Projects = () => {
     <section id="projects" className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-100 mb-4">
             Featured Work
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
             From consumer mobile apps to enterprise solutions, I build products
             that solve real problems and deliver exceptional user experiences.
           </p>
@@ -311,7 +362,7 @@ const Projects = () => {
 
         {/* Additional Projects Section */}
         <div className="mb-8">
-          <h3 className="text-2xl font-semibold text-gray-900 mb-6">
+          <h3 className="text-2xl font-semibold text-gray-100 mb-6">
             Other Projects
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

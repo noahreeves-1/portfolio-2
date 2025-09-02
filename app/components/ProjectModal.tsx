@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import Image, { StaticImageData } from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { skillLogos } from "./Skills";
 
 interface ProjectModalProps {
   isOpen: boolean;
@@ -51,26 +52,8 @@ const ProjectModal = ({ isOpen, onClose, project }: ProjectModalProps) => {
 
   if (!project) return null;
 
-  const techLogos: Record<string, string> = {
-    TypeScript: "/typescript.svg",
-    React: "/react.svg",
-    "React Native": "/reactnative.svg",
-    "Next.js": "/nextjs.svg",
-    "Node.js": "/nodejs.svg",
-    NestJS: "/nestjs.svg",
-    Python: "/python.svg",
-    PostgreSQL: "/postgresql.svg",
-    MongoDB: "/mongodb.svg",
-    Redis: "/redis.svg",
-    Firebase: "/firebase.svg",
-    Docker: "/docker.svg",
-    Tailwind: "/tailwind.svg",
-    OpenAI: "/openai.webp",
-    Stripe: "/stripe.svg",
-  };
-
-  const getTechLogo = (tech: string) => {
-    return techLogos[tech] || null;
+  const getTechLogo = (tech: string): StaticImageData | null => {
+    return skillLogos[tech] || null;
   };
 
   return (
