@@ -1,28 +1,60 @@
-// import Image from "next/image";
-import Hero from "./components/Hero";
-import Navbar from "./components/Navbar";
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
 import Footer from "./components/Footer";
-import SocialProof from "./components/SocialProof";
-import Projects from "./components/Projects";
-import WhoMe from "./components/WhoMe";
-import Skills from "./components/Skills";
-import Mapview from "./components/Mapview";
-import Contact from "./components/Contact";
-import CTA from "./components/CTA";
+import {
+  NavbarSkeleton,
+  HeroSkeleton,
+  ContactSkeleton,
+  MapviewSkeleton,
+} from "./components/LoadingSkeletons";
+
+// Server Components (can be imported normally if they don't use client features)
+// These will be converted to server components in next steps
+
+// Dynamic imports for client components
+const Navbar = dynamic(() => import("./components/Navbar"));
+const Hero = dynamic(() => import("./components/Hero"));
+const SocialProof = dynamic(() => import("./components/SocialProof"));
+const WhoMe = dynamic(() => import("./components/WhoMe"));
+const Projects = dynamic(() => import("./components/Projects"));
+const Skills = dynamic(() => import("./components/Skills"));
+const Contact = dynamic(() => import("./components/Contact"));
+const CTA = dynamic(() => import("./components/CTA"));
+
+// Lazy load Mapview only when needed (heavy Leaflet library)
+const Mapview = dynamic(() => import("./components/Mapview"));
 
 export default function Home() {
   return (
     <div>
-      <Navbar />
+      <Suspense fallback={<NavbarSkeleton />}>
+        <Navbar />
+      </Suspense>
       <main>
-        <Hero />
-        <SocialProof />
-        <WhoMe />
-        <Projects />
-        <Skills />
-        <Mapview />
-        <CTA />
-        <Contact />
+        <Suspense fallback={<HeroSkeleton />}>
+          <Hero />
+        </Suspense>
+        <Suspense fallback={null}>
+          <SocialProof />
+        </Suspense>
+        <Suspense fallback={null}>
+          <WhoMe />
+        </Suspense>
+        <Suspense fallback={null}>
+          <Projects />
+        </Suspense>
+        <Suspense fallback={null}>
+          <Skills />
+        </Suspense>
+        <Suspense fallback={<MapviewSkeleton />}>
+          <Mapview />
+        </Suspense>
+        <Suspense fallback={null}>
+          <CTA />
+        </Suspense>
+        <Suspense fallback={<ContactSkeleton />}>
+          <Contact />
+        </Suspense>
       </main>
       <Footer />
     </div>

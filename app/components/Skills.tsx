@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { StaticImageData } from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { motion } from "framer-motion";
 
 import AdonisJS from "@/public/adonis.svg";
@@ -286,13 +286,15 @@ const SkillCategory = ({ category, className = "" }: SkillCategoryProps) => (
             whileHover={{ rotate: [0, -10, 10, -10, 0] }}
             transition={{ duration: 0.5 }}
           >
-            <img
-              src={skillLogos[skill].src}
-              alt={`${skill} logo`}
-              width={20}
-              height={20}
-              className="w-4 h-4 sm:w-5 sm:h-5 object-contain mr-2"
-            />
+            <div className="relative w-4 h-4 sm:w-5 sm:h-5 mr-2">
+              <Image
+                src={skillLogos[skill]}
+                alt={`${skill} logo`}
+                fill
+                className="object-contain"
+                sizes="20px"
+              />
+            </div>
           </motion.div>
           {skill}
         </motion.span>
