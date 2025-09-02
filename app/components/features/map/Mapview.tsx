@@ -25,7 +25,7 @@ const MapView = () => {
   useEffect(() => {
     setIsMounted(true);
     // Fetch the GeoJSON data
-    import("../data/countries.json")
+    import("@/app/data/countries.json")
       .then((data) => {
         setMapData(data.default as FeatureCollection);
       })

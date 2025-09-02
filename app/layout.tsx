@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { PostHogProviderLazy } from "./PostHogProviderLazy";
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+});
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -60,7 +67,7 @@ export default function RootLayout({
         />
       </head>
       <PostHogProviderLazy>
-        <body className={`${inter.variable}`}>{children}</body>
+        <body className={`${inter.variable} ${spaceGrotesk.variable}`}>{children}</body>
       </PostHogProviderLazy>
     </html>
   );

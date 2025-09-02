@@ -32,7 +32,7 @@ const CTA = () => {
       opacity: 1,
       transition: {
         duration: 0.8,
-        ease: "easeInOut",
+        ease: "easeInOut" as const,
       },
     },
   };
@@ -44,7 +44,7 @@ const CTA = () => {
       opacity: 1,
       transition: {
         duration: 0.8,
-        ease: "easeInOut",
+        ease: "easeInOut" as const,
         delay: 0.5, // Wait for text to appear first
       },
     },
@@ -68,7 +68,7 @@ const CTA = () => {
       useSvgFile: true,
     },
     {
-      name: "Implement",
+      name: "Develop",
       icon: "M16 18l6-6-6-6M8 6l-6 6 6 6",
       useSvgFile: false,
     },
@@ -99,7 +99,7 @@ const CTA = () => {
       transition: {
         duration: markerDuration,
         delay: index * animationStep,
-        ease: "easeOut",
+        ease: "easeOut" as const,
       },
     },
   });
@@ -114,7 +114,7 @@ const CTA = () => {
       transition: {
         duration: markerDuration,
         delay: index * animationStep,
-        ease: "easeOut",
+        ease: "easeOut" as const,
       },
     },
   });
@@ -127,7 +127,7 @@ const CTA = () => {
       transition: {
         duration: markerDuration,
         delay: index * animationStep,
-        ease: "easeOut",
+        ease: "easeOut" as const,
       },
     },
   });
@@ -141,7 +141,7 @@ const CTA = () => {
       transition: {
         duration: baseDuration - staggerDelay,
         delay: index === 0 ? 0.6 : index * baseDuration + 0.4,
-        ease: "easeInOut",
+        ease: "easeInOut" as const,
       },
     },
   });
@@ -156,7 +156,7 @@ const CTA = () => {
       transition: {
         duration: baseDuration - staggerDelay,
         delay: index === 0 ? 0.6 : index * baseDuration + 0.4,
-        ease: "easeInOut",
+        ease: "easeInOut" as const,
       },
     },
   });
@@ -228,7 +228,7 @@ const CTA = () => {
                         transition: {
                           duration: lineDuration,
                           delay: index * animationStep + lineDelay, // Start after circle animation
-                          ease: "easeOut",
+                          ease: "easeOut" as const,
                         },
                       }}
                       viewport={{ once: true, amount: 0.5 }}
@@ -330,7 +330,7 @@ const CTA = () => {
                       transition: {
                         duration: lineDuration,
                         delay: index * animationStep + lineDelay, // Start after circle animation
-                        ease: "easeInOut",
+                        ease: "easeInOut" as const,
                       },
                     }}
                     viewport={{ once: true, amount: 0.2 }}
