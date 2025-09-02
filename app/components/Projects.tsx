@@ -137,8 +137,8 @@ const projects: Project[] = [
       "Analytics dashboard for call insights",
     ],
     metrics: [
-      { label: "Calls per Month", value: "500+" },
-      { label: "Calls Handled", value: "30%" },
+      { label: "Calls Handled per Month", value: "300+" },
+      { label: "Hours Saved per Month", value: "5+" },
     ],
     isFeatured: true,
   },
