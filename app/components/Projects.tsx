@@ -117,7 +117,7 @@ const projects: Project[] = [
         "React Router",
         "TanStack Query",
       ],
-      backend: ["Node.js", "Express", "TypeScript", "Prisma"],
+      backend: ["Node.js", "Express", "Prisma"],
       database: ["PostgreSQL", "Supabase"],
       other: ["Retell AI SDK", "Clover API", "Railway", "Docker"],
     },
