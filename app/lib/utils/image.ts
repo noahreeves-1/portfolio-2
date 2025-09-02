@@ -22,7 +22,7 @@ export function getBlurDataURL(color: string = '#f3f4f6'): string {
 /**
  * Image loader for optimization
  */
-export function imageLoader({ src, width, quality }: {
+export function imageLoader({ src }: {
   src: string;
   width: number;
   quality?: number;

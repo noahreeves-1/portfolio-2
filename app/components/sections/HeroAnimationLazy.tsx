@@ -7,7 +7,7 @@ import TorusKnotFallback from "./TorusKnotFallback";
 // Lazy load the HeroAnimation only when visible
 const HeroAnimation = dynamic(() => import("./HeroAnimation"), {
   ssr: false,
-  loading: () => <TorusKnotFallback primary="#5c6cff" secondary="#7c8cff" />,
+  loading: () => null, // No loading placeholder - clean transition
 });
 
 interface HeroAnimationLazyProps {
@@ -39,7 +39,7 @@ export default function HeroAnimationLazy({
       try {
         const canvas = document.createElement("canvas");
         return !!(canvas.getContext("webgl") || canvas.getContext("experimental-webgl"));
-      } catch (e) {
+      } catch {
         return false;
       }
     })();
@@ -94,9 +94,7 @@ export default function HeroAnimationLazy({
           speed={speed}
           intensity={intensity}
         />
-      ) : (
-        <TorusKnotFallback primary={primary} secondary={secondary} />
-      )}
+      ) : null}
     </div>
   );
 }

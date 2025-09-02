@@ -3,6 +3,7 @@
 import { useRef, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Environment, Preload } from "@react-three/drei";
+import * as THREE from "three";
 import TorusKnotHero from "./TorusKnotHero";
 import TorusKnotFallback from "./TorusKnotFallback";
 
@@ -25,7 +26,7 @@ const HeroAnimation = ({
   const [reducedMotion, setReducedMotion] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
-  const meshRef = useRef<any>(null);
+  const meshRef = useRef<THREE.Mesh & { setVisibility?: (visible: boolean) => void }>(null);
 
   // Check WebGL support and reduced motion preference
   useEffect(() => {
@@ -35,7 +36,7 @@ const HeroAnimation = ({
         const canvas = document.createElement("canvas");
         const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
         return !!gl;
-      } catch (e) {
+      } catch {
         return false;
       }
     };
@@ -164,7 +165,6 @@ const HeroAnimation = ({
         {/* Studio environment for realistic reflections */}
         <Environment 
           preset="studio" 
-          intensity={0.3}
           background={false}
         />
         <Preload all />

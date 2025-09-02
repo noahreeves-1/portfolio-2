@@ -25,7 +25,7 @@ export function formatDate(date: string | Date): string {
 /**
  * Debounce function to limit how often a function can be called
  */
-export function debounce<T extends (...args: any[]) => any>(
+export function debounce<T extends (...args: unknown[]) => unknown>(
   func: T,
   wait: number
 ): (...args: Parameters<T>) => void {
@@ -40,7 +40,7 @@ export function debounce<T extends (...args: any[]) => any>(
 /**
  * Throttle function to ensure a function is called at most once per interval
  */
-export function throttle<T extends (...args: any[]) => any>(
+export function throttle<T extends (...args: unknown[]) => unknown>(
   func: T,
   limit: number
 ): (...args: Parameters<T>) => void {

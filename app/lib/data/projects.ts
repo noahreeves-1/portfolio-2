@@ -11,7 +11,6 @@ import KnoxlabsInProgress from "@/public/knoxlabs-inprogress-screenshot.png";
 import ClearThinkerIntro from "@/public/clear-thinker-intro.png";
 import ClearThinkerGame from "@/public/clear-thinker-game.png";
 import AIVoiceAgentScreenshot from "@/public/ai-voice-agent-screenshot.png";
-import StealthProduct from "@/public/stealth-product.png";
 
 export const projects: Project[] = [
   {
@@ -244,35 +243,6 @@ export const projects: Project[] = [
     metrics: [
       { label: "Cost Savings", value: "15-20%" },
       { label: "Active Restaurants", value: "3" },
-    ],
-    isFeatured: false,
-  },
-  {
-    id: "stealth",
-    title: "AI Medical Coding Assistant",
-    description:
-      "Stealth-mode product streamlining medical coding and billing with intelligent automation and accuracy improvements.",
-    longDescription:
-      "Currently in development, this AI-powered platform is designed to transform medical coding efficiency. By analyzing clinical documentation and automatically suggesting appropriate billing codes, it reduces errors and accelerates the revenue cycle for healthcare providers.",
-    imageSrc: StealthProduct,
-    category: "Healthcare Tech",
-    techStack: {
-      frontend: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-      backend: ["Python", "FastAPI"],
-      database: ["PostgreSQL"],
-      other: ["OpenAI", "Healthcare APIs"],
-    },
-    simpleTechStack: ["Next.js", "Python", "PostgreSQL", "OpenAI"],
-    features: [
-      "Automated code suggestions from clinical notes",
-      "Real-time compliance checking",
-      "Integration with existing EMR systems",
-      "Audit trail and documentation",
-      "Performance analytics dashboard",
-    ],
-    metrics: [
-      { label: "Coding Accuracy", value: "95%+" },
-      { label: "Time Saved", value: "40%" },
     ],
     isFeatured: false,
   },

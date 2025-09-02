@@ -8,7 +8,6 @@ interface TorusKnotFallbackProps {
 
 const TorusKnotFallback = ({ 
   primary = "#1a1a2e",
-  secondary = "#00ffff",
   className = ""
 }: TorusKnotFallbackProps) => {
   return (

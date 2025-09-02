@@ -63,7 +63,7 @@ export async function sendContactEmail(
 
     // Send email
     try {
-      const { data, error } = await resend.emails.send({
+      const { error } = await resend.emails.send({
         from: "Portfolio Contact <onboarding@resend.dev>",
         to: [process.env.MY_EMAIL as string],
         subject: `New contact from ${name}`,

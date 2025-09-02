@@ -22,8 +22,6 @@ interface TorusKnotHeroProps {
 }
 
 const TorusKnotHero = ({
-  primary = "#5c6cff",
-  secondary = "#7c8cff",
   speed = 0.5,
   intensity = 0.8,
   enableParallax = true,
@@ -150,7 +148,7 @@ const TorusKnotHero = ({
   useEffect(() => {
     const mesh = meshRef.current;
     if (mesh) {
-      (mesh as any).setVisibility = (visible: boolean) => {
+      (mesh as Mesh & { setVisibility?: (visible: boolean) => void }).setVisibility = (visible: boolean) => {
         setIsVisible(visible);
       };
     }
