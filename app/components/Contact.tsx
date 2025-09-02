@@ -110,7 +110,7 @@ const Contact = () => {
 
   return (
     <section id="contact">
-      <div className="bg-[#fafafa] pt-16 md:pt-24">
+      <div className="bg-[#fafafa] py-16 md:py-24">
         <div className="max-w-5xl mx-auto px-4 md:px-6">
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 const SocialProof = () => {
@@ -83,51 +84,71 @@ const SocialProof = () => {
           className="w-16 h-12 md:w-16 md:h-12 flex items-center justify-center"
           variants={itemVariants}
         >
-          <img
-            src="/rnl.webp"
-            alt="RNL"
-            className="max-w-full max-h-full object-contain"
-          />
+          <div className="relative w-full h-full">
+            <Image
+              src="/rnl.webp"
+              alt="RNL"
+              fill
+              className="object-contain"
+              sizes="64px"
+            />
+          </div>
         </motion.div>
         <motion.div
           className="w-20 h-12 md:w-24 md:h-14 flex items-center justify-center"
           variants={itemVariants}
         >
-          <img
-            src="/business-expo-center.webp"
-            alt="Business Expo Center"
-            className="max-w-full max-h-full object-contain"
-          />
+          <div className="relative w-full h-full">
+            <Image
+              src="/business-expo-center.webp"
+              alt="Business Expo Center"
+              fill
+              className="object-contain"
+              sizes="96px"
+            />
+          </div>
         </motion.div>
         <motion.div
           className="w-20 h-12 md:w-24 md:h-14 flex items-center justify-center"
           variants={itemVariants}
         >
-          <img
-            src="/glass-doctor.webp"
-            alt="Glass Doctor"
-            className="max-w-full max-h-full object-contain"
-          />
+          <div className="relative w-full h-full">
+            <Image
+              src="/glass-doctor.webp"
+              alt="Glass Doctor"
+              fill
+              className="object-contain"
+              sizes="96px"
+            />
+          </div>
         </motion.div>
         <motion.div
           className="w-32 h-12 md:w-36 md:h-14 flex items-center justify-center"
           variants={itemVariants}
         >
-          <img
-            src="/Knoxlabs-logo-2024.svg"
-            alt="KnoxLabs"
-            className="max-w-full max-h-full object-contain"
-          />
+          <div className="relative w-full h-full">
+            <Image
+              src="/Knoxlabs-logo-2024.webp"
+              alt="KnoxLabs"
+              fill
+              className="object-contain"
+              sizes="144px"
+            />
+          </div>
         </motion.div>
         <motion.div
           className="w-28 h-24 md:w-32 md:h-24 flex items-center justify-center"
           variants={itemVariants}
         >
-          <img
-            src="/accenture.webp"
-            alt="Accenture"
-            className="max-w-full max-h-full object-contain"
-          />
+          <div className="relative w-full h-full">
+            <Image
+              src="/accenture.webp"
+              alt="Accenture"
+              fill
+              className="object-contain"
+              sizes="128px"
+            />
+          </div>
         </motion.div>
       </motion.div>
 

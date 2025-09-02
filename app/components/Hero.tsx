@@ -1,7 +1,20 @@
 "use client";
 
-import HeroAnimation from "./HeroAnimation";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
+import { Suspense } from "react";
+
+// Dynamic import with loading fallback
+const HeroAnimation = dynamic(() => import("./HeroAnimation"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-full flex items-center justify-center bg-gray-50/50 rounded-lg">
+      <div className="animate-pulse">
+        <div className="w-32 h-32 bg-gray-200 rounded-full" />
+      </div>
+    </div>
+  ),
+});
 
 const Hero = () => {
   return (
@@ -51,7 +64,17 @@ const Hero = () => {
           </motion.button>
         </div>
         <div className="w-full md:w-1/2 h-[300px] md:h-[400px] mt-8 md:mt-0">
-          <HeroAnimation />
+          <Suspense
+            fallback={
+              <div className="w-full h-full flex items-center justify-center">
+                <div className="animate-pulse">
+                  <div className="w-32 h-32 bg-gray-200 rounded-full" />
+                </div>
+              </div>
+            }
+          >
+            <HeroAnimation />
+          </Suspense>
         </div>
       </div>
     </div>

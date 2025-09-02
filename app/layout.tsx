@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { PostHogProvider } from "./providers";
+import { PostHogProviderLazy } from "./PostHogProviderLazy";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -59,9 +59,9 @@ export default function RootLayout({
           crossOrigin=""
         />
       </head>
-      <PostHogProvider>
+      <PostHogProviderLazy>
         <body className={`${inter.variable}`}>{children}</body>
-      </PostHogProvider>
+      </PostHogProviderLazy>
     </html>
   );
 }

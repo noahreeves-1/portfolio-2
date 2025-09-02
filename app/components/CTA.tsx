@@ -1,6 +1,7 @@
 "use client";
 
 import Preparation from "@/public/preparation.svg";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
@@ -164,7 +165,17 @@ const CTA = () => {
   // Helper function to render SVG icon
   const renderIcon = (step: (typeof sdlcSteps)[0]) => {
     if (step.useSvgFile) {
-      return <img src={step.icon} alt={step.name} width={24} height={24} />;
+      return (
+        <div className="relative w-6 h-6">
+          <Image
+            src={step.icon}
+            alt={step.name}
+            fill
+            className="object-contain"
+            sizes="24px"
+          />
+        </div>
+      );
     } else {
       return (
         <svg
@@ -376,8 +387,8 @@ const CTA = () => {
             viewport={{ once: true, amount: 0.3 }}
             variants={imageFadeIn}
           >
-            <img
-              src={Preparation.src}
+            <Image
+              src={Preparation}
               alt="Preparation"
               width={500}
               height={500}
