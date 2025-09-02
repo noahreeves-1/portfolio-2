@@ -41,12 +41,12 @@ export default function Home() {
         <Suspense fallback={null}>
           <WhoMe />
         </Suspense>
-        <div className="bg-gray-50">
-          <DiagonalDivider direction="top" color="#f9fafb" backgroundColor="white" />
+        <div className="bg-gray-800">
+          <DiagonalDivider direction="top" color="#1f2937" backgroundColor="white" />
           <Suspense fallback={null}>
             <Projects />
           </Suspense>
-          <DiagonalDivider direction="bottom" color="#f9fafb" backgroundColor="white" />
+          <DiagonalDivider direction="bottom" color="#1f2937" backgroundColor="white" />
         </div>
         <Suspense fallback={null}>
           <Skills />

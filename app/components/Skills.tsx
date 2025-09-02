@@ -22,7 +22,7 @@ import SharePoint from "@/public/sharepoint.webp";
 import Slack from "@/public/slack.svg";
 import Jira from "@/public/jira.svg";
 import Git from "@/public/git.svg";
-import GitHub from "@/public/github.svg";
+import GitHub from "@/public/github-logo.png";
 import Docker from "@/public/docker.svg";
 import TypeScript from "@/public/typescript.svg";
 import ReactLogo from "@/public/react.svg";
@@ -44,7 +44,7 @@ import CssLogo from "@/public/css.svg";
 import PrismaLogo from "@/public/prisma.svg";
 import ElasticsearchLogo from "@/public/elasticsearch.svg";
 import RedisLogo from "@/public/redis.svg";
-import CloudinaryLogo from "@/public/cloudinary.svg";
+import CloudinaryLogo from "@/public/cloudinary-logo-dark.webp";
 import DigitalOceanLogo from "@/public/digitalocean.svg";
 import OpenAILogo from "@/public/openai.webp";
 import GoogleMapsLogo from "@/public/google-maps.svg";
@@ -67,9 +67,24 @@ import PuppeteerLogo from "@/public/puppeteer.webp";
 import ResendLogo from "@/public/resend.svg";
 import NeonLogo from "@/public/neon-logo.png";
 import DrizzleLogo from "@/public/drizzle-icon.png";
+import ViteLogo from "@/public/vite-logo.png";
+import ReactRouterLogo from "@/public/react-router-logo.svg";
+import ShadcnLogo from "@/public/shadcn-logo.png";
+import AWSS3Logo from "@/public/aws-s3-logo.png";
+import FramerMotionLogo from "@/public/motion-dev-logo.png";
+import NextAuthLogo from "@/public/next-auth-logo.png";
+import PostHogLogo from "@/public/posthog-logo.png";
+import RadixLogo from "@/public/radix-logo.png";
+import TurbopackLogo from "@/public/turbopack-logo.png";
+import VitestLogo from "@/public/vitest-logo.svg";
+import ReactTestingLibraryLogo from "@/public/react-testing-library.png";
+import FastAPILogo from "@/public/fastapi-logo.png";
+import RetellAILogo from "@/public/retell-ai-logo.png";
+import CloverLogo from "@/public/clover-logo.png";
+import NetlifyLogo from "@/public/netlify-logo.svg";
 
 // Map skill names to their corresponding logos
-const skillLogos: Record<string, StaticImageData> = {
+export const skillLogos: Record<string, StaticImageData> = {
   AdonisJS,
   ExpressJS,
   NX,
@@ -112,6 +127,7 @@ const skillLogos: Record<string, StaticImageData> = {
   Elasticsearch: ElasticsearchLogo,
   Redis: RedisLogo,
   Cloudinary: CloudinaryLogo,
+  cloudinary: CloudinaryLogo,
   "Digital Ocean": DigitalOceanLogo,
   OpenAI: OpenAILogo,
   "Google Maps API": GoogleMapsLogo,
@@ -133,6 +149,26 @@ const skillLogos: Record<string, StaticImageData> = {
   Resend: ResendLogo,
   Neon: NeonLogo,
   "Drizzle ORM": DrizzleLogo,
+  Drizzle: DrizzleLogo,
+  Vite: ViteLogo,
+  "React Router": ReactRouterLogo,
+  shadcn: ShadcnLogo,
+  "AWS S3": AWSS3Logo,
+  "Framer Motion": FramerMotionLogo,
+  NextAuth: NextAuthLogo,
+  PostHog: PostHogLogo,
+  Radix: RadixLogo,
+  "TanStack Query": ReactQueryLogo,
+  Turbopack: TurbopackLogo,
+  "AI SDK": VercelLogo,
+  "Vercel AI SDK": VercelLogo,
+  "AI Gateway": VercelLogo,
+  Vitest: VitestLogo,
+  "React Testing Library": ReactTestingLibraryLogo,
+  FastAPI: FastAPILogo,
+  "Retell AI SDK": RetellAILogo,
+  "Clover API": CloverLogo,
+  Netlify: NetlifyLogo
 };
 
 // Define category type
@@ -147,6 +183,7 @@ const preferredTechStack: SkillCategoryType[] = [
     name: "Main Technologies",
     skills: [
       "TypeScript",
+      "Python",
       "React",
       "React Native",
       "Expo",
@@ -155,7 +192,6 @@ const preferredTechStack: SkillCategoryType[] = [
       "Node.js",
       "Express",
       "NestJS",
-      "Firebase",
       "PostgreSQL",
       "Docker",
     ],
@@ -165,49 +201,70 @@ const preferredTechStack: SkillCategoryType[] = [
 // Define other technologies
 const otherTechCategories: SkillCategoryType[] = [
   {
+    name: "Frontend Libraries & Tools",
+    skills: [
+      "Tailwind CSS",
+      "Radix",
+      "shadcn",
+      "React Router",
+      "TanStack Query",
+      "Redux",
+      "Framer Motion",
+      "Vite",
+    ],
+  },
+  {
     name: "Languages & Styling",
-    skills: ["Python", "JavaScript", "HTML", "CSS"],
+    skills: ["TypeScript", "Python", "JavaScript", "HTML", "CSS"],
   },
   {
     name: "Databases & Backend",
     skills: [
-      "MySQL",
-      "SQL Server",
+      "Express",
+      "FastAPI",
       "Supabase",
       "Neon",
       "MongoDB",
       "Elasticsearch",
       "Redis",
       "Cloudinary",
-      "Pinecone",
       "Prisma",
       "Drizzle ORM",
-      "TypeORM",
+      "NextAuth",
+      "OpenSaaS",
+    ],
+  },
+  {
+    name: "Cloud & DevOps",
+    skills: ["Docker", "Vercel", "Netlify", "Fly.io", "Digital Ocean", "Railway", "Git", "GitHub"],
+  },
+  {
+    name: "APIs & Services",
+    skills: [
+      "OpenAI",
+      "Stripe",
+      "SendGrid",
+      "Google Maps API",
+      "Resend",
+      "AWS S3",
+      "PostHog",
+      "Firebase",
+      "Retell AI SDK",
+      "Clover API",
     ],
   },
   {
     name: "Data & Analytics",
-    skills: ["SQL", "Hadoop", "R", "PowerBI", "Tableau"],
+    skills: ["SQL", "PowerBI", "Tableau"],
+  },
+  {
+    name: "Testing & Build Tools",
+    skills: ["Vitest", "React Testing Library", "Turbopack"],
   },
   {
     name: "Web Scraping",
     skills: ["Apify", "Crawlee", "Puppeteer"],
   },
-  // {
-  //   name: "Cloud & DevOps",
-  //   skills: ["Digital Ocean", "Fly.io", "Vercel", "Railway", "Git", "GitHub"],
-  // },
-  // {
-  //   name: "APIs & Services",
-  //   skills: [
-  //     "OpenAI",
-  //     "Stripe",
-  //     "SendGrid",
-  //     "Twilio",
-  //     "Resend",
-  //     "Google Maps API",
-  //   ],
-  // },
   // {
   //   name: "Automation & RPA",
   //   skills: ["BluePrism"],
@@ -265,9 +322,9 @@ interface SkillCategoryProps {
 const SkillCategory = ({ category, className = "" }: SkillCategoryProps) => (
   <motion.div
     variants={categoryVariants}
-    className={`bg-gray-800 rounded-xl p-6 shadow-md border border-gray-600 hover:shadow-lg transition-shadow ${className}`}
+    className={`bg-gray-800 rounded-xl p-5 shadow-md border border-gray-600 hover:shadow-xl transition-all duration-300 mb-6 ${className}`}
   >
-    <h4 className="text-lg font-medium mb-4 pb-2 border-b border-gray-600 text-white">
+    <h4 className="text-lg font-medium mb-3 pb-2 border-b border-gray-600 text-white">
       {category.name}
     </h4>
     <motion.div
@@ -286,7 +343,7 @@ const SkillCategory = ({ category, className = "" }: SkillCategoryProps) => (
             boxShadow: "0px 5px 10px rgba(0,0,0,0.2)",
             y: -5,
           }}
-          className="inline-flex items-center px-3.5 sm:px-4 py-1.5 sm:py-2 bg-gray-600 text-gray-200 rounded-full text-sm sm:text-base font-medium border border-gray-500 hover:bg-gray-500 transition-colors"
+          className="inline-flex items-center px-3 sm:px-3.5 py-1.5 sm:py-2 bg-gray-600 text-gray-200 rounded-full text-sm font-medium border border-gray-500 hover:bg-gray-500 transition-colors"
         >
           <motion.div
             whileHover={{ rotate: [0, -10, 10, -10, 0] }}
@@ -352,7 +409,7 @@ const Skills = () => {
         {/* Other Technologies */}
         <div>
           <motion.h3
-            className="font-semibold mb-4 text-center text-gray-500 text-lg"
+            className="font-semibold mb-4 text-center text-gray-500 text-xl md:text-3xl"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -360,75 +417,25 @@ const Skills = () => {
           >
             Additional Skills
           </motion.h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Left Column */}
-            <div className="space-y-8">
-              {/* Languages & Styling */}
+          <div className="columns-1 md:columns-2 lg:columns-3 gap-6">
+            {otherTechCategories.map((category, index) => (
               <motion.div
+                key={category.name}
                 variants={categoryVariants}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 transition={{
+                  delay: index * 0.05,
                   duration: 0.5,
                   type: "spring",
                   stiffness: 80,
                 }}
+                className="break-inside-avoid"
               >
-                <SkillCategory category={otherTechCategories[0]} />
+                <SkillCategory category={category} />
               </motion.div>
-
-              {/* Web Scraping - positioned under Languages & Styling */}
-              <motion.div
-                variants={categoryVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                transition={{
-                  delay: 0.1,
-                  duration: 0.5,
-                  type: "spring",
-                  stiffness: 80,
-                }}
-              >
-                <SkillCategory category={otherTechCategories[3]} />
-              </motion.div>
-            </div>
-
-            {/* Middle Column */}
-            <motion.div
-              variants={categoryVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              transition={{
-                delay: 0.2,
-                duration: 0.5,
-                type: "spring",
-                stiffness: 80,
-              }}
-            >
-              {/* Databases & Backend */}
-              <SkillCategory category={otherTechCategories[1]} />
-            </motion.div>
-
-            {/* Right Column */}
-            <motion.div
-              variants={categoryVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              transition={{
-                delay: 0.3,
-                duration: 0.5,
-                type: "spring",
-                stiffness: 80,
-              }}
-              className="md:col-span-1"
-            >
-              {/* Data & Analytics */}
-              <SkillCategory category={otherTechCategories[2]} />
-            </motion.div>
+            ))}
           </div>
         </div>
       </div>
