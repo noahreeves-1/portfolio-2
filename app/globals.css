@@ -1,5 +1,26 @@
 @import "tailwindcss";
 
+/* Diagonal Divider Styles */
+.diagonal-divider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.diagonal-divider-top {
+  margin-top: -1px;
+}
+
+.diagonal-divider-bottom {
+  margin-bottom: -1px;
+}
+
+@media (max-width: 768px) {
+  .diagonal-divider {
+    height: 60px !important;
+  }
+}
+
 /* Carousel Styles */
 .carousel-container {
   height: 40px;
