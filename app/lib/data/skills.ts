@@ -187,7 +187,7 @@ export const primarySkills: Skill[] = [
   { name: "Firebase", icon: skillLogos["Firebase"] },
 ];
 
-// Define other technology categories
+// Define other technology categories - ordered by importance
 export const otherTechCategories: SkillCategory[] = [
   {
     name: "Frontend Libraries & Tools",
@@ -201,10 +201,6 @@ export const otherTechCategories: SkillCategory[] = [
       "Framer Motion",
       "Vite",
     ],
-  },
-  {
-    name: "Languages & Styling",
-    skills: ["TypeScript", "Python", "JavaScript", "HTML", "CSS"],
   },
   {
     name: "Databases & Backend",
@@ -222,6 +218,10 @@ export const otherTechCategories: SkillCategory[] = [
       "NextAuth",
       "OpenSaaS",
     ],
+  },
+  {
+    name: "Languages & Styling",
+    skills: ["TypeScript", "Python", "JavaScript", "HTML", "CSS"],
   },
   {
     name: "Cloud & DevOps",
@@ -243,12 +243,12 @@ export const otherTechCategories: SkillCategory[] = [
     ],
   },
   {
-    name: "Data & Analytics",
-    skills: ["SQL", "PowerBI", "Tableau"],
-  },
-  {
     name: "Testing & Build Tools",
     skills: ["Vitest", "React Testing Library", "Turbopack"],
+  },
+  {
+    name: "Data & Analytics",
+    skills: ["SQL", "PowerBI", "Tableau"],
   },
   {
     name: "Web Scraping",

@@ -47,7 +47,7 @@ const ProjectHeroCard = ({
       onMouseLeave={() => setIsHovered(false)}
       onClick={onViewDetails}
     >
-      <div className="relative h-64 md:h-80 bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
+      <div className="relative h-48 md:h-64 bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
         <motion.div
           className="relative w-full h-full"
           animate={{ scale: isHovered ? 1.1 : 1 }}
@@ -69,10 +69,10 @@ const ProjectHeroCard = ({
         </div>
       </div>
 
-      <div className="p-6 md:p-8">
+      <div className="p-5 md:p-6">
         <div className="flex items-start justify-between mb-4">
           <div className="flex-1">
-            <h3 className="text-2xl font-semibold text-gray-900 mb-2">
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">
               {title}
             </h3>
             <p className="text-gray-600 leading-relaxed">{description}</p>
@@ -94,7 +94,7 @@ const ProjectHeroCard = ({
           <div className="flex gap-6 mb-6">
             {metrics.map((metric, index) => (
               <div key={index}>
-                <div className="text-2xl font-bold text-gray-900">
+                <div className="text-xl font-bold text-gray-900">
                   {metric.value}
                 </div>
                 <div className="text-sm text-gray-500">{metric.label}</div>
@@ -107,13 +107,13 @@ const ProjectHeroCard = ({
           {techStack.slice(0, 5).map((tech, index) => (
             <span
               key={index}
-              className="px-3 py-1 bg-gray-50 border border-gray-200 rounded-full text-sm text-gray-700"
+              className="px-2.5 py-0.5 bg-gray-50 border border-gray-200 rounded-full text-sm text-gray-700"
             >
               {tech}
             </span>
           ))}
           {techStack.length > 5 && (
-            <span className="px-3 py-1 bg-gray-50 border border-gray-200 rounded-full text-sm text-gray-500">
+            <span className="px-2.5 py-0.5 bg-gray-50 border border-gray-200 rounded-full text-sm text-gray-500">
               +{techStack.length - 5} more
             </span>
           )}
@@ -125,7 +125,7 @@ const ProjectHeroCard = ({
               e.stopPropagation();
               onViewDetails();
             }}
-            className="px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
+            className="px-3.5 py-1.5 bg-gray-900 text-white text-sm rounded-lg hover:bg-gray-800 transition-colors"
           >
             View Details
           </button>
@@ -135,7 +135,7 @@ const ProjectHeroCard = ({
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+              className="px-3.5 py-1.5 border border-gray-300 text-gray-700 text-sm rounded-lg hover:bg-gray-50 transition-colors"
             >
               Live Site →
             </a>
@@ -146,7 +146,7 @@ const ProjectHeroCard = ({
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+              className="px-3.5 py-1.5 border border-gray-300 text-gray-700 text-sm rounded-lg hover:bg-gray-50 transition-colors"
             >
               GitHub
             </a>
