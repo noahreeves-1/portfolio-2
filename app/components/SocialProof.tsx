@@ -110,7 +110,17 @@ const SocialProof = () => {
           />
         </motion.div>
         <motion.div
-          className="w-20 h-18 md:w-18 md:h-18 flex items-center justify-center"
+          className="w-32 h-12 md:w-36 md:h-14 flex items-center justify-center"
+          variants={itemVariants}
+        >
+          <img
+            src="/Knoxlabs-logo-2024.svg"
+            alt="KnoxLabs"
+            className="max-w-full max-h-full object-contain"
+          />
+        </motion.div>
+        <motion.div
+          className="w-28 h-24 md:w-32 md:h-24 flex items-center justify-center"
           variants={itemVariants}
         >
           <img
@@ -119,13 +129,6 @@ const SocialProof = () => {
             className="max-w-full max-h-full object-contain"
           />
         </motion.div>
-        {/* <div className="w-16 h-12 md:w-18 md:h-14 flex items-center justify-center">
-          <img
-            src="/muffin.webp"
-            alt="Muffin"
-            className="max-w-full max-h-full object-contain"
-          />
-        </div> */}
       </motion.div>
 
       {/* Left-to-Right Carousel (visible on all screens) */}
