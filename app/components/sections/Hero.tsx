@@ -86,7 +86,8 @@ const Hero = () => {
       <div className="flex flex-col md:flex-row max-w-5xl mx-auto px-4 md:px-6 relative">
         <div className="w-full md:w-1/2 pt-8 md:pt-24">
           <motion.div
-            className="text-4xl md:text-5xl lg:text-6xl font-bold pb-2 md:pb-4 text-white font-space-grotesk"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold pb-2 md:pb-4 text-white"
+            style={{ fontFamily: 'var(--font-space-grotesk)' }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
