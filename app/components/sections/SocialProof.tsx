@@ -8,7 +8,7 @@ const SocialProof = () => {
   return (
     <div className="mt-8 md:mt-12">
       <AnimatedHeading>
-        TRUSTED BY SMALL BUSINESSES AND FORTUNE 500 COMPANIES
+        TRUSTED BY FORTUNE 500 AND SMALL BUSINESSES
       </AnimatedHeading>
       <AnimatedLogosContainer>
         {trustedCompanies.map((company) => (

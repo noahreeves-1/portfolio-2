@@ -1,31 +1,13 @@
 // Company data extracted from SocialProof component
 export const trustedCompanies = [
   {
-    name: "RNL",
-    logo: "/rnl.webp",
-    width: "w-16",
-    height: "h-12",
-    mdWidth: "md:w-16",
-    mdHeight: "md:h-12",
-    sizes: "64px"
-  },
-  {
-    name: "Business Expo Center",
-    logo: "/business-expo-center.webp",
-    width: "w-20",
-    height: "h-12",
-    mdWidth: "md:w-24",
-    mdHeight: "md:h-14",
-    sizes: "96px"
-  },
-  {
-    name: "Glass Doctor",
-    logo: "/glass-doctor.webp",
-    width: "w-20",
-    height: "h-12",
-    mdWidth: "md:w-24",
-    mdHeight: "md:h-14",
-    sizes: "96px"
+    name: "Accenture",
+    logo: "/accenture.webp",
+    width: "w-28",
+    height: "h-24",
+    mdWidth: "md:w-32",
+    mdHeight: "md:h-24",
+    sizes: "128px"
   },
   {
     name: "KnoxLabs",
@@ -37,13 +19,31 @@ export const trustedCompanies = [
     sizes: "144px"
   },
   {
-    name: "Accenture",
-    logo: "/accenture.webp",
-    width: "w-28",
-    height: "h-24",
-    mdWidth: "md:w-32",
-    mdHeight: "md:h-24",
-    sizes: "128px"
+    name: "RNL",
+    logo: "/rnl.webp",
+    width: "w-16",
+    height: "h-12",
+    mdWidth: "md:w-16",
+    mdHeight: "md:h-12",
+    sizes: "64px"
+  },
+  {
+    name: "Glass Doctor",
+    logo: "/glass-doctor.webp",
+    width: "w-20",
+    height: "h-12",
+    mdWidth: "md:w-24",
+    mdHeight: "md:h-14",
+    sizes: "96px"
+  },
+  {
+    name: "Business Expo Center",
+    logo: "/business-expo-center.webp",
+    width: "w-20",
+    height: "h-12",
+    mdWidth: "md:w-24",
+    mdHeight: "md:h-14",
+    sizes: "96px"
   }
 ];
 
