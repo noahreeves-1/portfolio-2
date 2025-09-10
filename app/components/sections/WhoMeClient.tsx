@@ -58,10 +58,16 @@ export function AnimatedText({
   );
 }
 
-export function AnimatedBottomText({ children }: { children: ReactNode }) {
+export function AnimatedBottomText({ 
+  children, 
+  className = ""
+}: { 
+  children: ReactNode; 
+  className?: string;
+}) {
   return (
     <motion.p
-      className="text-center max-w-lg mx-auto mt-6 mb-32 font-semibold"
+      className={`text-center max-w-lg mx-auto mt-6 mb-32 font-semibold ${className}`}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: 0.5 }}

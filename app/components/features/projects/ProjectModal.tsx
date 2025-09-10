@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Image, { StaticImageData } from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { skillLogos } from "@/app/lib/data/skills";
+import { getTechBadgeClasses } from "@/app/lib/utils/techColors";
 
 interface ProjectModalProps {
   isOpen: boolean;
@@ -230,7 +231,7 @@ const ProjectModal = ({ isOpen, onClose, project }: ProjectModalProps) => {
                             {project.techStack.frontend.map((tech, idx) => (
                               <span
                                 key={idx}
-                                className="px-3 py-1.5 bg-gray-50 border border-gray-200 rounded-full text-sm text-gray-700 flex items-center gap-1.5"
+                                className={`px-3 py-1.5 border rounded-full text-sm flex items-center gap-1.5 ${getTechBadgeClasses(tech)}`}
                               >
                                 {getTechLogo(tech) && (
                                   <div className="relative w-4 h-4">
@@ -259,7 +260,7 @@ const ProjectModal = ({ isOpen, onClose, project }: ProjectModalProps) => {
                             {project.techStack.backend.map((tech, idx) => (
                               <span
                                 key={idx}
-                                className="px-3 py-1.5 bg-gray-50 border border-gray-200 rounded-full text-sm text-gray-700 flex items-center gap-1.5"
+                                className={`px-3 py-1.5 border rounded-full text-sm flex items-center gap-1.5 ${getTechBadgeClasses(tech)}`}
                               >
                                 {getTechLogo(tech) && (
                                   <div className="relative w-4 h-4">
@@ -288,7 +289,7 @@ const ProjectModal = ({ isOpen, onClose, project }: ProjectModalProps) => {
                             {project.techStack.database.map((tech, idx) => (
                               <span
                                 key={idx}
-                                className="px-3 py-1.5 bg-gray-50 border border-gray-200 rounded-full text-sm text-gray-700 flex items-center gap-1.5"
+                                className={`px-3 py-1.5 border rounded-full text-sm flex items-center gap-1.5 ${getTechBadgeClasses(tech)}`}
                               >
                                 {getTechLogo(tech) && (
                                   <div className="relative w-4 h-4">
@@ -317,7 +318,7 @@ const ProjectModal = ({ isOpen, onClose, project }: ProjectModalProps) => {
                             {project.techStack.other.map((tech, idx) => (
                               <span
                                 key={idx}
-                                className="px-3 py-1.5 bg-gray-50 border border-gray-200 rounded-full text-sm text-gray-700 flex items-center gap-1.5"
+                                className={`px-3 py-1.5 border rounded-full text-sm flex items-center gap-1.5 ${getTechBadgeClasses(tech)}`}
                               >
                                 {getTechLogo(tech) && (
                                   <div className="relative w-4 h-4">

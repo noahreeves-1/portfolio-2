@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import { motion } from "framer-motion";
+import { getTechBadgeClasses } from "@/app/lib/utils/techColors";
 
 interface ProjectHeroCardProps {
   title: string;
@@ -63,7 +64,7 @@ const ProjectHeroCard = ({
           />
         </motion.div>
         <div className="absolute top-4 left-4">
-          <span className="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-medium text-gray-700">
+          <span className="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-mono font-medium text-gray-700 tracking-wider uppercase">
             {category}
           </span>
         </div>
@@ -72,10 +73,10 @@ const ProjectHeroCard = ({
       <div className="p-5 md:p-6">
         <div className="flex items-start justify-between mb-4">
           <div className="flex-1">
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">
+            <h3 className="text-2xl font-display font-semibold text-gray-900 mb-2 tracking-tight">
               {title}
             </h3>
-            <p className="text-gray-600 leading-relaxed">{description}</p>
+            <p className="text-gray-600 leading-relaxed font-light">{description}</p>
           </div>
           {logoSrc && (
             <div className="relative w-12 h-12 ml-4">
@@ -94,10 +95,10 @@ const ProjectHeroCard = ({
           <div className="flex gap-6 mb-6">
             {metrics.map((metric, index) => (
               <div key={index}>
-                <div className="text-xl font-bold text-gray-900">
+                <div className="text-2xl font-display font-bold text-gray-900 tracking-tight">
                   {metric.value}
                 </div>
-                <div className="text-sm text-gray-500">{metric.label}</div>
+                <div className="text-xs text-gray-500 font-medium tracking-wide">{metric.label}</div>
               </div>
             ))}
           </div>
@@ -107,13 +108,13 @@ const ProjectHeroCard = ({
           {techStack.slice(0, 5).map((tech, index) => (
             <span
               key={index}
-              className="px-2.5 py-0.5 bg-gray-50 border border-gray-200 rounded-full text-sm text-gray-700"
+              className={`px-3 py-1 border rounded-full text-xs font-medium tracking-wide ${getTechBadgeClasses(tech)}`}
             >
               {tech}
             </span>
           ))}
           {techStack.length > 5 && (
-            <span className="px-2.5 py-0.5 bg-gray-50 border border-gray-200 rounded-full text-sm text-gray-500">
+            <span className="px-3 py-1 bg-gray-50 border border-gray-200 rounded-full text-xs font-medium text-gray-500 tracking-wide">
               +{techStack.length - 5} more
             </span>
           )}
@@ -125,7 +126,7 @@ const ProjectHeroCard = ({
               e.stopPropagation();
               onViewDetails();
             }}
-            className="px-3.5 py-1.5 bg-gray-900 text-white text-sm rounded-lg hover:bg-gray-800 transition-colors"
+            className="px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-lg hover:bg-gray-800 transition-colors tracking-wide"
           >
             View Details
           </button>
@@ -135,7 +136,7 @@ const ProjectHeroCard = ({
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="px-3.5 py-1.5 border border-gray-300 text-gray-700 text-sm rounded-lg hover:bg-gray-50 transition-colors"
+              className="px-4 py-2 border border-gray-300 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors tracking-wide"
             >
               Live Site →
             </a>
@@ -146,7 +147,7 @@ const ProjectHeroCard = ({
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="px-3.5 py-1.5 border border-gray-300 text-gray-700 text-sm rounded-lg hover:bg-gray-50 transition-colors"
+              className="px-4 py-2 border border-gray-300 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors tracking-wide"
             >
               GitHub
             </a>

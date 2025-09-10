@@ -15,8 +15,8 @@ const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const featuredProjects = projects.filter((p) => p.isFeatured);
-  const additionalProjects = projects.filter((p) => !p.isFeatured);
+  const professionalProjects = projects.filter((p) => p.type === 'professional');
+  const personalProjects = projects.filter((p) => p.type === 'personal');
 
   const handleViewDetails = (project: Project) => {
     setSelectedProject(project);
@@ -34,40 +34,45 @@ const Projects = () => {
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
         <div className="text-center mb-8 md:mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
-            Featured Work
+            My Work
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            {`A collection of my most impactful projects showcasing enterprise
+            {`A collection of professional client work and personal projects showcasing enterprise
             solutions, AI innovations, and full-stack development`}
           </p>
         </div>
 
-        {/* Featured Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-          {featuredProjects.map((project) => (
-            <ProjectHeroCard
-              key={project.id}
-              title={project.title}
-              description={project.description}
-              imageSrc={project.imageSrc}
-              category={project.category}
-              techStack={project.simpleTechStack || []}
-              features={project.features}
-              metrics={project.metrics}
-              websiteUrl={project.websiteUrl}
-              githubUrl={project.githubUrl}
-              onViewDetails={() => handleViewDetails(project)}
-            />
-          ))}
+        {/* For Others Section */}
+        <div className="mb-12">
+          <h3 className="text-2xl md:text-3xl font-bold text-white text-center mb-8">
+            For Others
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {professionalProjects.map((project) => (
+              <ProjectHeroCard
+                key={project.id}
+                title={project.title}
+                description={project.description}
+                imageSrc={project.imageSrc}
+                category={project.category}
+                techStack={project.simpleTechStack || []}
+                features={project.features}
+                metrics={project.metrics}
+                websiteUrl={project.websiteUrl}
+                githubUrl={project.githubUrl}
+                onViewDetails={() => handleViewDetails(project)}
+              />
+            ))}
+          </div>
         </div>
 
-        {/* Additional Projects */}
+        {/* For Myself Section */}
         <div className="mb-8">
-          <h3 className="text-2xl md:text-3xl font-bold text-white text-center mb-6">
-            More Projects
+          <h3 className="text-2xl md:text-3xl font-bold text-white text-center mb-8">
+            For Myself
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {additionalProjects.map((project) => (
+            {personalProjects.map((project) => (
               <ProjectGridCard
                 key={project.id}
                 title={project.title}

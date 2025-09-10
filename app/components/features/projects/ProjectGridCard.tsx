@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import { motion } from "framer-motion";
+import { getTechBadgeClasses } from "@/app/lib/utils/techColors";
 
 interface ProjectGridCardProps {
   title: string;
@@ -75,7 +76,7 @@ const ProjectGridCard = ({
           {techStack.slice(0, 3).map((tech, idx) => (
             <span
               key={idx}
-              className="px-2.5 py-1 bg-gray-50 border border-gray-200 rounded-full text-xs text-gray-600"
+              className={`px-2.5 py-1 border rounded-full text-xs font-medium ${getTechBadgeClasses(tech)}`}
             >
               {tech}
             </span>

@@ -10,40 +10,40 @@ export const trustedCompanies = [
     sizes: "128px"
   },
   {
-    name: "KnoxLabs",
-    logo: "/Knoxlabs-logo-2024.webp",
-    width: "w-32",
+    name: "Salesforce",
+    logo: "/salesforce-logo.png",
+    width: "w-24",
     height: "h-12",
-    mdWidth: "md:w-36",
+    mdWidth: "md:w-28",
     mdHeight: "md:h-14",
-    sizes: "144px"
+    sizes: "112px"
   },
   {
-    name: "RNL",
-    logo: "/rnl.webp",
-    width: "w-16",
-    height: "h-12",
-    mdWidth: "md:w-16",
+    name: "AT&T",
+    logo: "/att.webp",
+    width: "w-20",
+    height: "h-10",
+    mdWidth: "md:w-24",
     mdHeight: "md:h-12",
-    sizes: "64px"
-  },
-  {
-    name: "Glass Doctor",
-    logo: "/glass-doctor.webp",
-    width: "w-20",
-    height: "h-12",
-    mdWidth: "md:w-24",
-    mdHeight: "md:h-14",
     sizes: "96px"
   },
   {
-    name: "Business Expo Center",
-    logo: "/business-expo-center.webp",
-    width: "w-20",
+    name: "Ecolab",
+    logo: "/ecolab.webp",
+    width: "w-24",
+    height: "h-10",
+    mdWidth: "md:w-28",
+    mdHeight: "md:h-12",
+    sizes: "112px"
+  },
+  {
+    name: "Navy Federal Credit Union",
+    logo: "/navy-federal-credit-union.svg",
+    width: "w-28",
     height: "h-12",
-    mdWidth: "md:w-24",
+    mdWidth: "md:w-32",
     mdHeight: "md:h-14",
-    sizes: "96px"
+    sizes: "128px"
   }
 ];
 

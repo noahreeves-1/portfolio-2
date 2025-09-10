@@ -8,7 +8,7 @@ const rotatingPhrases = [
   { text: "traveled the world", color: "text-orange-400" },
   { text: "learned to code", color: "text-emerald-400" },
   { text: "launched a startup", color: "text-blue-400" },
-  { text: "built for others", color: "text-purple-400" },
+  { text: "built apps for others", color: "text-purple-400" },
 ];
 
 const Hero = () => {
@@ -27,85 +27,77 @@ const Hero = () => {
       aria-hidden="true"
     >
       {/* Grid line pattern */}
-      <div 
+      <div
         className="absolute inset-0"
         style={{
           backgroundImage: `
             linear-gradient(rgba(14, 165, 233, 0.15) 1px, transparent 1px),
             linear-gradient(90deg, rgba(14, 165, 233, 0.15) 1px, transparent 1px)
           `,
-          backgroundSize: '30px 30px',
-          opacity: 0.4
+          backgroundSize: "30px 30px",
+          opacity: 0.4,
         }}
       />
-      
+
       {/* Noise texture overlay */}
-      <div 
+      <div
         className="absolute inset-0"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E")`,
         }}
       />
-      
+
       {/* Subtle radial gradient behind torus knot */}
-      <div 
+      <div
         className="absolute inset-0 opacity-10"
         style={{
-          background: 'radial-gradient(circle at 70% 50%, rgba(14, 165, 233, 0.3), transparent 50%)'
+          background:
+            "radial-gradient(circle at 70% 50%, rgba(14, 165, 233, 0.3), transparent 50%)",
         }}
       />
-      
+
       {/* Floating tech keywords - top left */}
-      <motion.div 
+      <motion.div
         className="absolute top-24 left-8 hidden md:block"
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.7, delay: 1.2 }}
       >
-        <div className="text-xs text-gray-500 font-mono space-y-1">
-          <div className="opacity-50">{`// Full Stack Developer`}</div>
-          <div className="opacity-40">{`// Systems Architect`}</div>
-          <div className="opacity-30">{`// Startup Founder`}</div>
+        <div className="text-xs text-gray-500 font-mono space-y-1.5 tracking-wider">
+          <div className="opacity-50">{`Full Stack Developer`}</div>
+          <div className="opacity-40">{`Systems Architect`}</div>
+          <div className="opacity-30">{`Startup Founder`}</div>
         </div>
       </motion.div>
-      
+
       {/* Floating tech keywords - top right */}
-      <motion.div 
+      <motion.div
         className="absolute top-24 right-8 hidden md:block text-right"
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.7, delay: 1.4 }}
       >
-        <div className="text-xs text-gray-500 font-mono space-y-1">
+        <div className="text-xs text-gray-500 font-mono space-y-1.5 tracking-wider">
           <div className="opacity-30">TypeScript</div>
           <div className="opacity-40">React / Next.js</div>
           <div className="opacity-50">Node.js / Python</div>
         </div>
       </motion.div>
-      
+
       <div className="flex flex-col md:flex-row max-w-5xl mx-auto px-4 md:px-6 relative">
         <div className="w-full md:w-1/2 pt-8 md:pt-24">
           <motion.div
-            className="text-4xl md:text-5xl lg:text-6xl font-bold pb-2 md:pb-4 text-white"
-            style={{ fontFamily: 'var(--font-space-grotesk)' }}
+            className="text-display-hero font-display font-bold pb-2 md:pb-4 text-white"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
             {`Hi, I'm `}
-            <span className="relative inline-block">
-              Noah!
-              <motion.span
-                className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-blue-400 to-cyan-400"
-                initial={{ width: 0 }}
-                animate={{ width: "100%" }}
-                transition={{ duration: 0.5, delay: 0.9 }}
-              />
-            </span>
+            <span className="relative inline-block">Noah!</span>
           </motion.div>
 
           <motion.div
-            className="text-xl md:text-2xl font-medium text-gray-400 max-w-md"
+            className="text-body-lg md:text-2xl font-light text-gray-300 max-w-md tracking-wide"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.5 }}
@@ -117,7 +109,7 @@ const Hero = () => {
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={currentPhraseIndex}
-                    className="inline-block whitespace-nowrap"
+                    className="inline-block whitespace-nowrap font-medium"
                     initial={{ y: -10, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     exit={{ y: 10, opacity: 0 }}
@@ -126,7 +118,7 @@ const Hero = () => {
                     <span className={rotatingPhrases[currentPhraseIndex].color}>
                       {rotatingPhrases[currentPhraseIndex].text}
                     </span>
-                    <span className="text-gray-400">.</span>
+                    <span className="text-gray-300">.</span>
                   </motion.span>
                 </AnimatePresence>
               </span>
@@ -134,7 +126,7 @@ const Hero = () => {
           </motion.div>
 
           <motion.button
-            className="bg-transparent border border-blue-500 text-blue-400 px-4 py-2 mt-4 md:mt-6 rounded-md text-sm font-medium hover:bg-blue-500 hover:text-white transition-all duration-200 hover:cursor-pointer"
+            className="bg-transparent border border-blue-500 text-blue-400 px-5 py-2.5 mt-6 md:mt-8 rounded-lg text-sm font-medium hover:bg-blue-500 hover:text-white transition-all duration-200 hover:cursor-pointer tracking-wide"
             onClick={() => {
               document.getElementById("contact")?.scrollIntoView({
                 behavior: "smooth",
@@ -146,34 +138,49 @@ const Hero = () => {
           >
             {`Get in touch`}
           </motion.button>
+
+          <motion.div
+            className="flex items-center gap-2 text-[10px] md:text-xs text-gray-500 mt-3"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.7, delay: 1.2 }}
+          >
+            <span>Technology Advisory</span>
+            <span className="text-gray-600">•</span>
+            <span>Full-Stack Development</span>
+            <span className="text-gray-600">•</span>
+            <span>Digital Marketing</span>
+          </motion.div>
         </div>
         <div className="w-full md:w-1/2 h-[300px] md:h-[400px] mt-8 md:mt-0">
           <HeroAnimationLazy speed={0.3} intensity={0.8} />
         </div>
       </div>
-      
+
       {/* Scroll indicator */}
-      <motion.div 
+      <motion.div
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
         initial={{ opacity: 0, y: -10 }}
-        animate={{ 
+        animate={{
           opacity: 0.4,
-          y: [0, 10, 0]
+          y: [0, 10, 0],
         }}
-        transition={{ 
+        transition={{
           opacity: { duration: 0.7, delay: 1.5 },
-          y: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+          y: { duration: 2, repeat: Infinity, ease: "easeInOut" },
         }}
       >
         <div className="flex flex-col items-center">
-          <span className="text-xs text-gray-400 mb-2 font-mono">scroll</span>
-          <svg 
-            className="w-5 h-5 text-gray-400" 
-            fill="none" 
-            strokeLinecap="round" 
-            strokeLinejoin="round" 
-            strokeWidth="2" 
-            viewBox="0 0 24 24" 
+          <span className="text-xs text-gray-400 mb-2 font-mono tracking-wider uppercase">
+            scroll
+          </span>
+          <svg
+            className="w-5 h-5 text-gray-400"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
             stroke="currentColor"
           >
             <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
