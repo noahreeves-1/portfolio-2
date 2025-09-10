@@ -59,28 +59,28 @@ export default function NavbarClient({ isMobile = false }: NavbarClientProps) {
           <div className="ml-10 flex items-center space-x-4">
             <Link
               href="#about-me"
-              className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+              className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium tracking-wide"
               onClick={(e) => handleScrollToSection(e, "#about-me")}
             >
               About Me
             </Link>
             <Link
               href="#projects"
-              className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+              className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium tracking-wide"
               onClick={(e) => handleScrollToSection(e, "#projects")}
             >
               Projects
             </Link>
             <Link
               href="#skills"
-              className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+              className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium tracking-wide"
               onClick={(e) => handleScrollToSection(e, "#skills")}
             >
               Skills
             </Link>
             <Link
               href="#mapview"
-              className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+              className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium tracking-wide"
               onClick={(e) => handleScrollToSection(e, "#mapview")}
             >
               Countries
@@ -91,7 +91,7 @@ export default function NavbarClient({ isMobile = false }: NavbarClientProps) {
           <div className="ml-4 flex items-center">
             <Link
               href="#contact"
-              className="ml-3 px-4 py-2 rounded-md text-sm font-medium text-white bg-black hover:bg-blue-700 focus:outline-none"
+              className="ml-3 px-5 py-2.5 rounded-lg text-sm font-semibold text-white bg-gray-900 hover:bg-gray-800 focus:outline-none tracking-wide transition-colors"
               onClick={(e) => handleScrollToSection(e, "#contact")}
             >
               Get in touch

@@ -11,15 +11,16 @@ import KnoxlabsInProgress from "@/public/knoxlabs-inprogress-screenshot.png";
 import ClearThinkerIntro from "@/public/clear-thinker-intro.png";
 import ClearThinkerGame from "@/public/clear-thinker-game.png";
 import AIVoiceAgentScreenshot from "@/public/ai-voice-agent-screenshot.png";
+import ReelMatchmakerScreenshot from "@/public/stealth-product.png";
 
 export const projects: Project[] = [
   {
     id: "knoxlabs",
-    title: "KnoxLabs",
+    title: "Order Management Platform",
     description:
-      "Custom internal tool for Meta Partner VR resellers, streamlining sales and operations with unified order management.",
+      "Custom enterprise platform for VR resellers featuring HubSpot integration and embeddable web modules for white-label vendor solutions.",
     longDescription:
-      "A bespoke web platform designed specifically for VR resellers' unique workflow needs. Consolidates multiple manual processes into a single, efficient dashboard that manages the entire order lifecycle from initial contact to fulfillment.",
+      "A comprehensive B2B platform that streamlines order management for VR resellers while providing reusable web components for vendor integration. Features HubSpot CRM synchronization and modular architecture that enables partners to embed order functionality directly into their websites via HTML script tags, creating seamless white-label experiences.",
     imageSrc: KnoxlabsScreenshot,
     additionalImages: [
       {
@@ -28,6 +29,7 @@ export const projects: Project[] = [
       },
     ],
     category: "Enterprise",
+    type: "professional" as const,
     techStack: {
       frontend: [
         "React",
@@ -42,13 +44,15 @@ export const projects: Project[] = [
       database: ["PostgreSQL", "Supabase"],
       other: ["AWS S3", "Resend", "Docker", "Fly.io", "PostHog"],
     },
-    simpleTechStack: ["React", "NestJS", "PostgreSQL", "Supabase", "Fly.io"],
+    simpleTechStack: ["React", "NestJS", "PostgreSQL"],
     features: [
-      "Unified order management system",
-      "Real-time inventory tracking",
-      "Automated workflow notifications",
-      "Custom reporting and analytics",
-      "Role-based access control",
+      "Unified order management with HubSpot CRM integration",
+      "Embeddable web modules for vendor white-labeling",
+      "Real-time inventory tracking across multiple partners",
+      "Automated workflow notifications and status updates",
+      "Custom reporting and analytics dashboard",
+      "Role-based access control and permissions",
+      "Reusable components for website integration"
     ],
     metrics: [
       { label: "FTE hours/week saved", value: "~10" },
@@ -65,6 +69,7 @@ export const projects: Project[] = [
       "CallHound AI provides businesses with an intelligent voice agent that seamlessly handles customer inquiries. Built with Retell AI's advanced voice technology and integrated with Clover POS systems for real-time sync, it answers questions about store hours, location, and product inventory, ensuring customers always get accurate, up-to-date information while freeing staff to focus on in-person service.",
     imageSrc: AIVoiceAgentScreenshot,
     category: "AI Voice Technology",
+    type: "professional" as const,
     techStack: {
       frontend: [
         "React",
@@ -109,6 +114,7 @@ export const projects: Project[] = [
       "Speed Scribe AI leverages advanced language models to create personalized ACT prep experiences. The platform adapts to each student's learning pace and identifies weak areas, providing targeted practice to maximize score improvements.",
     imageSrc: SpeedScribeScreenshot,
     category: "EdTech",
+    type: "professional" as const,
     techStack: {
       frontend: [
         "Next.js",
@@ -122,7 +128,7 @@ export const projects: Project[] = [
       database: ["PostgreSQL", "Neon"],
       other: ["OpenAI", "AI SDK", "TanStack Query", "Vercel"],
     },
-    simpleTechStack: ["Next.js", "PostgreSQL", "OpenAI", "Neon", "NextAuth"],
+    simpleTechStack: ["Next.js", "PostgreSQL", "OpenAI"],
     features: [
       "Adaptive learning algorithm",
       "Real ACT passage analysis",
@@ -152,6 +158,7 @@ export const projects: Project[] = [
       },
     ],
     category: "Education",
+    type: "professional" as const,
     techStack: {
       frontend: [
         "Next.js",
@@ -165,7 +172,7 @@ export const projects: Project[] = [
       database: ["Redis"],
       other: ["Vitest", "React Testing Library", "Turbopack", "Vercel"],
     },
-    simpleTechStack: ["Next.js", "AI SDK", "Redis", "TypeScript"],
+    simpleTechStack: ["Next.js", "OpenAI", "Redis", "TypeScript"],
     features: [
       "AI-generated tweets with embedded logical fallacies",
       "Progressive difficulty levels",
@@ -189,6 +196,7 @@ export const projects: Project[] = [
     imageSrc: StoryDiscountDashboard,
     logoSrc: StoryDiscountLogo,
     category: "SaaS",
+    type: "personal" as const,
     techStack: {
       frontend: ["TypeScript", "React", "Tailwind CSS", "OpenSaaS"],
       backend: ["Node.js", "OpenSaaS"],
@@ -226,6 +234,7 @@ export const projects: Project[] = [
     imageSrc: MuffinApp,
     logoSrc: MuffinLogo,
     category: "Marketplace",
+    type: "personal" as const,
     techStack: {
       frontend: ["React Native", "Expo", "TypeScript", "TanStack Query"],
       backend: ["Node.js", "NestJS", "TypeORM"],
@@ -244,6 +253,44 @@ export const projects: Project[] = [
       { label: "Cost Savings", value: "15-20%" },
       { label: "Active Restaurants", value: "3" },
     ],
+    isFeatured: false,
+  },
+  {
+    id: "reelmatchmaker",
+    title: "Reel Matchmaker",
+    description:
+      "AI-powered movie discovery platform that learns from your ratings and bookmarks to recommend personalized film selections.",
+    longDescription:
+      "Reel Matchmaker combines machine learning with user preference data to create highly personalized movie recommendations. Users rate and bookmark films they enjoy, and the AI analyzes viewing patterns, genre preferences, and rating behaviors to suggest new movies that match their taste profile.",
+    imageSrc: ReelMatchmakerScreenshot,
+    category: "Entertainment",
+    type: "personal" as const,
+    techStack: {
+      frontend: [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Framer Motion",
+      ],
+      backend: ["Next.js API Routes", "AI SDK"],
+      database: ["PostgreSQL", "Prisma"],
+      other: ["OpenAI", "TMDB API", "Vercel", "NextAuth"],
+    },
+    simpleTechStack: ["Next.js", "TypeScript", "PostgreSQL", "OpenAI", "TMDB"],
+    features: [
+      "AI-powered movie recommendation engine",
+      "Personal rating and bookmarking system",
+      "Advanced filtering by genre, year, and ratings",
+      "Movie details with cast, crew, and reviews",
+      "Personalized watchlist management",
+      "Recommendation accuracy improvement over time",
+    ],
+    metrics: [
+      { label: "Movies in Database", value: "500K+" },
+      { label: "Recommendation Accuracy", value: "85%+" },
+    ],
+    websiteUrl: "https://reel-matchmaker.vercel.app/",
     isFeatured: false,
   },
 ];

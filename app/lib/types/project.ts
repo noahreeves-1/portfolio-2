@@ -12,6 +12,7 @@ export interface Project {
   }[];
   logoSrc?: StaticImageData | string;
   category: string;
+  type: 'professional' | 'personal';
   techStack: {
     frontend?: string[];
     backend?: string[];

@@ -13,7 +13,7 @@ const Navbar = () => {
           <div className="flex-shrink-0 flex items-center">
             <Link href="/" className="flex items-center">
               <Image src={Rocket} alt="Rocket" className="w-6 h-6" />
-              <span className="ml-4 text-xl font-bold text-gray-800">Noah</span>
+              <span className="ml-4 text-2xl font-display font-semibold text-gray-900 tracking-tight">Noah</span>
             </Link>
           </div>
 
