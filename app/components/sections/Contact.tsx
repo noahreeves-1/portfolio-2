@@ -116,9 +116,10 @@ const Contact = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Get In Touch
             </h2>
-            {/* <p className="text-slate-500 max-w-2xl mx-auto">
-            {`Send me a message! Don't be shy :)`}
-          </p> */}
+            <p className="text-slate-500 max-w-lg mx-auto">
+              I&apos;d love to hear from you! Whether you have a project in mind or
+              just want to connect, drop me a message.
+            </p>
           </div>
 
           <div className="max-w-xl mx-auto bg-white p-6 md:p-8 rounded-lg shadow-sm border border-slate-100">

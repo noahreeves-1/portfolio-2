@@ -10,15 +10,15 @@ import KnoxlabsScreenshot from "@/public/knoxlabs-screenshot.png";
 import KnoxlabsInProgress from "@/public/knoxlabs-inprogress-screenshot.png";
 import ClearThinkerIntro from "@/public/clear-thinker-intro.png";
 import ClearThinkerGame from "@/public/clear-thinker-game.png";
-import AIVoiceAgentScreenshot from "@/public/ai-voice-agent-screenshot.png";
+import CallhoundScreenshot from "@/public/callhound-ai-screenshot.png";
 import ReelMatchmakerScreenshot from "@/public/stealth-product.png";
 
 export const projects: Project[] = [
   {
     id: "knoxlabs",
-    title: "Order Management Platform",
+    title: "Knoxlabs - B2B Orders",
     description:
-      "Custom enterprise platform for VR resellers featuring HubSpot integration and embeddable web modules for white-label vendor solutions.",
+      "Bespoke order management platform with HubSpot integration and embeddable web modules for white-label vendor solutions.",
     longDescription:
       "A comprehensive B2B platform that streamlines order management for VR resellers while providing reusable web components for vendor integration. Features HubSpot CRM synchronization and modular architecture that enables partners to embed order functionality directly into their websites via HTML script tags, creating seamless white-label experiences.",
     imageSrc: KnoxlabsScreenshot,
@@ -42,9 +42,9 @@ export const projects: Project[] = [
       ],
       backend: ["NestJS", "Prisma"],
       database: ["PostgreSQL", "Supabase"],
-      other: ["AWS S3", "Resend", "Docker", "Fly.io", "PostHog"],
+      other: ["AWS S3", "Resend", "Docker", "Fly.io", "PostHog", "HubSpot", "Vercel"],
     },
-    simpleTechStack: ["React", "NestJS", "PostgreSQL"],
+    simpleTechStack: ["React", "NestJS", "PostgreSQL", "AWS"],
     features: [
       "Unified order management with HubSpot CRM integration",
       "Embeddable web modules for vendor white-labeling",
@@ -52,7 +52,7 @@ export const projects: Project[] = [
       "Automated workflow notifications and status updates",
       "Custom reporting and analytics dashboard",
       "Role-based access control and permissions",
-      "Reusable components for website integration"
+      "Reusable components for website integration",
     ],
     metrics: [
       { label: "FTE hours/week saved", value: "~10" },
@@ -62,12 +62,12 @@ export const projects: Project[] = [
   },
   {
     id: "callhound",
-    title: "AI Customer Service Voice Agent",
+    title: "Callhound - AI Receptionist",
     description:
-      "AI-powered voice agent that handles customer service calls about store hours, location, and product availability 24/7.",
+      "AI receptionist for retail businesses and blue collar service providers. Never miss another customer call - available 24/7 for just $129/month.",
     longDescription:
-      "CallHound AI provides businesses with an intelligent voice agent that seamlessly handles customer inquiries. Built with Retell AI's advanced voice technology and integrated with Clover POS systems for real-time sync, it answers questions about store hours, location, and product inventory, ensuring customers always get accurate, up-to-date information while freeing staff to focus on in-person service.",
-    imageSrc: AIVoiceAgentScreenshot,
+      "Callhound AI is your dedicated AI receptionist designed specifically for retail businesses and blue collar business owners like plumbers and electricians who often work alone. Built with Retell AI's advanced voice technology and integrated with Clover POS systems for real-time sync, Callhound answers calls 24/7, handles questions about store hours, location, and product inventory, and ensures customers always get accurate information while you focus on your work. With 95% less cost than hiring staff, Callhound picks up what matters - because your customers deserve more than voicemail.",
+    imageSrc: CallhoundScreenshot,
     category: "AI Voice Technology",
     type: "professional" as const,
     techStack: {
@@ -101,8 +101,9 @@ export const projects: Project[] = [
     ],
     metrics: [
       { label: "Calls Handled per Month", value: "300+" },
-      { label: "Hours Saved per Month", value: "5+" },
+      { label: "Cost Savings", value: "95%" },
     ],
+    websiteUrl: "https://callhound.ai",
     isFeatured: true,
   },
   {
@@ -187,6 +188,37 @@ export const projects: Project[] = [
     isFeatured: false,
   },
   {
+    id: "muffin",
+    title: "Muffin",
+    description:
+      "Native B2B food marketplace app connecting restaurants with suppliers, optimizing procurement through group buying.",
+    longDescription:
+      "Muffin revolutionizes restaurant supply chain management by aggregating demand across multiple businesses to negotiate better prices with suppliers. The platform handles everything from order placement to delivery scheduling, reducing costs while improving reliability.",
+    imageSrc: MuffinApp,
+    logoSrc: MuffinLogo,
+    category: "Marketplace",
+    type: "personal" as const,
+    techStack: {
+      frontend: ["React Native", "Expo", "TypeScript", "TanStack Query"],
+      backend: ["Node.js", "NestJS", "TypeORM"],
+      database: ["MongoDB", "Redis"],
+      other: ["Twilio", "Google Maps API", "Firebase"],
+    },
+    simpleTechStack: ["React Native", "NestJS", "MongoDB", "Expo"],
+    features: [
+      "Group buying for better prices",
+      "Real-time inventory management",
+      "Automated reordering system",
+      "Delivery route optimization",
+      "Supplier performance analytics",
+    ],
+    metrics: [
+      { label: "Cost Savings", value: "15-20%" },
+      { label: "Active Restaurants", value: "3" },
+    ],
+    isFeatured: false,
+  },
+  {
     id: "storydiscount",
     title: "StoryDiscount",
     description:
@@ -222,37 +254,6 @@ export const projects: Project[] = [
       { label: "Scans/Month", value: "100+" },
     ],
     websiteUrl: "https://storydiscount.com",
-    isFeatured: false,
-  },
-  {
-    id: "muffin",
-    title: "Muffin",
-    description:
-      "Native B2B food marketplace app connecting restaurants with suppliers, optimizing procurement through group buying.",
-    longDescription:
-      "Muffin revolutionizes restaurant supply chain management by aggregating demand across multiple businesses to negotiate better prices with suppliers. The platform handles everything from order placement to delivery scheduling, reducing costs while improving reliability.",
-    imageSrc: MuffinApp,
-    logoSrc: MuffinLogo,
-    category: "Marketplace",
-    type: "personal" as const,
-    techStack: {
-      frontend: ["React Native", "Expo", "TypeScript", "TanStack Query"],
-      backend: ["Node.js", "NestJS", "TypeORM"],
-      database: ["MongoDB", "Redis"],
-      other: ["Twilio", "Google Maps API", "Firebase"],
-    },
-    simpleTechStack: ["React Native", "NestJS", "MongoDB", "Expo"],
-    features: [
-      "Group buying for better prices",
-      "Real-time inventory management",
-      "Automated reordering system",
-      "Delivery route optimization",
-      "Supplier performance analytics",
-    ],
-    metrics: [
-      { label: "Cost Savings", value: "15-20%" },
-      { label: "Active Restaurants", value: "3" },
-    ],
     isFeatured: false,
   },
   {

@@ -72,7 +72,7 @@ const ProjectModal = ({ isOpen, onClose, project }: ProjectModalProps) => {
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="fixed inset-x-4 top-[50%] translate-y-[-50%] md:inset-x-auto md:left-[50%] md:translate-x-[-50%] max-w-4xl max-h-[90vh] bg-white rounded-2xl shadow-2xl z-50 overflow-hidden"
+            className="fixed left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] w-[calc(100%-2rem)] max-w-[896px] max-h-[90vh] bg-white rounded-2xl shadow-2xl z-50 overflow-hidden sm:w-[calc(100%-4rem)] md:w-[896px]"
           >
             <div className="relative max-h-[90vh] overflow-y-auto">
               <button
