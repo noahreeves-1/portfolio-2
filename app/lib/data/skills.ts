@@ -78,6 +78,7 @@ import FastAPILogo from "@/public/fastapi-logo.png";
 import RetellAILogo from "@/public/retell-ai-logo.png";
 import CloverLogo from "@/public/clover-logo.png";
 import NetlifyLogo from "@/public/netlify-logo.svg";
+import HubSpotLogo from "@/public/hubspot-logo.png";
 
 // Map skill names to their corresponding logos
 export const skillLogos: Record<string, StaticImageData> = {
@@ -158,6 +159,7 @@ export const skillLogos: Record<string, StaticImageData> = {
   "Retell AI SDK": RetellAILogo,
   "Clover API": CloverLogo,
   Netlify: NetlifyLogo,
+  HubSpot: HubSpotLogo,
 };
 
 export interface Skill {

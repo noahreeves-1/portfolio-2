@@ -373,11 +373,19 @@ const CTA = () => {
             variants={textFadeIn}
           >
             <h2 className="text-3xl md:text-5xl font-semibold mb-4 md:mb-6">
-              {`Let's create something amazing together`}
-              <span className="text-gray-500">-from idea to execution.</span>
+              {`Website, Mobile App, or AI?`}
             </h2>
             <p className="text-gray-500 text-lg">
-              {`As a life-long learner, I'm always looking for new challenges and opportunities to grow and expand my skillset. Let's talk!`}
+              {`With over 3 years of experience in software engineering and my background in consulting, I can take an idea from concept to reality. Check out my latest launch: `}
+              <a 
+                href="https://callhound.ai" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-blue-500 hover:text-blue-600 underline font-medium"
+              >
+                Callhound AI
+              </a>
+              {` - an AI receptionist for businesses.`}
             </p>
           </motion.div>
           <motion.div
