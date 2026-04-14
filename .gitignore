@@ -43,3 +43,7 @@ next-env.d.ts
 # cloudflare
 wrangler.toml
 .wrangler/
+
+# private working notes
+raw-experience-transcript.md
+new-design.md

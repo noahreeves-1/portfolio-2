@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     "I fix what's broken and build what's next. 12M-row pipelines, 40-hour stabilizations, $600K B2B order flows. Book a consultation.",
 };
 
-export default function Home() {
+export default function V2Page() {
   return (
     <div className="v2-scope dark min-h-screen bg-zinc-950 text-zinc-100 antialiased">
       <NavbarV2 />
