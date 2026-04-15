@@ -22,32 +22,17 @@ export function HeroV2() {
         refresh={false}
       />
 
-      <div className="pointer-events-none absolute inset-x-0 top-24 opacity-60">
-        <ScrollVelocityContainer>
-          <ScrollVelocityRow
-            baseVelocity={4}
-            direction={1}
-            className="font-display text-6xl font-bold tracking-tighter text-white/5 sm:text-7xl md:text-8xl"
-          >
-            {VELOCITY_WORDS.map((word, i) => (
-              <span key={i} className="mx-8">
-                {word} ·
-              </span>
-            ))}
-          </ScrollVelocityRow>
-        </ScrollVelocityContainer>
-      </div>
-
-      <div className="relative z-10 mx-auto flex max-w-5xl flex-1 flex-col items-center px-6 text-center">
-        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-violet-400/20 bg-violet-500/5 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-violet-200 backdrop-blur-sm">
-          <span className="h-1.5 w-1.5 rounded-full bg-violet-400 shadow-[0_0_8px_#a78bfa]" />
+      <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center px-6 text-center">
+        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[color:var(--color-accent)]/30 bg-[color:var(--color-accent)]/5 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-[color:var(--color-accent-soft)] backdrop-blur-sm">
+          <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-accent)] shadow-[0_0_8px_var(--color-accent)]" />
+          <span className="h-1 w-1 rounded-full bg-[var(--color-accent-gold)]" />
           Product & Rescue Engineer
         </div>
 
         <h1 className="font-display text-5xl font-semibold leading-[1.05] tracking-tighter text-white sm:text-6xl md:text-7xl lg:text-8xl">
           I fix what&apos;s broken.
           <br />
-          <span className="bg-gradient-to-b from-violet-200 via-violet-300 to-violet-500 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-b from-[color:var(--color-accent-soft)] via-[color:var(--color-accent-muted)] to-[color:var(--color-accent-deep)] bg-clip-text text-transparent">
             I build what&apos;s next.
           </span>
         </h1>
@@ -59,7 +44,7 @@ export function HeroV2() {
         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
           <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
             <ShimmerButton
-              shimmerColor="#c4b5fd"
+              shimmerColor="var(--color-accent-gold-soft)"
               background="rgba(15, 12, 29, 1)"
               className="px-8 py-4 text-base font-semibold"
             >
@@ -89,6 +74,22 @@ export function HeroV2() {
               </span>
             ))}
           </div>
+        </div>
+
+        <div className="pointer-events-none mt-16 w-screen opacity-60">
+          <ScrollVelocityContainer>
+            <ScrollVelocityRow
+              baseVelocity={4}
+              direction={1}
+              className="font-display text-6xl font-bold tracking-tighter text-white/5 sm:text-7xl md:text-8xl"
+            >
+              {VELOCITY_WORDS.map((word, i) => (
+                <span key={i} className="mx-8">
+                  {word} ·
+                </span>
+              ))}
+            </ScrollVelocityRow>
+          </ScrollVelocityContainer>
         </div>
       </div>
 

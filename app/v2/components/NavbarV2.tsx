@@ -38,7 +38,7 @@ export function NavbarV2() {
             className="font-display text-xl font-semibold tracking-tight text-white"
           >
             Noah
-            <span className="ml-1 inline-block h-1.5 w-1.5 rounded-full bg-violet-400" />
+            <span className="ml-1 inline-block h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]" />
           </a>
 
           <div className="hidden items-center gap-8 md:flex">
@@ -55,7 +55,7 @@ export function NavbarV2() {
               href={CALENDLY_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition-all hover:border-violet-400/50 hover:bg-white/10 hover:text-violet-200"
+              className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition-all hover:border-[color:var(--color-accent)]/50 hover:bg-white/10 hover:text-[color:var(--color-accent-soft)]"
             >
               Book a Call
             </a>
@@ -108,7 +108,7 @@ export function NavbarV2() {
             href={CALENDLY_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 rounded-full border border-violet-400/40 bg-violet-500/10 px-6 py-3 text-lg font-medium text-violet-100"
+            className="mt-4 rounded-full border border-[color:var(--color-accent)]/40 bg-[color:var(--color-accent)]/10 px-6 py-3 text-lg font-medium text-[color:var(--color-accent-soft)]"
             onClick={() => setMenuOpen(false)}
           >
             Book a Call

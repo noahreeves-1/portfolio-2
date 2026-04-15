@@ -53,8 +53,8 @@ export function RescueBento() {
             <BentoRescueCard
               project={primary}
               className="col-span-3 lg:col-span-2"
-              gradientFrom="#a78bfa"
-              gradientTo="#ec4899"
+              gradientFrom="var(--color-accent)"
+              gradientTo="var(--color-accent-muted)"
             />
           )}
           {secondary && (
@@ -90,7 +90,7 @@ function BentoRescueCard({
       gradientSize={260}
       gradientFrom={gradientFrom}
       gradientTo={gradientTo}
-      gradientColor="#a78bfa"
+      gradientColor="var(--color-accent)"
       gradientOpacity={0.35}
     >
       <div className="flex h-full flex-col gap-8 p-8 md:p-10">
@@ -101,7 +101,7 @@ function BentoRescueCard({
               {project.client} · Rescue
             </div>
             {project.url && (
-              <span className="inline-flex items-center gap-1 text-xs text-zinc-500 transition-colors group-hover:text-violet-300">
+              <span className="inline-flex items-center gap-1 text-xs text-zinc-500 transition-colors group-hover:text-[color:var(--color-accent-gold)]">
                 Visit
                 <svg
                   viewBox="0 0 24 24"
@@ -135,7 +135,7 @@ function BentoRescueCard({
               {project.name}
             </h3>
           </div>
-          <p className="mt-3 text-lg font-medium text-violet-200 md:text-xl">
+          <p className="mt-3 text-lg font-medium text-[color:var(--color-accent-soft)] md:text-xl">
             {project.tagline}
           </p>
         </div>
@@ -143,7 +143,7 @@ function BentoRescueCard({
         <ul className="flex flex-1 flex-col gap-3 text-sm text-zinc-300 md:text-base">
           {project.beats.map((beat) => (
             <li key={beat} className="flex items-start gap-3 leading-relaxed">
-              <span className="mt-2 block h-1 w-1 shrink-0 rounded-full bg-violet-400" />
+              <span className="mt-2 block h-1 w-1 shrink-0 rounded-full bg-[var(--color-accent)]" />
               <span>{beat}</span>
             </li>
           ))}

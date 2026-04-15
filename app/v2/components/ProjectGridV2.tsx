@@ -110,9 +110,9 @@ function ProductCard({ project }: { project: RescueProject }) {
     <MagicCard
       className="group h-full rounded-2xl"
       gradientSize={220}
-      gradientFrom="#a78bfa"
+      gradientFrom="var(--color-accent)"
       gradientTo="#22d3ee"
-      gradientColor="#a78bfa"
+      gradientColor="var(--color-accent)"
       gradientOpacity={0.28}
     >
       <div className="flex h-full min-h-[22rem] flex-col gap-6 p-8">
@@ -124,7 +124,7 @@ function ProductCard({ project }: { project: RescueProject }) {
               {project.client}
             </span>
             {project.url && (
-              <span className="inline-flex items-center gap-1 text-[0.65rem] uppercase tracking-wider text-zinc-500 transition-colors group-hover:text-violet-300">
+              <span className="inline-flex items-center gap-1 text-[0.65rem] uppercase tracking-wider text-zinc-500 transition-colors group-hover:text-[color:var(--color-accent-gold)]">
                 Visit
                 <ArrowIcon />
               </span>
@@ -139,7 +139,7 @@ function ProductCard({ project }: { project: RescueProject }) {
           <ul className="mt-4 space-y-2 text-sm text-zinc-400">
             {project.beats.slice(0, 2).map((beat) => (
               <li key={beat} className="flex items-start gap-2">
-                <span className="mt-2 block h-1 w-1 shrink-0 rounded-full bg-violet-400" />
+                <span className="mt-2 block h-1 w-1 shrink-0 rounded-full bg-[var(--color-accent)]" />
                 <span>{beat}</span>
               </li>
             ))}
@@ -185,7 +185,7 @@ function FoundationCard({ project }: { project: RescueProject }) {
           {project.client}
         </span>
         {project.url ? (
-          <span className="inline-flex items-center gap-1 text-[0.65rem] uppercase tracking-wider text-zinc-500 transition-colors group-hover:text-violet-300">
+          <span className="inline-flex items-center gap-1 text-[0.65rem] uppercase tracking-wider text-zinc-500 transition-colors group-hover:text-[color:var(--color-accent-gold)]">
             Visit
             <ArrowIcon />
           </span>

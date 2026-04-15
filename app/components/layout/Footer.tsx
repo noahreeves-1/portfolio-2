@@ -6,7 +6,7 @@ const Footer = () => {
     <section className="bg-black text-white">
       <div className="flex flex-row justify-between items-center p-4">
         <div>
-          <p>© 2025 Noah Kim</p>
+          <p>© {new Date().getFullYear()} Noah Kim</p>
         </div>
         <div className="flex flex-row justify-end items-center gap-4">
           <div>

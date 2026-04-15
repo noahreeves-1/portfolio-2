@@ -16,6 +16,16 @@ const GeoJSON = dynamic(
   { ssr: false }
 );
 
+const CircleMarker = dynamic(
+  () => import("react-leaflet").then((mod) => mod.CircleMarker),
+  { ssr: false }
+);
+
+const Tooltip = dynamic(
+  () => import("react-leaflet").then((mod) => mod.Tooltip),
+  { ssr: false }
+);
+
 const HIGHLIGHTED_COUNTRIES = new Set([
   "South Korea",
   "Japan",
@@ -27,6 +37,7 @@ const HIGHLIGHTED_COUNTRIES = new Set([
   "France",
   "Italy",
   "Netherlands",
+  "Poland",
   "Czech Republic",
   "Cambodia",
   "Thailand",
@@ -34,6 +45,8 @@ const HIGHLIGHTED_COUNTRIES = new Set([
   "Malaysia",
   "Vietnam",
   "Philippines",
+  "Brazil",
+  "Argentina",
 ]);
 
 interface MapViewProps {
@@ -51,15 +64,17 @@ const THEME_COLORS = {
   dark: {
     background: "transparent",
     stroke: "rgba(255,255,255,0.08)",
-    highlight: "#a78bfa",
+    highlight: "#3b82f6",
     base: "#1f2937",
   },
 } as const;
 
+const USA_MARKER_COORDS: [number, number] = [39.8283, -98.5795];
+
 const MapView = ({ theme = "light", hideChrome = false }: MapViewProps) => {
   const [isMounted, setIsMounted] = useState(false);
   const [mapData, setMapData] = useState<FeatureCollection | null>(null);
-  const [zoomLevel, setZoomLevel] = useState(3);
+  const [zoomLevel, setZoomLevel] = useState(2);
 
   useEffect(() => {
     setIsMounted(true);
@@ -73,7 +88,7 @@ const MapView = ({ theme = "light", hideChrome = false }: MapViewProps) => {
 
     const handleResize = () => {
       const isMobile = window.innerWidth < 768;
-      setZoomLevel(isMobile ? 2 : 3);
+      setZoomLevel(isMobile ? 1 : 2);
     };
 
     handleResize();
@@ -135,6 +150,21 @@ const MapView = ({ theme = "light", hideChrome = false }: MapViewProps) => {
             onEachFeature={countryNamePopup}
           />
         )}
+        <CircleMarker
+          center={USA_MARKER_COORDS}
+          radius={6}
+          pathOptions={{
+            className: "usa-pulse-marker",
+            color: "#ffffff",
+            weight: 1.5,
+            fillColor: "#ef4444",
+            fillOpacity: 1,
+          }}
+        >
+          <Tooltip direction="top" offset={[0, -4]}>
+            USA
+          </Tooltip>
+        </CircleMarker>
       </MapContainer>
     </div>
   );
@@ -146,7 +176,7 @@ const MapView = ({ theme = "light", hideChrome = false }: MapViewProps) => {
   return (
     <section id="mapview" className="text-center mx-auto pt-24">
       <h3 className="font-semibold mb-4 text-lg md:text-xl">
-        COUNTRIES VISITED: <span className="text-blue-500 font-bold">17</span>
+        COUNTRIES VISITED: <span className="text-blue-500 font-bold">20</span>
       </h3>
       {map}
     </section>

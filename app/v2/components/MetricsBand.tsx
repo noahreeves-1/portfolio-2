@@ -23,13 +23,13 @@ const METRICS: Metric[] = [
     value: 75000,
     suffix: "+",
     label: "Plays in month one for ClearThinker",
-    accent: "text-amber-300",
+    accent: "text-[color:var(--color-accent-gold)]",
   },
   {
     value: 70,
     suffix: "%+",
     label: "Backend cost reduction on Conin's 12M-row pipeline",
-    accent: "text-violet-300",
+    accent: "text-[color:var(--color-accent-muted)]",
   },
 ];
 
@@ -45,7 +45,7 @@ export function MetricsBand() {
     <section className="relative overflow-hidden border-y border-white/5 bg-zinc-950 py-24 md:py-32">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(167,139,250,0.12),transparent_60%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.12),transparent_60%)]"
       />
 
       <div className="relative mx-auto max-w-6xl px-6">
@@ -91,7 +91,7 @@ export function MetricsBand() {
 
         <div className="mt-16 flex items-center justify-center">
           <div className="flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.02] px-6 py-3 font-mono text-sm text-zinc-400 backdrop-blur-sm">
-            <span className="h-2 w-2 animate-pulse rounded-full bg-violet-400 shadow-[0_0_8px_#a78bfa]" />
+            <span className="h-2 w-2 animate-pulse rounded-full bg-[var(--color-accent)] shadow-[0_0_8px_var(--color-accent)]" />
             <TypingAnimation
               words={TECH_SPECS}
               loop

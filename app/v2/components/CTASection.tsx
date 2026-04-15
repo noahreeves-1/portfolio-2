@@ -11,23 +11,23 @@ export function CTASection() {
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(167,139,250,0.15),transparent_60%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.15),transparent_60%)]"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-400/40 to-transparent"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[color:var(--color-accent)]/40 to-transparent"
       />
 
       <div className="relative mx-auto max-w-3xl px-6 text-center">
-        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-violet-400/20 bg-violet-500/5 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-violet-200">
-          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-violet-400" />
+        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[color:var(--color-accent)]/30 bg-[color:var(--color-accent)]/5 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-[color:var(--color-accent-soft)]">
+          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[var(--color-accent)]" />
           Have a high-stakes project?
         </div>
 
         <h2 className="font-display text-4xl font-semibold leading-[1.05] tracking-tighter text-white sm:text-5xl md:text-6xl lg:text-7xl">
           Let&apos;s talk about your
           <br />
-          <span className="bg-gradient-to-b from-violet-200 via-violet-300 to-violet-500 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-b from-[color:var(--color-accent-soft)] via-[color:var(--color-accent-muted)] to-[color:var(--color-accent-deep)] bg-clip-text text-transparent">
             technical bottleneck.
           </span>
         </h2>
@@ -39,7 +39,7 @@ export function CTASection() {
         <div className="mt-12 flex flex-col items-center gap-4">
           <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
             <ShimmerButton
-              shimmerColor="#c4b5fd"
+              shimmerColor="var(--color-accent-gold-soft)"
               background="rgba(15, 12, 29, 1)"
               className="px-10 py-5 text-base font-semibold md:text-lg"
             >

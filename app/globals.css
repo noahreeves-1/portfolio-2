@@ -2,7 +2,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Scoped theme tokens for /v2 landing page — do not leak to / */
+/* Scoped theme tokens for /v2 landing page — do not leak to / (cobalt system) */
 .v2-scope {
   --color-background: #09090b;
   --color-foreground: #fafafa;
@@ -12,7 +12,18 @@
   --color-input: #27272a;
   --color-muted: #27272a;
   --color-muted-foreground: #a1a1aa;
-  --color-ring: #a78bfa;
+
+  /* primary accent — cobalt blue */
+  --color-accent: #3b82f6;
+  --color-accent-muted: #60a5fa;
+  --color-accent-soft: #93c5fd;
+  --color-accent-deep: #2563eb;
+
+  /* secondary accent — warm gold, used sparingly */
+  --color-accent-gold: #fbbf24;
+  --color-accent-gold-soft: #fde68a;
+
+  --color-ring: var(--color-accent);
 }
 
 /* Premium Typography System */
@@ -215,4 +226,25 @@ code, pre, .font-mono {
     transform: translateZ(0) rotate(360deg);
     }
   }
+}
+
+@keyframes usaPinPulse {
+  0% {
+    transform: scale(1);
+    fill-opacity: 1;
+  }
+  50% {
+    transform: scale(1.35);
+    fill-opacity: 0.65;
+  }
+  100% {
+    transform: scale(1);
+    fill-opacity: 1;
+  }
+}
+
+.usa-pulse-marker {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: usaPinPulse 1.6s ease-in-out infinite;
 }
