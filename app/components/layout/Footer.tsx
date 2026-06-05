@@ -32,11 +32,6 @@ const Footer = () => {
               </svg>
             </Link>
           </div>
-          <div>
-            <Link href="https://x.com/theNoahKim" target="_blank">
-              <Image src="/x.svg" alt="X" height={20} width={20} />
-            </Link>
-          </div>
         </div>
       </div>
     </section>

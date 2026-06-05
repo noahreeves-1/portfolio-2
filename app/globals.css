@@ -26,6 +26,180 @@
   --color-ring: var(--color-accent);
 }
 
+/* ─────────────────────────────────────────────────────────────────────────
+   Scoped theme tokens for /v3 — "the portfolio IS a native app" redesign.
+   Teal accent, near-black surfaces, Liquid-Glass material system.
+   Additive + namespaced (--v3-*): never leaks into / (v2 cobalt) because it's
+   gated on .v3-scope, a separate DOM subtree. Do NOT edit :root or .v2-scope.
+   ───────────────────────────────────────────────────────────────────────── */
+.v3-scope {
+  /* surface system — near-black (not pure black, so glass has something to refract) */
+  --v3-bg: #07090a;
+  --v3-bg-raise: #0c0f11;
+  --v3-fg: #f4f6f6;
+  --v3-fg-muted: #9aa3a3;
+  --v3-fg-faint: #5e6566;
+
+  /* TEAL accent — single rationed accent (not tech-blue, not cyan rainbow) */
+  --v3-teal: #2dd4bf;
+  --v3-teal-soft: #5eead4;
+  --v3-teal-deep: #0f766e;
+  --v3-teal-ink: #042f2a;
+  /* the ONE gradient pair, kept in-family → avoids AI-slop rainbow */
+  --v3-grad: linear-gradient(135deg, var(--v3-teal-soft) 0%, var(--v3-teal-deep) 100%);
+
+  /* Liquid-Glass material variables (consumed by GlassSurface) */
+  --v3-glass-bg: rgba(255, 255, 255, 0.045);
+  --v3-glass-bg-raise: rgba(255, 255, 255, 0.07);
+  --v3-glass-stroke: rgba(255, 255, 255, 0.1);
+  --v3-glass-stroke-hi: rgba(255, 255, 255, 0.18);
+  --v3-glass-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+  --v3-glass-shadow-lift: 0 18px 50px rgba(0, 0, 0, 0.55);
+  --v3-glass-blur: 18px;
+  --v3-glass-sat: 150%;
+
+  --v3-ring: var(--v3-teal);
+  color-scheme: dark;
+}
+
+/* Accessibility + low-end fallback: drop translucency/blur, keep contrast. */
+@media (prefers-reduced-transparency: reduce) {
+  .v3-scope {
+    --v3-glass-bg: rgba(16, 20, 21, 0.96);
+    --v3-glass-bg-raise: rgba(22, 27, 28, 0.98);
+    --v3-glass-blur: 0px;
+    --v3-glass-sat: 100%;
+  }
+}
+
+/* Belt-and-suspenders for engines without backdrop-filter support. */
+@supports not ((backdrop-filter: blur(2px)) or (-webkit-backdrop-filter: blur(2px))) {
+  .v3-scope {
+    --v3-glass-bg: rgba(16, 20, 21, 0.94);
+    --v3-glass-bg-raise: rgba(22, 27, 28, 0.97);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Scoped theme tokens for /v4 — premium native-app redesign.
+   A teal-tinted Ken Burns hero (dark) with crisp white iOS "bottom sheets"
+   rising over it. Namespaced --v4-*; gated on .v4-scope (a separate DOM
+   subtree) so nothing leaks into / (v2 cobalt) or /v3. Do NOT edit :root,
+   .v2-scope, or .v3-scope.
+
+   Craft system: an 8pt spacing scale + concentric radii (inner = outer − pad)
+   so sheet → card → media → chip stay visually parallel (the iOS-26
+   "concentricity" tell). Children nested by --v4-pad use the matching *-in radius.
+   ───────────────────────────────────────────────────────────────────────── */
+.v4-scope {
+  /* TEAL — the single rationed brand accent */
+  --v4-teal: #2dd4bf;
+  --v4-teal-soft: #5eead4;
+  --v4-teal-bright: #99f6e4;
+  --v4-teal-deep: #0f766e;
+  --v4-teal-ink: #042f2a; /* deepest teal — the hero/base backdrop */
+
+  /* INK — near-black text for the white sheet world (not pure black) */
+  --v4-ink: #0a1413;
+  --v4-ink-muted: #51625f;
+  --v4-ink-faint: #8595931a; /* hairline-ish ink, used rarely */
+  --v4-ink-soft: #7c8c89;
+
+  /* SHEET — the white iOS surfaces */
+  --v4-sheet: #ffffff;
+  --v4-sheet-sunk: #f3f7f6; /* recessed rows / alt panels */
+  --v4-hairline: rgba(10, 20, 19, 0.08);
+  --v4-hairline-strong: rgba(10, 20, 19, 0.14);
+
+  /* HERO — light text over the dark teal imagery */
+  --v4-hero-ink: #f1fbf8;
+  --v4-hero-ink-muted: rgba(241, 251, 248, 0.74);
+
+  /* GLASS — light glass for chrome floating over the hero imagery */
+  --v4-glass-bg: rgba(255, 255, 255, 0.1);
+  --v4-glass-bg-raise: rgba(255, 255, 255, 0.16);
+  --v4-glass-stroke: rgba(255, 255, 255, 0.22);
+  --v4-glass-stroke-hi: rgba(255, 255, 255, 0.45);
+  --v4-glass-shadow: 0 8px 30px rgba(2, 20, 18, 0.3);
+  --v4-glass-blur: 16px;
+  --v4-glass-sat: 165%;
+
+  /* SHADOWS — soft, layered, premium (for white sheets/cards) */
+  --v4-shadow-sheet: 0 -20px 60px rgba(2, 26, 23, 0.28);
+  --v4-shadow-card: 0 1px 2px rgba(10, 20, 19, 0.04), 0 8px 24px rgba(10, 20, 19, 0.06);
+  --v4-shadow-card-lift: 0 2px 6px rgba(10, 20, 19, 0.06), 0 20px 44px rgba(10, 20, 19, 0.12);
+
+  /* 8pt SPACING scale */
+  --v4-s1: 0.25rem; /* 4  */
+  --v4-s2: 0.5rem; /* 8  */
+  --v4-s3: 0.75rem; /* 12 */
+  --v4-s4: 1rem; /* 16 */
+  --v4-s5: 1.5rem; /* 24 */
+  --v4-s6: 2rem; /* 32 */
+  --v4-s7: 3rem; /* 48 */
+  --v4-s8: 4rem; /* 64 */
+  --v4-s9: 6rem; /* 96 */
+
+  /* CONCENTRIC RADII — outer shells + the matching inner radius via calc().
+     A child padded by --v4-pad inside an --v4-r-card shell uses --v4-r-card-in. */
+  --v4-pad: var(--v4-s3); /* default 12px inner padding for media */
+  --v4-r-sheet: 1.75rem; /* 28 — the big sheet's top corners */
+  --v4-r-card: 1.5rem; /* 24 — work cards */
+  --v4-r-card-in: calc(var(--v4-r-card) - var(--v4-pad)); /* media inside the card pad */
+  --v4-r-control: 0.875rem; /* 14 — buttons / list rows */
+  --v4-r-pill: 999px;
+
+  /* How far the white sheet peeks up over the hero at rest (it rises on scroll).
+     ~42svh ⇒ the sheet's rounded top sits ~58% down — just under midway. */
+  --v4-peek: 42svh;
+
+  --v4-ring: var(--v4-teal);
+  color-scheme: light;
+}
+
+/* Accessibility / low-end: drop glass translucency, keep contrast. */
+@media (prefers-reduced-transparency: reduce) {
+  .v4-scope {
+    --v4-glass-bg: rgba(6, 32, 29, 0.82);
+    --v4-glass-bg-raise: rgba(6, 32, 29, 0.9);
+    --v4-glass-blur: 0px;
+    --v4-glass-sat: 100%;
+  }
+}
+
+/* Belt-and-suspenders for engines without backdrop-filter support. */
+@supports not ((backdrop-filter: blur(2px)) or (-webkit-backdrop-filter: blur(2px))) {
+  .v4-scope {
+    --v4-glass-bg: rgba(6, 32, 29, 0.6);
+    --v4-glass-bg-raise: rgba(6, 32, 29, 0.72);
+  }
+}
+
+/* Ken Burns slow zoom for the /v4 hero cities — compositor-only transform.
+   Baseline scale(1.05) so the deactivation reset is tiny + hidden behind the
+   crossfade. Frozen entirely under prefers-reduced-motion. */
+@keyframes v4-kenburns {
+  from {
+    transform: scale(1.05);
+  }
+  to {
+    transform: scale(1.16);
+  }
+}
+.v4-kenburns {
+  transform: scale(1.05);
+}
+.v4-kenburns--active {
+  animation: v4-kenburns 9s ease-out forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .v4-kenburns,
+  .v4-kenburns--active {
+    animation: none;
+    transform: none;
+  }
+}
+
 /* Premium Typography System */
 :root {
   /* Font families */
