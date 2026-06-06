@@ -2,28 +2,111 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Scoped theme tokens for /v2 landing page — do not leak to / (cobalt system) */
-.v2-scope {
-  --color-background: #09090b;
-  --color-foreground: #fafafa;
-  --color-card: #18181b;
-  --color-card-foreground: #fafafa;
-  --color-border: #27272a;
-  --color-input: #27272a;
-  --color-muted: #27272a;
-  --color-muted-foreground: #a1a1aa;
+/* ─────────────────────────────────────────────────────────────────────────
+   Scoped theme tokens for the landing page — the simplified editorial portfolio.
+   Keeps the synthwave-sunset hero, then a warm ivory body: a numbers trust bar,
+   a short paragraph, and a compact project index (current work flagged emerald)
+   beside a full-stack capabilities matrix. Namespaced --v6-*; gated on .v6-scope
+   (applied by app/page.tsx). Self-contained.
+   ───────────────────────────────────────────────────────────────────────── */
+.v6-scope {
+  /* Synthwave-sunset palette pulled from the hero artwork. */
+  /* SKY — dark surfaces (hero + contact bookend) */
+  --v6-sky-ink: #1c1640;
+  --v6-sky: #2b2350;
+  --v6-silhouette: #1e1b3a;
 
-  /* primary accent — cobalt blue */
-  --color-accent: #3b82f6;
-  --color-accent-muted: #60a5fa;
-  --color-accent-soft: #93c5fd;
-  --color-accent-deep: #2563eb;
+  /* MID + SUN — the sunset band */
+  --v6-mid: #7c5a8c;
+  --v6-magenta: #c2587f;
+  --v6-sun: #f4a259;
+  --v6-sun-soft: #f6b26b;
+  --v6-sun-core: #ffd9a0;
 
-  /* secondary accent — warm gold, used sparingly */
-  --color-accent-gold: #fbbf24;
-  --color-accent-gold-soft: #fde68a;
+  /* PAPER — warm ivory body */
+  --v6-paper: #f7f0e6;
+  --v6-paper-warm: #fbeede;
+  --v6-paper-sunk: #efe7d9;
 
-  --color-ring: var(--color-accent);
+  /* INK — text on ivory */
+  --v6-ink: #1e1b3a;
+  --v6-ink-muted: #524d6b;
+  --v6-ink-soft: #736e8d;
+  --v6-ink-faint: rgba(30, 27, 58, 0.4);
+
+  /* CREAM — text over the dark hero */
+  --v6-cream: #f4ecff;
+  --v6-cream-muted: rgba(244, 236, 255, 0.74);
+
+  /* ACCENT — rationed sunset orange; magenta as the rare deep secondary */
+  --v6-accent: #f4a259;
+  --v6-accent-soft: #f6b26b;
+  --v6-accent-deep: #b23f6b;
+  --v6-ring: var(--v6-accent);
+
+  /* CURRENT — the emerald "actively building" marker (deep = AA text on ivory,
+     soft = bright dot/ping on dark + ivory) */
+  --v6-current: #0e9f6e;
+  --v6-current-soft: #34d399;
+
+  /* Hero availability pill — limited (evening) + offline */
+  --v6-offline: #dc4c4c;
+  --v6-offline-soft: #f07171;
+
+  /* STRUCTURE */
+  --v6-hairline: rgba(244, 236, 255, 0.12);
+  --v6-hairline-strong: rgba(244, 236, 255, 0.2);
+  --v6-hairline-ink: rgba(30, 27, 58, 0.1);
+  --v6-hairline-ink-strong: rgba(30, 27, 58, 0.16);
+
+  /* GLASS — for the hero status pill + floating chrome */
+  --v6-glass-bg: rgba(244, 236, 255, 0.1);
+  --v6-glass-bg-raise: rgba(244, 236, 255, 0.16);
+  --v6-glass-stroke: rgba(244, 236, 255, 0.22);
+  --v6-glass-blur: 14px;
+  --v6-glass-sat: 160%;
+
+  /* SHADOWS — soft, violet-tinted */
+  --v6-shadow-sheet: 0 -24px 70px rgba(28, 22, 64, 0.22);
+  --v6-shadow-card: 0 1px 2px rgba(28, 22, 64, 0.05), 0 10px 30px rgba(28, 22, 64, 0.1);
+  --v6-shadow-card-lift: 0 2px 8px rgba(28, 22, 64, 0.1), 0 28px 60px rgba(28, 22, 64, 0.22);
+
+  /* 8pt SPACING scale */
+  --v6-s1: 0.25rem;
+  --v6-s2: 0.5rem;
+  --v6-s3: 0.75rem;
+  --v6-s4: 1rem;
+  --v6-s5: 1.5rem;
+  --v6-s6: 2rem;
+  --v6-s7: 3rem;
+  --v6-s8: 4rem;
+  --v6-s9: 6rem;
+  --v6-s10: 8rem;
+
+  /* RADII */
+  --v6-r-sheet: 2rem;
+  --v6-r-card: 1.5rem;
+  --v6-r-control: 0.875rem;
+  --v6-r-pill: 999px;
+
+  color-scheme: dark;
+}
+
+/* Accessibility / low-end: drop glass translucency, keep contrast. */
+@media (prefers-reduced-transparency: reduce) {
+  .v6-scope {
+    --v6-glass-bg: rgba(28, 22, 64, 0.82);
+    --v6-glass-bg-raise: rgba(28, 22, 64, 0.9);
+    --v6-glass-blur: 0px;
+    --v6-glass-sat: 100%;
+  }
+}
+
+@supports not ((backdrop-filter: blur(2px)) or (-webkit-backdrop-filter: blur(2px))) {
+  .v6-scope {
+    --v6-glass-bg: rgba(28, 22, 64, 0.6);
+    --v6-glass-bg-raise: rgba(28, 22, 64, 0.72);
+  }
 }
 
 /* Premium Typography System */
@@ -129,122 +212,3 @@ code, pre, .font-mono {
 .font-semibold { font-weight: 600; }
 .font-bold { font-weight: 700; }
 .font-extrabold { font-weight: 800; }
-
-/* Diagonal Divider Styles */
-.diagonal-divider {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-}
-
-.diagonal-divider-top {
-  margin-top: -1px;
-}
-
-.diagonal-divider-bottom {
-  margin-bottom: -1px;
-}
-
-@media (max-width: 768px) {
-  .diagonal-divider {
-    height: 60px !important;
-  }
-}
-
-/* Carousel Styles */
-.carousel-container {
-  height: 40px;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  position: relative;
-}
-
-.carousel-track {
-  display: flex;
-  width: fit-content;
-}
-
-.carousel-content {
-  flex-shrink: 0;
-}
-
-@keyframes scrollX {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-scrollX {
-  animation: scrollX 100s linear infinite;
-}
-
-@keyframes scrollX-reverse {
-  0% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-.animate-scrollX-reverse {
-  animation: scrollX-reverse 100s linear infinite;
-}
-
-@theme inline {
-  --animate-blink-cursor: blink-cursor 1.2s step-end infinite;
-  --animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite alternate;
-  --animate-spin-around: spin-around calc(var(--speed) * 2) infinite linear;
-  @keyframes blink-cursor {
-  0%, 49% {
-    opacity: 1;
-    }
-  50%, 100% {
-    opacity: 0;
-    }
-  }
-  @keyframes shimmer-slide {
-  to {
-    transform: translate(calc(100cqw - 100%), 0);
-    }
-  }
-  @keyframes spin-around {
-  0% {
-    transform: translateZ(0) rotate(0);
-    }
-  15%, 35% {
-    transform: translateZ(0) rotate(90deg);
-    }
-  65%, 85% {
-    transform: translateZ(0) rotate(270deg);
-    }
-  100% {
-    transform: translateZ(0) rotate(360deg);
-    }
-  }
-}
-
-@keyframes usaPinPulse {
-  0% {
-    transform: scale(1);
-    fill-opacity: 1;
-  }
-  50% {
-    transform: scale(1.35);
-    fill-opacity: 0.65;
-  }
-  100% {
-    transform: scale(1);
-    fill-opacity: 1;
-  }
-}
-
-.usa-pulse-marker {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: usaPinPulse 1.6s ease-in-out infinite;
-}

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Instrument_Sans, JetBrains_Mono } from "next/font/google";
+import { Bricolage_Grotesque, Instrument_Sans, JetBrains_Mono, Fraunces } from "next/font/google";
 import "./globals.css";
 import { PostHogProviderLazy } from "./PostHogProviderLazy";
 
@@ -8,6 +8,14 @@ const bricolageGrotesque = Bricolage_Grotesque({
   subsets: ["latin"],
   display: "swap",
   weight: ["200", "300", "400", "500", "600", "700", "800"],
+});
+
+// Editorial serif for hero headlines (variable: weight + optical-size + italic).
+const fraunces = Fraunces({
+  variable: "--font-serif",
+  subsets: ["latin"],
+  display: "swap",
+  style: ["normal", "italic"],
 });
 
 const instrumentSans = Instrument_Sans({
@@ -24,8 +32,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Noah Kim",
-  description: "A little bit about me",
+  title: "Noah Kim · Engineer & Founder",
+  description:
+    "Self-taught engineer and founder building data-first products end to end, from the database to the deploy. 0 to 1 for seven clients and two of my own.",
 
   // Favicon configuration
   icons: {
@@ -34,8 +43,9 @@ export const metadata: Metadata = {
 
   // Open Graph / Facebook / iMessage Preview
   openGraph: {
-    title: "Noah Kim",
-    description: "A little bit about me",
+    title: "Noah Kim · Engineer & Founder",
+    description:
+      "Self-taught engineer and founder building data-first products end to end, from the database to the deploy.",
     url: "https://noahk.im",
     siteName: "Noah Kim",
     images: [
@@ -49,14 +59,6 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
   },
-
-  // Twitter Card (For X / Twitter)
-  twitter: {
-    card: "summary_large_image",
-    title: "Noah Kim",
-    description: "A little bit about me",
-    images: ["https://noahk.im/preview-image.webp"],
-  },
 };
 
 export default function RootLayout({
@@ -67,7 +69,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <PostHogProviderLazy>
-        <body className={`${bricolageGrotesque.variable} ${instrumentSans.variable} ${jetbrainsMono.variable} font-sans`}>{children}</body>
+        <body className={`${bricolageGrotesque.variable} ${instrumentSans.variable} ${jetbrainsMono.variable} ${fraunces.variable} font-sans`}>{children}</body>
       </PostHogProviderLazy>
     </html>
   );

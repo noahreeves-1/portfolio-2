@@ -1,32 +1,31 @@
-import type { Metadata } from "next";
-import Footer from "@/app/components/layout/Footer";
-import { NavbarV2 } from "@/app/v2/components/NavbarV2";
-import { HeroV2 } from "@/app/v2/components/HeroV2";
-import { RescueBento } from "@/app/v2/components/RescueBento";
-import { MetricsBand } from "@/app/v2/components/MetricsBand";
-import { ProjectGridV2 } from "@/app/v2/components/ProjectGridV2";
-import { GlobalReachSection } from "@/app/v2/components/GlobalReachSection";
-import { CTASection } from "@/app/v2/components/CTASection";
+import { Hero } from "./components/Hero";
+import { TrustBar } from "./components/TrustBar";
+import { About } from "./components/About";
+import { Work } from "./components/Work";
+import { Story } from "./components/Story";
+import { Contact } from "./components/Contact";
+import { Footer } from "./components/Footer";
 
-export const metadata: Metadata = {
-  title: "Noah Kim — Product & Rescue Engineer",
-  description:
-    "I fix what's broken and build what's next. 12M-row pipelines, 40-hour stabilizations, $600K B2B order flows. Book a consultation.",
-};
-
+// The simplified scroll: a full-bleed dark hero, then a warm ivory "paper" that
+// rises over its bottom edge and carries the body, trust bar → short paragraph
+// → work (project index + capabilities) → contact. The .v6-scope wrapper (moved
+// up from the former app/v6/layout.tsx) establishes the theme; fonts + <html>/
+// <body> + PostHog come from the root app/layout.tsx.
 export default function Home() {
   return (
-    <div className="v2-scope dark min-h-screen bg-zinc-950 text-zinc-100 antialiased">
-      <NavbarV2 />
-      <main>
-        <HeroV2 />
-        <RescueBento />
-        <MetricsBand />
-        <ProjectGridV2 />
-        <GlobalReachSection />
-        <CTASection />
+    <div className="v6-scope relative isolate min-h-[100svh] overflow-x-clip bg-[var(--v6-sky-ink)] text-[var(--v6-cream)] antialiased">
+      <main className="relative">
+        <Hero />
+
+        <div className="relative z-10 -mt-[var(--v6-s5)] rounded-t-[var(--v6-r-sheet)] bg-[var(--v6-paper)] pb-[var(--v6-s4)] pt-[var(--v6-s2)] text-[var(--v6-ink)] shadow-[var(--v6-shadow-sheet)]">
+          <TrustBar />
+          <About />
+          <Work />
+          <Story />
+          <Contact />
+          <Footer />
+        </div>
       </main>
-      <Footer />
     </div>
   );
 }
