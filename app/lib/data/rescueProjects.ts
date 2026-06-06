@@ -16,6 +16,10 @@ export interface RescueProject {
   beats: string[];
   tech: string[];
   metric?: RescueMetric;
+  // A second, optional headline figure for surfaces that show more than one
+  // number per project (e.g. the /v5 receipts band). Additive + optional so
+  // existing routes that read named fields are unaffected.
+  altMetric?: RescueMetric;
   gradient: string;
   url?: string;
   imageSrc?: string;
@@ -57,6 +61,7 @@ export const rescueProjects: RescueProject[] = [
     ],
     tech: ["Expo", "NestJS", "Redis", "BullMQ", "AWS RDS"],
     metric: { value: 40, suffix: " hrs", label: "to stabilize 2 years of debt" },
+    altMetric: { value: 50000, prefix: "~", label: "downloads in ~4 months" },
     gradient: "from-cyan-500/20 via-blue-500/10 to-transparent",
     url: "https://www.joincrawler.com/",
     imageSrc: "/crawler-logo.svg",
@@ -103,8 +108,8 @@ export const rescueProjects: RescueProject[] = [
   {
     id: "dxchart",
     tier: "product",
-    client: "Dx Chart",
-    name: "Dx Chart",
+    client: "Dx-Chart",
+    name: "Dx-Chart",
     tagline: "HIPAA-ready AI charting for acupuncturists.",
     beats: [
       "180+ patient chart inputs, 100+ MNR inputs. One-click SOAP / HPI / diagnosis generation.",

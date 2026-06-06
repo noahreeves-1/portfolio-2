@@ -32,8 +32,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Noah Kim",
-  description: "A little bit about me",
+  title: "Noah Kim · Engineer & Founder",
+  description:
+    "Self-taught engineer and founder building data-first products end to end, from the database to the deploy. 0 to 1 for seven clients and two of my own.",
 
   // Favicon configuration
   icons: {
@@ -42,8 +43,9 @@ export const metadata: Metadata = {
 
   // Open Graph / Facebook / iMessage Preview
   openGraph: {
-    title: "Noah Kim",
-    description: "A little bit about me",
+    title: "Noah Kim · Engineer & Founder",
+    description:
+      "Self-taught engineer and founder building data-first products end to end, from the database to the deploy.",
     url: "https://noahk.im",
     siteName: "Noah Kim",
     images: [
