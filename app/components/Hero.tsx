@@ -8,19 +8,18 @@ import { Rich } from "./lib/Rich";
 import { HERO } from "../content";
 
 // The signature: "I SHIP" over a bronze line that rolls through Noah's real
-// outcomes. Staggered load-in via CSS (.m-anim*, disabled under reduced motion);
-// the rotator itself is gated on reduced motion here (static first phrase).
+// outcomes. Staggered load-in via CSS (.m-anim*). The rotator always cycles;
+// under reduced motion it crossfades (opacity only, no vertical travel).
 export function Hero() {
   const reduce = useReducedMotionSafe();
   const [i, setI] = useState(0);
 
   useEffect(() => {
-    if (reduce) return;
     const id = setInterval(() => {
       setI((v) => (v + 1) % HERO.rotator.length);
     }, 2400);
     return () => clearInterval(id);
-  }, [reduce]);
+  }, []);
 
   const rotatorLabel = `Also: ${HERO.rotator.join(" ")}`;
 
@@ -31,25 +30,19 @@ export function Hero() {
       <h1 className="m-lead m-anim m-anim-2">{HERO.lead}</h1>
 
       <p className="m-rotate m-anim m-anim-3" aria-label={rotatorLabel}>
-        {reduce ? (
-          <span className="m-rotate-word" aria-hidden="true">
-            {HERO.rotator[0]}
-          </span>
-        ) : (
-          <AnimatePresence initial={false}>
-            <motion.span
-              key={i}
-              className="m-rotate-word"
-              aria-hidden="true"
-              initial={{ y: "115%", opacity: 0 }}
-              animate={{ y: "0%", opacity: 1 }}
-              exit={{ y: "-115%", opacity: 0 }}
-              transition={{ duration: 0.55, ease: EASE }}
-            >
-              {HERO.rotator[i]}
-            </motion.span>
-          </AnimatePresence>
-        )}
+        <AnimatePresence initial={false}>
+          <motion.span
+            key={i}
+            className="m-rotate-word"
+            aria-hidden="true"
+            initial={reduce ? { opacity: 0 } : { y: "115%", opacity: 0 }}
+            animate={reduce ? { opacity: 1 } : { y: "0%", opacity: 1 }}
+            exit={reduce ? { opacity: 0 } : { y: "-115%", opacity: 0 }}
+            transition={{ duration: reduce ? 0.35 : 0.55, ease: EASE }}
+          >
+            {HERO.rotator[i]}
+          </motion.span>
+        </AnimatePresence>
       </p>
 
       <p className="m-sub m-anim m-anim-4">
