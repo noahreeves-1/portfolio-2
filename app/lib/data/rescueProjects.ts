@@ -24,6 +24,9 @@ export interface RescueProject {
   url?: string;
   imageSrc?: string;
   monogram?: string;
+  // Noah's role on the project. Canonical here; landing copy layers display
+  // framing on top (app/content.ts).
+  role?: "Backend lead" | "Founder" | "Full-stack" | "Data";
 }
 
 export const rescueProjects: RescueProject[] = [
@@ -46,6 +49,7 @@ export const rescueProjects: RescueProject[] = [
     url: "https://conin.io/",
     imageSrc: "/conin-logo.svg",
     monogram: "Co",
+    role: "Backend lead",
   },
   {
     id: "crawler",
@@ -66,6 +70,7 @@ export const rescueProjects: RescueProject[] = [
     url: "https://www.joincrawler.com/",
     imageSrc: "/crawler-logo.svg",
     monogram: "Cr",
+    role: "Backend lead",
   },
   {
     id: "knoxlabs",
@@ -85,6 +90,7 @@ export const rescueProjects: RescueProject[] = [
     url: "https://www.knoxlabs.com/",
     imageSrc: "/knoxlabs-logo.svg",
     monogram: "Kx",
+    role: "Backend lead",
   },
   {
     id: "clearthinker",
@@ -104,6 +110,7 @@ export const rescueProjects: RescueProject[] = [
     url: "https://clearthinkeracademy.com/",
     imageSrc: "/clear-thinker-logo.png",
     monogram: "Ct",
+    role: "Full-stack",
   },
   {
     id: "dxchart",
@@ -121,6 +128,7 @@ export const rescueProjects: RescueProject[] = [
     gradient: "from-rose-500/20 via-pink-500/10 to-transparent",
     url: "https://dx-chart.com/",
     monogram: "Dx",
+    role: "Founder",
   },
   {
     id: "muffin",
@@ -138,6 +146,7 @@ export const rescueProjects: RescueProject[] = [
     gradient: "from-amber-500/15 via-orange-500/10 to-transparent",
     url: "https://muffinapp.io/",
     monogram: "Mu",
+    role: "Founder",
   },
   {
     id: "speedscribe",
@@ -156,6 +165,7 @@ export const rescueProjects: RescueProject[] = [
     url: "https://www.speedscribeai.com/",
     imageSrc: "/speed-scribe-screenshot.png",
     monogram: "Ss",
+    role: "Founder",
   },
   {
     id: "invenboost",
@@ -173,6 +183,7 @@ export const rescueProjects: RescueProject[] = [
     gradient: "from-sky-500/15 via-cyan-500/10 to-transparent",
     url: "https://www.invenboost.com/",
     monogram: "Iv",
+    role: "Backend lead",
   },
   {
     id: "accenture",
@@ -191,6 +202,7 @@ export const rescueProjects: RescueProject[] = [
     url: "https://www.accenture.com/",
     imageSrc: "/accenture.webp",
     monogram: "Ac",
+    role: "Data",
   },
 ];
 

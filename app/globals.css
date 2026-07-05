@@ -3,212 +3,158 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ─────────────────────────────────────────────────────────────────────────
-   Scoped theme tokens for the landing page — the simplified editorial portfolio.
-   Keeps the synthwave-sunset hero, then a warm ivory body: a numbers trust bar,
-   a short paragraph, and a compact project index (current work flagged emerald)
-   beside a full-stack capabilities matrix. Namespaced --v6-*; gated on .v6-scope
-   (applied by app/page.tsx). Self-contained.
+   Monument theme — the landing page. A committed single (dark) visual world:
+   graphite ground, condensed display type, one rationed bronze accent. Built
+   recruiter-first and mobile-first. All tokens + component styles namespaced
+   under .monument-scope (applied by app/page.tsx). Self-contained.
    ───────────────────────────────────────────────────────────────────────── */
-.v6-scope {
-  /* Synthwave-sunset palette pulled from the hero artwork. */
-  /* SKY — dark surfaces (hero + contact bookend) */
-  --v6-sky-ink: #1c1640;
-  --v6-sky: #2b2350;
-  --v6-silhouette: #1e1b3a;
-
-  /* MID + SUN — the sunset band */
-  --v6-mid: #7c5a8c;
-  --v6-magenta: #c2587f;
-  --v6-sun: #f4a259;
-  --v6-sun-soft: #f6b26b;
-  --v6-sun-core: #ffd9a0;
-
-  /* PAPER — warm ivory body */
-  --v6-paper: #f7f0e6;
-  --v6-paper-warm: #fbeede;
-  --v6-paper-sunk: #efe7d9;
-
-  /* INK — text on ivory */
-  --v6-ink: #1e1b3a;
-  --v6-ink-muted: #524d6b;
-  --v6-ink-soft: #736e8d;
-  --v6-ink-faint: rgba(30, 27, 58, 0.4);
-
-  /* CREAM — text over the dark hero */
-  --v6-cream: #f4ecff;
-  --v6-cream-muted: rgba(244, 236, 255, 0.74);
-
-  /* ACCENT — rationed sunset orange; magenta as the rare deep secondary */
-  --v6-accent: #f4a259;
-  --v6-accent-soft: #f6b26b;
-  --v6-accent-deep: #b23f6b;
-  --v6-ring: var(--v6-accent);
-
-  /* CURRENT — the emerald "actively building" marker (deep = AA text on ivory,
-     soft = bright dot/ping on dark + ivory) */
-  --v6-current: #0e9f6e;
-  --v6-current-soft: #34d399;
-
-  /* Hero availability pill — limited (evening) + offline */
-  --v6-offline: #dc4c4c;
-  --v6-offline-soft: #f07171;
-
-  /* STRUCTURE */
-  --v6-hairline: rgba(244, 236, 255, 0.12);
-  --v6-hairline-strong: rgba(244, 236, 255, 0.2);
-  --v6-hairline-ink: rgba(30, 27, 58, 0.1);
-  --v6-hairline-ink-strong: rgba(30, 27, 58, 0.16);
-
-  /* GLASS — for the hero status pill + floating chrome */
-  --v6-glass-bg: rgba(244, 236, 255, 0.1);
-  --v6-glass-bg-raise: rgba(244, 236, 255, 0.16);
-  --v6-glass-stroke: rgba(244, 236, 255, 0.22);
-  --v6-glass-blur: 14px;
-  --v6-glass-sat: 160%;
-
-  /* SHADOWS — soft, violet-tinted */
-  --v6-shadow-sheet: 0 -24px 70px rgba(28, 22, 64, 0.22);
-  --v6-shadow-card: 0 1px 2px rgba(28, 22, 64, 0.05), 0 10px 30px rgba(28, 22, 64, 0.1);
-  --v6-shadow-card-lift: 0 2px 8px rgba(28, 22, 64, 0.1), 0 28px 60px rgba(28, 22, 64, 0.22);
-
-  /* 8pt SPACING scale */
-  --v6-s1: 0.25rem;
-  --v6-s2: 0.5rem;
-  --v6-s3: 0.75rem;
-  --v6-s4: 1rem;
-  --v6-s5: 1.5rem;
-  --v6-s6: 2rem;
-  --v6-s7: 3rem;
-  --v6-s8: 4rem;
-  --v6-s9: 6rem;
-  --v6-s10: 8rem;
-
-  /* RADII */
-  --v6-r-sheet: 2rem;
-  --v6-r-card: 1.5rem;
-  --v6-r-control: 0.875rem;
-  --v6-r-pill: 999px;
+.monument-scope {
+  --m-ground: #14161b;      /* graphite ground */
+  --m-ink: #ece9e2;         /* warm off-white text */
+  --m-dim: #8f8d86;         /* secondary text */
+  --m-faint: #5b5a55;       /* labels, meta */
+  --m-line: #2a2d34;        /* hairline dividers */
+  --m-bronze: #cba35c;      /* the one accent */
+  --m-bronze-bright: #d9b878;
 
   color-scheme: dark;
+  background: var(--m-ground);
+  color: var(--m-ink);
+  font-family: var(--font-body), system-ui, -apple-system, sans-serif;
 }
 
-/* Accessibility / low-end: drop glass translucency, keep contrast. */
-@media (prefers-reduced-transparency: reduce) {
-  .v6-scope {
-    --v6-glass-bg: rgba(28, 22, 64, 0.82);
-    --v6-glass-bg-raise: rgba(28, 22, 64, 0.9);
-    --v6-glass-blur: 0px;
-    --v6-glass-sat: 100%;
-  }
+.monument-scope ::selection { background: var(--m-bronze); color: var(--m-ground); }
+
+.monument-scope .m-wrap { max-width: 640px; margin: 0 auto; padding: 0 20px; }
+
+.monument-scope a:focus-visible,
+.monument-scope button:focus-visible {
+  outline: 2px solid var(--m-bronze);
+  outline-offset: 3px;
 }
 
-@supports not ((backdrop-filter: blur(2px)) or (-webkit-backdrop-filter: blur(2px))) {
-  .v6-scope {
-    --v6-glass-bg: rgba(28, 22, 64, 0.6);
-    --v6-glass-bg-raise: rgba(28, 22, 64, 0.72);
-  }
+/* Header */
+.monument-scope .m-header { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
+.monument-scope .m-wordmark { font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+.monument-scope .m-header nav { display: flex; gap: 16px; }
+.monument-scope .m-header nav a { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; color: var(--m-dim); text-decoration: none; text-transform: uppercase; }
+.monument-scope .m-header nav a:hover { color: var(--m-bronze); }
+
+/* Hero — fits roughly one phone screen */
+.monument-scope .m-hero { min-height: 84svh; display: flex; flex-direction: column; justify-content: center; padding: 24px 0 32px; }
+.monument-scope .m-eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--m-dim); margin-bottom: 16px; }
+.monument-scope .m-lead {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.005em; line-height: 0.95;
+  font-size: clamp(4.2rem, 20vw, 9rem);
+  margin: 0;
+}
+.monument-scope .m-rotate {
+  position: relative; overflow: hidden; display: block;
+  height: 1.06em; margin: 0.08em 0 0;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700; text-transform: uppercase;
+  line-height: 1; font-size: clamp(2.1rem, 10vw, 5rem);
+  color: var(--m-bronze);
+}
+.monument-scope .m-rotate-word { position: absolute; inset: 0; white-space: nowrap; }
+.monument-scope .m-sub { margin-top: 24px; color: var(--m-dim); max-width: 34ch; font-size: 1rem; line-height: 1.5; }
+.monument-scope .m-sub strong { color: var(--m-ink); font-weight: 600; }
+.monument-scope .m-cta { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 10px; }
+.monument-scope .m-btn { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; padding: 12px 18px; border-radius: 999px; display: inline-block; }
+.monument-scope .m-btn-solid { background: var(--m-bronze); color: var(--m-ground); font-weight: 600; }
+.monument-scope .m-btn-solid:hover { background: var(--m-bronze-bright); }
+.monument-scope .m-btn-ghost { color: var(--m-ink); border: 1px solid var(--m-faint); }
+.monument-scope .m-btn-ghost:hover { border-color: var(--m-bronze); color: var(--m-bronze); }
+
+/* Staggered hero load-in */
+@keyframes m-rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.monument-scope .m-anim { opacity: 0; animation: m-rise 0.6s ease forwards; }
+.monument-scope .m-anim-1 { animation-delay: 0.1s; }
+.monument-scope .m-anim-2 { animation-delay: 0.25s; }
+.monument-scope .m-anim-3 { animation-delay: 0.4s; }
+.monument-scope .m-anim-4 { animation-delay: 0.55s; }
+.monument-scope .m-anim-5 { animation-delay: 0.7s; }
+
+/* Section eyebrow */
+.monument-scope .m-eyebrow-s { font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--m-faint); margin: 56px 0 14px; }
+
+/* Featured cards */
+.monument-scope .m-card { border-top: 1px solid var(--m-line); padding: 20px 0 26px; }
+.monument-scope .m-card-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; text-decoration: none; color: inherit; }
+.monument-scope a.m-card-top:hover h2 { color: var(--m-bronze); }
+.monument-scope .m-card h2 { font-family: var(--font-display), system-ui, sans-serif; font-size: 1.4rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.1; margin: 0; text-transform: none; }
+.monument-scope .m-card-metric { font-family: var(--font-display), system-ui, sans-serif; font-weight: 700; color: var(--m-bronze); font-size: 1.5rem; white-space: nowrap; text-transform: uppercase; font-variant-numeric: tabular-nums; }
+.monument-scope .m-card-role { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--m-bronze); opacity: 0.85; margin: 6px 0 12px; }
+.monument-scope .m-card p { color: var(--m-dim); font-size: 0.97rem; line-height: 1.5; margin: 0; }
+.monument-scope .m-card p strong { color: var(--m-ink); font-weight: 600; }
+.monument-scope .m-card-tech { margin-top: 12px; font-family: var(--font-mono); font-size: 11px; color: var(--m-faint); }
+
+/* Project index */
+.monument-scope .m-index a,
+.monument-scope .m-index .m-index-row {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+  padding: 13px 0; border-bottom: 1px solid var(--m-line);
+  text-decoration: none; color: inherit;
+}
+.monument-scope .m-index .m-iname { font-weight: 600; font-size: 0.96rem; white-space: nowrap; }
+.monument-scope .m-index .m-idesc { color: var(--m-faint); font-size: 0.84rem; text-align: right; }
+.monument-scope .m-index a:hover .m-iname { color: var(--m-bronze); }
+
+/* Data-first */
+.monument-scope .m-creed-big { font-family: var(--font-display), system-ui, sans-serif; font-weight: 700; text-transform: uppercase; font-size: clamp(1.8rem, 8vw, 3.2rem); line-height: 1.02; letter-spacing: 0.005em; max-width: 20ch; margin: 0; }
+.monument-scope .m-creed-big .m-accent { color: var(--m-bronze); }
+.monument-scope .m-creed p { margin-top: 14px; color: var(--m-dim); max-width: 56ch; line-height: 1.5; }
+.monument-scope .m-creed p strong { color: var(--m-ink); font-weight: 600; }
+.monument-scope .m-creds { margin-top: 18px; list-style: none; display: flex; flex-direction: column; gap: 9px; padding: 0; }
+.monument-scope .m-creds li { font-family: var(--font-mono); font-size: 12px; color: var(--m-dim); padding-left: 18px; position: relative; line-height: 1.4; }
+.monument-scope .m-creds li::before { content: "\25C6"; position: absolute; left: 0; top: 3px; color: var(--m-bronze); font-size: 8px; }
+.monument-scope .m-creds li strong { color: var(--m-ink); font-weight: 600; }
+
+/* Stack pills */
+.monument-scope .m-stack { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; }
+.monument-scope .m-stack li { font-family: var(--font-mono); font-size: 11.5px; padding: 7px 12px; border: 1px solid var(--m-line); border-radius: 999px; color: var(--m-dim); }
+
+/* Footer */
+.monument-scope .m-footer { margin: 64px 0 48px; }
+.monument-scope .m-footer-big { font-family: var(--font-display), system-ui, sans-serif; font-weight: 700; text-transform: uppercase; font-size: clamp(2.4rem, 11vw, 4rem); line-height: 1; margin: 0; }
+.monument-scope .m-footer-big a { color: var(--m-bronze); text-decoration: none; }
+.monument-scope .m-footer-big a:hover { text-decoration: underline; text-underline-offset: 6px; }
+.monument-scope .m-footer-row { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px 24px; }
+.monument-scope .m-footer-row a { font-family: var(--font-mono); font-size: 12px; color: var(--m-ink); text-decoration: none; border-bottom: 1px solid var(--m-faint); padding-bottom: 2px; }
+.monument-scope .m-footer-row a:hover { color: var(--m-bronze); border-color: var(--m-bronze); }
+.monument-scope .m-fine { margin-top: 32px; font-family: var(--font-mono); font-size: 10.5px; color: var(--m-faint); }
+
+/* Desktop enhancements */
+@media (min-width: 760px) {
+  .monument-scope .m-wrap { max-width: 920px; }
+  .monument-scope .m-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0 32px; align-items: start; }
+  .monument-scope .m-index { columns: 2; column-gap: 48px; }
+  .monument-scope .m-index a,
+  .monument-scope .m-index .m-index-row { break-inside: avoid; }
 }
 
-/* Premium Typography System */
-:root {
-  /* Font families */
-  --font-display: var(--font-display);
-  --font-body: var(--font-body);
-  --font-mono: var(--font-mono);
-
-  /* Custom font sizes - breaking from standard scale */
-  --text-xs: 0.75rem;     /* 12px */
-  --text-sm: 0.875rem;    /* 14px */
-  --text-base: 1rem;      /* 16px */
-  --text-md: 1.125rem;    /* 18px */
-  --text-lg: 1.25rem;     /* 20px */
-  --text-xl: 1.5rem;      /* 24px */
-  --text-2xl: 1.875rem;   /* 30px */
-  --text-3xl: 2.25rem;    /* 36px */
-  --text-4xl: 2.75rem;    /* 44px */
-  --text-5xl: 3.5rem;     /* 56px */
-  --text-6xl: 4.5rem;     /* 72px */
-  --text-7xl: 5.5rem;     /* 88px */
-
-  /* Line heights */
-  --leading-tight: 1.1;
-  --leading-snug: 1.25;
-  --leading-normal: 1.5;
-  --leading-relaxed: 1.625;
-  --leading-loose: 1.75;
-
-  /* Letter spacing */
-  --tracking-tighter: -0.04em;
-  --tracking-tight: -0.02em;
-  --tracking-normal: 0;
-  --tracking-wide: 0.025em;
-  --tracking-wider: 0.05em;
+/* Respect reduced motion: kill the load-in (the rotator is gated in JS) */
+@media (prefers-reduced-motion: reduce) {
+  .monument-scope .m-anim { animation: none; opacity: 1; }
 }
 
-/* Base typography */
+/* ─────────────────────────────────────────────────────────────────────────
+   Shared base typography — font-family variables + smoothing, applied site-wide.
+   ───────────────────────────────────────────────────────────────────────── */
 body {
   font-family: var(--font-body), system-ui, -apple-system, sans-serif;
-  font-size: var(--text-base);
-  line-height: var(--leading-normal);
-  letter-spacing: var(--tracking-normal);
+  font-size: 1rem;
+  line-height: 1.5;
   font-weight: 400;
+  background-color: #14161b;
+  color-scheme: dark;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
-/* Headings with display font */
-h1, h2, h3, h4, h5, h6,
-.font-display {
-  font-family: var(--font-display), system-ui, -apple-system, sans-serif;
-  font-weight: 600;
-  letter-spacing: var(--tracking-tight);
-  line-height: var(--leading-tight);
-}
-
-/* Monospace elements */
 code, pre, .font-mono {
-  font-family: var(--font-mono), 'Courier New', monospace;
-  font-weight: 500;
-  letter-spacing: var(--tracking-normal);
+  font-family: var(--font-mono), "Courier New", monospace;
 }
-
-/* Custom text utilities */
-.text-display-hero {
-  font-size: clamp(2.5rem, 8vw, var(--text-7xl));
-  line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-tighter);
-}
-
-.text-display-xl {
-  font-size: clamp(2rem, 6vw, var(--text-6xl));
-  line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-tight);
-}
-
-.text-display-lg {
-  font-size: clamp(1.75rem, 5vw, var(--text-5xl));
-  line-height: var(--leading-snug);
-  letter-spacing: var(--tracking-tight);
-}
-
-.text-body-lg {
-  font-size: var(--text-lg);
-  line-height: var(--leading-relaxed);
-  font-weight: 400;
-}
-
-.text-body-md {
-  font-size: var(--text-md);
-  line-height: var(--leading-relaxed);
-  font-weight: 400;
-}
-
-/* Font weight utilities */
-.font-extralight { font-weight: 200; }
-.font-light { font-weight: 300; }
-.font-normal { font-weight: 400; }
-.font-medium { font-weight: 500; }
-.font-semibold { font-weight: 600; }
-.font-bold { font-weight: 700; }
-.font-extrabold { font-weight: 800; }
