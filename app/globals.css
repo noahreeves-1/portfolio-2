@@ -91,6 +91,28 @@
 .monument-scope .m-card p strong { color: var(--m-ink); font-weight: 600; }
 .monument-scope .m-card-tech { margin-top: 12px; font-family: var(--font-mono); font-size: 11px; color: var(--m-faint); }
 
+/* Live / sunset status dots. Green pulses (still running), grey sits flat
+   (shut down). Sized in em so it tracks the type it sits next to. */
+.monument-scope .m-dot {
+  display: inline-block; width: 0.5em; height: 0.5em; max-width: 8px; max-height: 8px;
+  border-radius: 999px; flex: none; vertical-align: 0.12em; margin-right: 0.55em;
+}
+.monument-scope .m-dot-live { background: #5fbf7f; animation: m-pulse 2.6s ease-out infinite; }
+.monument-scope .m-dot-sunset { background: var(--m-faint); opacity: 0.75; }
+@keyframes m-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(95, 191, 127, 0.45); }
+  70%  { box-shadow: 0 0 0 5px rgba(95, 191, 127, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(95, 191, 127, 0); }
+}
+
+/* Legend above the index so the dots read without guessing */
+.monument-scope .m-legend {
+  font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--m-faint); margin: -6px 0 14px; display: flex; align-items: center; gap: 6px;
+}
+.monument-scope .m-legend .m-dot { margin-right: 0; margin-left: 10px; }
+.monument-scope .m-legend .m-dot:first-child { margin-left: 0; }
+
 /* Project index */
 .monument-scope .m-index a,
 .monument-scope .m-index .m-index-row {
@@ -140,6 +162,8 @@
 @keyframes m-fade { from { opacity: 0; } to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) {
   .monument-scope .m-anim { animation-name: m-fade; }
+  /* The live dot keeps its halo, it just stops breathing. */
+  .monument-scope .m-dot-live { animation: none; box-shadow: 0 0 0 3px rgba(95, 191, 127, 0.16); }
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
