@@ -55,6 +55,16 @@ export const HERO: HeroContent = {
   ],
 };
 
+// ── PROJECT STATUS ────────────────────────────────────────────────────────────
+// "live" = still running today, "sunset" = shipped then shut down. Rendered as a
+// pulsing green / static grey dot next to the project name.
+export type ProjectStatus = "live" | "sunset";
+
+export const STATUS_LABELS: Record<ProjectStatus, string> = {
+  live: "Live",
+  sunset: "Sunset",
+};
+
 // ── FEATURED WORK (three deep cards) ──────────────────────────────────────────
 export interface FeaturedCard {
   id: string;
@@ -64,6 +74,7 @@ export interface FeaturedCard {
   body: TextPart[];
   tech: string;
   url: string;
+  status: ProjectStatus;
 }
 
 export const FEATURED: { eyebrow: string; cards: FeaturedCard[] } = {
@@ -83,6 +94,7 @@ export const FEATURED: { eyebrow: string; cards: FeaturedCard[] } = {
       ],
       tech: "NestJS · Redis · BullMQ · Expo",
       url: urlOf("crawler"),
+      status: "live",
     },
     {
       id: "conin",
@@ -98,6 +110,7 @@ export const FEATURED: { eyebrow: string; cards: FeaturedCard[] } = {
       ],
       tech: "NestJS · Postgres · Stripe · Claude",
       url: urlOf("conin"),
+      status: "live",
     },
     {
       id: "knoxlabs",
@@ -110,6 +123,7 @@ export const FEATURED: { eyebrow: string; cards: FeaturedCard[] } = {
       ],
       tech: "Next.js · NestJS · GCP",
       url: urlOf("knoxlabs"),
+      status: "live",
     },
   ],
 };
@@ -118,19 +132,26 @@ export const FEATURED: { eyebrow: string; cards: FeaturedCard[] } = {
 export interface IndexRow {
   name: string;
   desc: string;
+  status: ProjectStatus;
   url?: string;
 }
 
 export const INDEX: { eyebrow: string; rows: IndexRow[] } = {
   eyebrow: "Everything else",
   rows: [
-    { name: "Dx-Chart", desc: "Founder · HIPAA-ready AI charting", url: urlOf("dxchart") },
-    { name: "ClearThinker", desc: "75K plays in month one", url: urlOf("clearthinker") },
-    { name: "SpeedScribeAI", desc: "Founder · adaptive AI reading quizzes", url: urlOf("speedscribe") },
-    { name: "Invenboost", desc: "Backend lead · AI voice agent MVP", url: urlOf("invenboost") },
-    { name: "Muffin", desc: "Founder · first startup", url: urlOf("muffin") },
-    { name: "Accenture", desc: "5 yrs · 7 Fortune 500 clients" },
+    { name: "Dx-Chart", desc: "Founder · HIPAA-ready AI charting", status: "live", url: urlOf("dxchart") },
+    { name: "ClearThinker", desc: "75K plays in month one", status: "live", url: urlOf("clearthinker") },
+    { name: "SpeedScribeAI", desc: "Founder · adaptive AI reading quizzes", status: "sunset", url: urlOf("speedscribe") },
+    { name: "Invenboost", desc: "Backend lead · AI voice agent MVP", status: "sunset", url: urlOf("invenboost") },
+    { name: "Muffin", desc: "Founder · first startup", status: "sunset", url: urlOf("muffin") },
   ],
+};
+
+// Accenture is employment, not a product I own, so it sits in its own block
+// below the project index and carries no live/sunset dot.
+export const PRIOR: { eyebrow: string; rows: Omit<IndexRow, "status">[] } = {
+  eyebrow: "Before founding",
+  rows: [{ name: "Accenture", desc: "5 yrs · 7 Fortune 500 clients" }],
 };
 
 // ── DATA-FIRST (the differentiator) ───────────────────────────────────────────
