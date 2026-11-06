@@ -1,7 +1,6 @@
 // Reads the public contribution calendar GitHub serves for a profile.
 // It is an HTML fragment, not a documented API, so every value is checked
-// before use. Anything unexpected returns null and the caller hides the section
-// instead of showing wrong numbers or empty squares.
+// before use and anything unexpected counts as a failed read.
 
 export interface Contributions {
   readonly total: number;
@@ -16,9 +15,14 @@ export interface Contributions {
 }
 
 const ONE_DAY_SECONDS = 86_400;
-// A year of days, give or take the partial weeks GitHub adds at either end.
-const MIN_DAYS = 357;
-const MAX_DAYS = 372;
+const READ_TIMEOUT_MS = 10_000;
+// The value Next sets in NEXT_PHASE while `next build` runs (PHASE_PRODUCTION_BUILD
+// in next/constants). Kept as a literal so this module has no imports.
+const BUILD_PHASE = "phase-production-build";
+// A year of days, with room for leap years and the partial weeks GitHub adds
+// at either end.
+const MIN_DAYS = 350;
+const MAX_DAYS = 380;
 
 export function parseContributions(html: string): Contributions | null {
   const days: { date: string; level: number }[] = [];
@@ -55,22 +59,38 @@ export function parseContributions(html: string): Contributions | null {
   };
 }
 
+function withTimeout<T>(work: Promise<T>, ms: number, what: string): Promise<T> {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const timeout = new Promise<never>((_, reject) => {
+    timer = setTimeout(() => reject(new Error(`${what} timed out after ${ms} ms`)), ms);
+  });
+  return Promise.race([work, timeout]).finally(() => clearTimeout(timer));
+}
+
+async function readCalendar(url: string): Promise<Contributions> {
+  const response = await fetch(url, { next: { revalidate: ONE_DAY_SECONDS } });
+  if (!response.ok) throw new Error(`${url} answered ${response.status}`);
+  const parsed = parseContributions(await response.text());
+  if (!parsed) throw new Error(`${url} no longer matches the expected markup`);
+  return parsed;
+}
+
 // Cached for a day by Next, so the page reads GitHub at most once every 24 hours.
+//
+// What a failed read does depends on when it happens:
+// - During the build, or in development: return null so the section is left
+//   out. GitHub having a bad minute should not fail a deploy.
+// - While the live site refreshes its daily copy: throw. Next then keeps
+//   serving the last good page and tries again on the next visit, instead of
+//   dropping the section for a full day.
 export async function getContributions(user: string): Promise<Contributions | null> {
   const url = `https://github.com/users/${encodeURIComponent(user)}/contributions`;
   try {
-    const response = await fetch(url, { next: { revalidate: ONE_DAY_SECONDS } });
-    if (!response.ok) {
-      console.error(`[github] ${url} answered ${response.status}; hiding the GitHub section`);
-      return null;
-    }
-    const parsed = parseContributions(await response.text());
-    if (!parsed) {
-      console.error(`[github] ${url} no longer matches the expected markup; hiding the GitHub section`);
-    }
-    return parsed;
+    return await withTimeout(readCalendar(url), READ_TIMEOUT_MS, `reading ${url}`);
   } catch (error) {
-    console.error(`[github] could not read ${url}; hiding the GitHub section`, error);
+    const building = process.env.NEXT_PHASE === BUILD_PHASE;
+    if (!building && process.env.NODE_ENV === "production") throw error;
+    console.error("[github] could not read the contribution calendar; leaving the section out", error);
     return null;
   }
 }

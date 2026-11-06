@@ -13,6 +13,7 @@ type World = Topology<{ countries: GeometryCollection; land: GeometryCollection 
 
 const SPIN_DEG_PER_MS = 0.006; // one turn a minute
 const DRAG_DEG_PER_PX = 0.4;
+const MAX_FRAME_MS = 50; // a paused tab resumes where it left off instead of jumping
 const MAX_TILT_DEG = 60;
 const START_ROTATION: [number, number] = [-105, -18]; // opens on East Asia
 const PRELOAD_MARGIN = "600px";
@@ -120,7 +121,7 @@ export function TravelGlobe({ visited, label }: TravelGlobeProps) {
         if (!onScreen) return;
         if (previous !== null && !drag) {
           const [lambda, phi] = projection.rotate();
-          projection.rotate([lambda + (now - previous) * SPIN_DEG_PER_MS, phi]);
+          projection.rotate([lambda + Math.min(now - previous, MAX_FRAME_MS) * SPIN_DEG_PER_MS, phi]);
         }
         previous = now;
         draw();
@@ -133,6 +134,7 @@ export function TravelGlobe({ visited, label }: TravelGlobeProps) {
       };
 
       const onPointerDown = (event: PointerEvent) => {
+        if (event.button !== 0) return; // a right-click opens the menu and never sends pointerup
         drag = { x: event.clientX, y: event.clientY };
         canvas.setPointerCapture(event.pointerId);
       };
@@ -168,6 +170,7 @@ export function TravelGlobe({ visited, label }: TravelGlobeProps) {
       canvas.addEventListener("pointermove", onPointerMove);
       canvas.addEventListener("pointerup", onPointerEnd);
       canvas.addEventListener("pointercancel", onPointerEnd);
+      canvas.addEventListener("lostpointercapture", onPointerEnd);
       visibility.observe(canvas);
       resize.observe(canvas);
 
@@ -179,6 +182,7 @@ export function TravelGlobe({ visited, label }: TravelGlobeProps) {
         canvas.removeEventListener("pointermove", onPointerMove);
         canvas.removeEventListener("pointerup", onPointerEnd);
         canvas.removeEventListener("pointercancel", onPointerEnd);
+        canvas.removeEventListener("lostpointercapture", onPointerEnd);
       };
     };
 

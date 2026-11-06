@@ -87,7 +87,7 @@
 .monument-scope .m-sub { margin: 12px 0 0 3px; padding-left: 15px; border-left: 1px solid var(--m-line); }
 .monument-scope .m-sub .m-row { padding: 10px 0; border-bottom: 0; }
 
-.monument-scope .m-row:active .m-t { color: var(--m-accent); }
+.monument-scope a.m-row:active .m-t { color: var(--m-accent); }
 @media (hover: hover) {
   .monument-scope a.m-row:hover .m-t,
   .monument-scope .m-org-link:hover .m-t { text-decoration: underline; text-decoration-color: var(--m-accent); text-decoration-thickness: 1.5px; text-underline-offset: 4px; }

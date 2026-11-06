@@ -230,6 +230,8 @@ export const GITHUB = {
 // ── TRAVEL ────────────────────────────────────────────────────────────────────
 // Countries I have visited, keyed by ISO 3166-1 numeric code (what the globe's
 // map data uses). Add a country here and both the globe and the count update.
+// The map is low-resolution, so a very small country (Singapore, Hong Kong,
+// Monaco) raises the count but has no shape to fill in.
 export interface Country {
   readonly name: string;
   readonly iso: string;
