@@ -48,8 +48,8 @@ export const INTRO: {
   ],
   bio: [
     "I got a perfect math score on the ACT, so I probably should have studied math or engineering. But I liked people and psychology, so I studied marketing. Then I ended up doing analytics, consulting, and engineering anyway.",
-    "At OSMOS I work with early-stage founders to turn their ideas into a working MVP. My title is backend engineer, but I build the backend, the web apps, and a little mobile. I take a data-first approach, so I always start with what the data should look like. I also ask a lot of questions, and people tell me they're good ones.",
-    "I really like people. I value long-term relationships, and I still have friends from high school and college. I have a small army of AI sidekicks running parts of my life. Off the clock I exercise, try new ChatGPT recipes, and read. I'm a builder at heart, so I'm always working on something of my own.",
+    "At OSMOS I work with early-stage founders to turn their ideas into a working MVP. My title is backend engineer, but I also build web apps and a little mobile. I take a data-first approach, so I always start with what the data should look like. I ask a lot of questions, and people tell me they're good ones.",
+    "I like people and I value my relationships. I still have friends from high school and college. I have a small army of AI sidekicks running parts of my life. Off the clock I exercise, try new ChatGPT recipes, and read. I'm a builder at heart, so I'm always working on something of my own.",
   ],
   cta: { label: "Book 30 minutes", href: CAL_URL },
 };
@@ -65,6 +65,15 @@ export interface Entry {
   readonly url?: string;
   readonly current?: boolean;
 }
+
+// How `stack` is chosen. Every row answers "what is this built with?" the same
+// way and in the same order: front end (React for web, Expo or Swift for mobile),
+// back end, database, then at most two extras that set the project apart (a
+// queue, search, the AI model when AI is the product). Next.js is listed only
+// when it is also the back end. Left out: TypeScript, because it is in every
+// project and the frameworks already imply it; tools that sit under another chip
+// (ORMs, Vite, Tailwind); hosting; and services that do one job behind an API
+// key (payments, sign-in, email).
 
 // A place I work, with the client products I build there nested under it.
 export interface Org {
@@ -91,7 +100,7 @@ export const CLIENT_WORK: {
         name: "Crawler",
         when: "Oct 2025 - now",
         desc: "A happy hour finder for New York City, on iOS and Android.",
-        stack: ["NestJS", "Redis", "BullMQ", "Expo", "AWS"],
+        stack: ["React", "Expo", "NestJS", "Postgres", "Redis", "BullMQ"],
         url: "https://apps.apple.com/us/app/crawler-nyc-bars-night-club/id6477375437",
         current: true,
       },
@@ -99,21 +108,21 @@ export const CLIENT_WORK: {
         name: "HeyMe",
         when: "Jul 2026 - now",
         desc: "A wellness app where you talk with an AI version of your future self.",
-        stack: ["NestJS", "Postgres", "Prisma", "Firebase"],
+        stack: ["React", "Expo", "NestJS", "Postgres", "Claude"],
         current: true,
       },
       {
         name: "BumpSeat",
         when: "Oct 2026 - now",
         desc: "An iOS app for buying a better seat at a discount once a live event has started.",
-        stack: ["NestJS", "Postgres", "Drizzle"],
+        stack: ["Swift", "NestJS", "Postgres"],
         current: true,
       },
       {
         name: "Conin",
         when: "Nov 2025 - Jan 2026",
         desc: "A web platform that uses AI to analyze every residential property in New York City for investment opportunities.",
-        stack: ["NestJS", "Postgres", "Stripe", "Claude"],
+        stack: ["React", "NestJS", "Postgres", "BullMQ", "Claude"],
         url: "https://conin.io/",
       },
     ],
@@ -123,27 +132,27 @@ export const CLIENT_WORK: {
       name: "SpeedScribeAI",
       when: "Sep - Dec 2025",
       desc: "AI speed-reading practice for the ACT.",
-      stack: ["Next.js", "Supabase", "OpenAI"],
+      stack: ["React", "Next.js", "Supabase", "OpenAI"],
       url: "https://www.speedscribeai.com/",
     },
     {
       name: "Knoxlabs",
       when: "May - Nov 2025",
       desc: "A self-service B2B ordering portal for an XR hardware company.",
-      stack: ["Next.js", "NestJS", "GCP", "Firebase"],
+      stack: ["React", "NestJS", "Firebase"],
       url: "https://www.knoxlabs.com/",
     },
     {
       name: "Invenboost",
       when: "Jul - Sep 2025",
       desc: "An AI voice agent that answers missed calls and books appointments.",
-      stack: ["Retell AI", "Express", "Supabase"],
+      stack: ["Express", "Supabase", "Retell AI"],
     },
     {
       name: "ClearThinker",
       when: "Jun - Jul 2025",
       desc: "A quiz game that teaches logical fallacies with fake tweets written from the day's headlines.",
-      stack: ["Next.js", "TypeScript", "Redis"],
+      stack: ["React", "Next.js", "Redis", "Claude"],
       url: "https://clearthinkeracademy.com/",
     },
   ],
@@ -156,7 +165,7 @@ export const STARTUPS: { readonly title: string; readonly entries: readonly Entr
       name: "Dx-Chart",
       when: "Dec 2025 - now",
       desc: "Co-founder. HIPAA-ready AI charting for acupuncturists.",
-      stack: ["NestJS", "GCP", "Cloudflare", "Stripe"],
+      stack: ["React", "NestJS", "Postgres", "Gemini", "Claude"],
       url: DXCHART_URL,
       current: true,
     },
@@ -164,13 +173,13 @@ export const STARTUPS: { readonly title: string; readonly entries: readonly Entr
       name: "Muffin",
       when: "May 2023 - Dec 2024",
       desc: "Founder. My first startup, an app for personalized food recommendations.",
-      stack: ["Next.js", "TypeScript", "React", "Vercel"],
+      stack: ["React", "Expo", "NestJS", "Postgres", "Elasticsearch"],
       url: "https://muffinapp.io/",
     },
   ],
 };
 
-// A job and a degree. Internships are stories, so they live in FLEXES instead.
+// A job and school. Internships are stories, so they live in FLEXES instead.
 export const BEFORE: { readonly title: string; readonly entries: readonly Entry[] } = {
   title: "Before engineering",
   entries: [
@@ -184,7 +193,7 @@ export const BEFORE: { readonly title: string; readonly entries: readonly Entry[
     {
       name: "MS, Business Analytics",
       when: "2015 - 2016",
-      desc: "Southern Methodist University, second cohort of a brand-new program.",
+      desc: "Southern Methodist University, second cohort of a brand-new program. I got my bachelor's in marketing there too.",
     },
   ],
 };
