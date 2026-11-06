@@ -13,26 +13,28 @@ pnpm lint       # ESLint
 
 ## Architecture
 
-Next.js 16 portfolio site on the App Router with TypeScript. Single landing page; the
-earlier v2–v5 redesigns and `proto` experiments have been removed.
+Next.js 16 portfolio site on the App Router with TypeScript.
+Single landing page: one text-first column.
 
-- **Entrypoint**: `app/page.tsx` is the landing page, wrapped in the `.v6-scope` theme. It is
-  self-contained under `app/`: composition in `app/page.tsx`, display copy/data framing in
-  `app/content.ts`, and section components in `app/components/*` (shared helpers in
-  `app/components/lib/*`).
-- **Root layout**: `app/layout.tsx` supplies `<html>`/`<body>`, fonts (`next/font`), site
-  metadata (title/description/OG/favicon), and the PostHog provider.
-- **Data**: `app/lib/data/rescueProjects.ts` is the canonical source of project facts;
-  `app/content.ts` layers landing-specific copy on top of it.
+- **Entrypoint**: `app/page.tsx` is the landing page, wrapped in the `.monument-scope` theme.
+  It is self-contained under `app/`: composition in `app/page.tsx`, all copy and data in `app/content.ts`, and section components in `app/components/*` (shared pieces in `app/components/lib/*`).
+- **Root layout**: `app/layout.tsx` supplies `<html>`/`<body>`, fonts (`next/font`), site metadata (title/description/OG/favicon), and the PostHog provider.
+- **Content**: `app/content.ts` is the single source for everything on the page: intro, experience entries, stories, visited countries, footer.
+  Project lines describe the product, not what Noah did on it, and avoid numbers that go stale.
+- **GitHub section**: `app/components/lib/githubContributions.ts` reads the public contribution calendar server-side, cached for a day (so the page revalidates daily).
+  If the read or the parse fails, the section renders nothing.
+- **Travel globe**: `app/components/TravelGlobe.tsx` is the only client component.
+  It lazy-loads `d3-geo`, `topojson-client`, and the `world-atlas` map data when it nears the viewport.
 - **Analytics**: PostHog via `app/providers.tsx` + `app/PostHogProviderLazy.tsx` + `app/PostHogPageView.tsx`
-- **Styling**: Tailwind CSS v4 with PostCSS. Theme tokens are scoped under `.v6-scope` in
-  `app/globals.css`; shared typography/base styles live in `:root`.
+- **Styling**: Tailwind CSS v4 with PostCSS.
+  Theme tokens and all page styles are scoped under `.monument-scope` in `app/globals.css`; shared base typography lives on `body`.
+  Teal (`--m-accent`) marks data and green (`--m-live`) marks current work; nothing else is colored.
 - **Path aliases**: `@/*` → repo root
 
 ## Key Dependencies
 
-- **Animation**: `motion` (the successor to framer-motion)
-- **Animated numbers**: `@number-flow/react` (trust-bar counters)
+- **Globe**: `d3-geo` + `topojson-client` + `world-atlas` (lazy-loaded)
+- **Stack chip icons**: SVG paths copied from Simple Icons into `app/components/lib/techIcons.ts` (no runtime dependency)
 - **Class utilities**: `clsx` + `tailwind-merge` (the `cn` helper in `lib/utils.ts`)
 - **Analytics**: `posthog-js`
 

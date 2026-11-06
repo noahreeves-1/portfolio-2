@@ -1,17 +1,9 @@
 import type { Metadata } from "next";
-import { Barlow_Condensed, Instrument_Sans, JetBrains_Mono } from "next/font/google";
+import { Instrument_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { PostHogProviderLazy } from "./PostHogProviderLazy";
 
-// Condensed display face for the monument headlines ("I SHIP", the rotator, the
-// big stat numerals). Used with restraint in caps.
-const barlowCondensed = Barlow_Condensed({
-  variable: "--font-display",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["600", "700"],
-});
-
+// One reading face for everything, plus a mono face for dates and the heatmap axis.
 const instrumentSans = Instrument_Sans({
   variable: "--font-body",
   subsets: ["latin"],
@@ -26,9 +18,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Noah Kim · Full-stack engineer & backend lead",
+  title: "Noah Kim · Good with numbers. Better with people.",
   description:
-    "Data consultant turned self-taught engineer. Nine products since 2023, backend lead on three. I own the schema, the backend, and the deploy.",
+    "Backend engineer at OSMOS and co-founder of Dx-Chart. I work with early-stage founders to turn their ideas into a working MVP.",
 
   // Favicon configuration
   icons: {
@@ -37,9 +29,9 @@ export const metadata: Metadata = {
 
   // Open Graph / Facebook / iMessage Preview
   openGraph: {
-    title: "Noah Kim · Full-stack engineer & backend lead",
+    title: "Noah Kim · Good with numbers. Better with people.",
     description:
-      "Data consultant turned self-taught engineer. Nine products since 2023, backend lead on three. I own the schema, the backend, and the deploy.",
+      "Backend engineer at OSMOS and co-founder of Dx-Chart. I work with early-stage founders to turn their ideas into a working MVP.",
     url: "https://noahk.im",
     siteName: "Noah Kim",
     images: [
@@ -63,7 +55,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <PostHogProviderLazy>
-        <body className={`${barlowCondensed.variable} ${instrumentSans.variable} ${jetbrainsMono.variable} font-sans`}>{children}</body>
+        <body className={`${instrumentSans.variable} ${jetbrainsMono.variable} font-sans`}>{children}</body>
       </PostHogProviderLazy>
     </html>
   );
