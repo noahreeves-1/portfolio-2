@@ -146,7 +146,7 @@ export const CLIENT_WORK: {
       name: "Invenboost",
       when: "Jul - Sep 2025",
       desc: "An AI voice agent that answers missed calls and books appointments.",
-      stack: ["Express", "Supabase", "Retell AI"],
+      stack: ["React", "Express", "Supabase", "Retell AI"],
     },
     {
       name: "ClearThinker",
