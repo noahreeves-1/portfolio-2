@@ -3,171 +3,154 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ─────────────────────────────────────────────────────────────────────────
-   Monument theme — the landing page. A committed single (dark) visual world:
-   graphite ground, condensed display type, one rationed bronze accent. Built
-   recruiter-first and mobile-first. All tokens + component styles namespaced
-   under .monument-scope (applied by app/page.tsx). Self-contained.
+   Landing page theme. One text-first column on a graphite ground, built
+   mobile-first. Two colors carry meaning and nothing else is colored:
+     teal  (--m-accent)  data: the GitHub numbers and heatmap, visited countries
+     green (--m-live)    work I am doing right now
+   Finished work is set one step lighter than current work. All tokens and
+   styles are namespaced under .monument-scope (applied by app/page.tsx).
    ───────────────────────────────────────────────────────────────────────── */
 .monument-scope {
   --m-ground: #14161b;      /* graphite ground */
   --m-ink: #ece9e2;         /* warm off-white text */
-  --m-dim: #8f8d86;         /* secondary text */
-  --m-faint: #5b5a55;       /* labels, meta */
-  --m-line: #2a2d34;        /* hairline dividers */
-  --m-bronze: #cba35c;      /* the one accent */
-  --m-bronze-bright: #d9b878;
+  --m-dim: #a09d95;         /* secondary text */
+  --m-mute: #86847d;        /* dates, chips, fine print */
+  --m-line: #2a2d34;        /* hairlines, empty heatmap cells, land on the globe */
+  --m-accent: #00c4c4;      /* teal */
+  --m-live: #4ade80;        /* green */
 
   color-scheme: dark;
   background: var(--m-ground);
   color: var(--m-ink);
   font-family: var(--font-body), system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
 }
 
-.monument-scope ::selection { background: var(--m-bronze); color: var(--m-ground); }
-
-.monument-scope .m-wrap { max-width: 640px; margin: 0 auto; padding: 0 20px; }
-
-.monument-scope a:focus-visible,
-.monument-scope button:focus-visible {
-  outline: 2px solid var(--m-bronze);
+.monument-scope ::selection { background: var(--m-accent); color: var(--m-ground); }
+.monument-scope :where(h1, h2, h3, p, ul) { margin: 0; }
+.monument-scope :where(ul) { padding: 0; list-style: none; }
+.monument-scope a { color: inherit; text-decoration: none; }
+.monument-scope a:focus-visible {
+  outline: 2px solid var(--m-accent);
   outline-offset: 3px;
+  border-radius: 2px;
 }
+
+.monument-scope .m-wrap { max-width: 640px; margin: 0 auto; padding: 0 20px 48px; }
 
 /* Header */
-.monument-scope .m-header { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
-.monument-scope .m-wordmark { font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
-.monument-scope .m-header nav { display: flex; gap: 16px; }
-.monument-scope .m-header nav a { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; color: var(--m-dim); text-decoration: none; text-transform: uppercase; }
-.monument-scope .m-header nav a:hover { color: var(--m-bronze); }
+.monument-scope .m-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-top: 18px; }
+.monument-scope .m-name { font-weight: 600; }
+.monument-scope .m-nav { display: flex; gap: 16px; font-size: 0.875rem; color: var(--m-dim); }
 
-/* Hero — fits roughly one phone screen */
-.monument-scope .m-hero { min-height: 84svh; display: flex; flex-direction: column; justify-content: center; padding: 24px 0 32px; }
-.monument-scope .m-eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--m-dim); margin-bottom: 16px; }
-.monument-scope .m-lead {
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-weight: 700; text-transform: uppercase;
-  letter-spacing: 0.005em; line-height: 0.95;
-  font-size: clamp(4.2rem, 20vw, 9rem);
-  margin: 0;
-}
-.monument-scope .m-rotate {
-  position: relative; overflow: hidden; display: block;
-  height: 1.06em; margin: 0.08em 0 0;
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-weight: 700; text-transform: uppercase;
-  line-height: 1; font-size: clamp(2.1rem, 10vw, 5rem);
-  color: var(--m-bronze);
-}
-.monument-scope .m-rotate-word { position: absolute; inset: 0; white-space: nowrap; }
-.monument-scope .m-sub { margin-top: 24px; color: var(--m-dim); max-width: 34ch; font-size: 1rem; line-height: 1.5; }
-.monument-scope .m-sub strong { color: var(--m-ink); font-weight: 600; }
-.monument-scope .m-cta { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 10px; }
-.monument-scope .m-btn { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; padding: 12px 18px; border-radius: 999px; display: inline-block; }
-.monument-scope .m-btn-solid { background: var(--m-bronze); color: var(--m-ground); font-weight: 600; }
-.monument-scope .m-btn-solid:hover { background: var(--m-bronze-bright); }
-.monument-scope .m-btn-ghost { color: var(--m-ink); border: 1px solid var(--m-faint); }
-.monument-scope .m-btn-ghost:hover { border-color: var(--m-bronze); color: var(--m-bronze); }
+/* Intro: one line, title and company, a short bio, one action */
+.monument-scope .m-intro { padding-top: 48px; }
+.monument-scope .m-h1 { font-size: 1.5rem; line-height: 1.22; font-weight: 600; letter-spacing: -0.015em; text-wrap: balance; }
+.monument-scope .m-title { margin-top: 12px; }
+.monument-scope .m-title a { border-bottom: 1px solid var(--m-mute); padding-bottom: 1px; }
+.monument-scope .m-lede { margin-top: 14px; color: var(--m-dim); }
+.monument-scope .m-cta { display: inline-block; margin-top: 20px; font-weight: 600; border-bottom: 1.5px solid var(--m-ink); padding-bottom: 1px; }
 
-/* Staggered hero load-in */
-@keyframes m-rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
-.monument-scope .m-anim { opacity: 0; animation: m-rise 0.6s ease forwards; }
-.monument-scope .m-anim-1 { animation-delay: 0.1s; }
-.monument-scope .m-anim-2 { animation-delay: 0.25s; }
-.monument-scope .m-anim-3 { animation-delay: 0.4s; }
-.monument-scope .m-anim-4 { animation-delay: 0.55s; }
-.monument-scope .m-anim-5 { animation-delay: 0.7s; }
+/* Sections */
+.monument-scope .m-sec { margin-top: 56px; }
+.monument-scope .m-sec-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--m-line); }
+.monument-scope .m-sec-head h2 { display: flex; align-items: center; gap: 8px; min-width: 0; font-size: 0.875rem; font-weight: 600; color: var(--m-dim); }
+.monument-scope .m-ico { width: 15px; height: 15px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+.monument-scope .m-aside { font-size: 0.75rem; color: var(--m-mute); white-space: nowrap; }
 
-/* Section eyebrow */
-.monument-scope .m-eyebrow-s { font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--m-faint); margin: 56px 0 14px; }
+/* One entry: a name, a date, one sentence, the stack */
+.monument-scope .m-row { display: block; padding: 15px 0; border-bottom: 1px solid var(--m-line); }
+.monument-scope .m-row-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.monument-scope .m-row-name { min-width: 0; font-size: 1rem; font-weight: 500; }
+.monument-scope .m-arrow { display: inline-block; margin-left: 6px; color: var(--m-mute); font-size: 0.8em; transition: transform 0.18s ease, color 0.18s ease; }
+.monument-scope .m-when { flex: none; font-family: var(--font-mono), monospace; font-size: 0.75rem; color: var(--m-mute); white-space: nowrap; }
+.monument-scope .m-row-desc { margin-top: 3px; color: var(--m-dim); font-size: 0.9375rem; }
 
-/* Featured cards */
-.monument-scope .m-card { border-top: 1px solid var(--m-line); padding: 20px 0 26px; }
-.monument-scope .m-card-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; text-decoration: none; color: inherit; }
-.monument-scope a.m-card-top:hover h2 { color: var(--m-bronze); }
-.monument-scope .m-card h2 { font-family: var(--font-display), system-ui, sans-serif; font-size: 1.4rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.1; margin: 0; text-transform: none; }
-.monument-scope .m-card-metric { font-family: var(--font-display), system-ui, sans-serif; font-weight: 700; color: var(--m-bronze); font-size: 1.5rem; white-space: nowrap; text-transform: uppercase; font-variant-numeric: tabular-nums; }
-.monument-scope .m-card-role { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--m-bronze); opacity: 0.85; margin: 6px 0 12px; }
-.monument-scope .m-card p { color: var(--m-dim); font-size: 0.97rem; line-height: 1.5; margin: 0; }
-.monument-scope .m-card p strong { color: var(--m-ink); font-weight: 600; }
-.monument-scope .m-card-tech { margin-top: 12px; font-family: var(--font-mono); font-size: 11px; color: var(--m-faint); }
-
-/* Live / sunset status dots. Green pulses (still running), grey sits flat
-   (shut down). Sized in em so it tracks the type it sits next to. */
+/* Current work: bolder, slightly larger, with the green dot */
+.monument-scope .m-org > .m-row-top .m-row-name,
+.monument-scope .m-now .m-row-name { font-weight: 600; }
+.monument-scope .m-now .m-row-name { font-size: 1.0625rem; }
 .monument-scope .m-dot {
-  display: inline-block; width: 0.5em; height: 0.5em; max-width: 8px; max-height: 8px;
-  border-radius: 999px; flex: none; vertical-align: 0.12em; margin-right: 0.55em;
+  display: inline-block; width: 8px; height: 8px; flex: none; margin-right: 8px;
+  border-radius: 50%; background: var(--m-live); transform: translateY(-2px);
+  animation: m-pulse 2.6s ease-out infinite;
 }
-.monument-scope .m-dot-live { background: #5fbf7f; animation: m-pulse 2.6s ease-out infinite; }
-.monument-scope .m-dot-sunset { background: var(--m-faint); opacity: 0.75; }
 @keyframes m-pulse {
-  0%   { box-shadow: 0 0 0 0 rgba(95, 191, 127, 0.45); }
-  70%  { box-shadow: 0 0 0 5px rgba(95, 191, 127, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(95, 191, 127, 0); }
+  0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--m-live) 45%, transparent); }
+  70%  { box-shadow: 0 0 0 5px color-mix(in srgb, var(--m-live) 0%, transparent); }
+  100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--m-live) 0%, transparent); }
 }
 
-/* Legend above the index so the dots read without guessing */
-.monument-scope .m-legend {
-  font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--m-faint); margin: -6px 0 14px; display: flex; align-items: center; gap: 6px;
+/* A place I work, with its client products nested under it */
+.monument-scope .m-org { padding: 15px 0 6px; border-bottom: 1px solid var(--m-line); }
+.monument-scope .m-sub { margin: 12px 0 0 3px; padding-left: 15px; border-left: 1px solid var(--m-line); }
+.monument-scope .m-sub .m-row { padding: 10px 0; border-bottom: 0; }
+
+.monument-scope a.m-row:active .m-t { color: var(--m-accent); }
+@media (hover: hover) {
+  .monument-scope a.m-row:hover .m-t,
+  .monument-scope .m-org-link:hover .m-t { text-decoration: underline; text-decoration-color: var(--m-accent); text-decoration-thickness: 1.5px; text-underline-offset: 4px; }
+  .monument-scope a.m-row:hover .m-arrow,
+  .monument-scope .m-org-link:hover .m-arrow { transform: translate(2px, -2px); color: var(--m-accent); }
+  .monument-scope .m-nav a:hover,
+  .monument-scope .m-foot-links a:hover,
+  .monument-scope .m-aside:hover { color: var(--m-ink); }
+  .monument-scope .m-title a:hover,
+  .monument-scope .m-cta:hover,
+  .monument-scope .m-foot-big a:hover { border-color: var(--m-accent); }
 }
-.monument-scope .m-legend .m-dot { margin-right: 0; margin-left: 10px; }
-.monument-scope .m-legend .m-dot:first-child { margin-left: 0; }
 
-/* Project index */
-.monument-scope .m-index a,
-.monument-scope .m-index .m-index-row {
-  display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
-  padding: 13px 0; border-bottom: 1px solid var(--m-line);
-  text-decoration: none; color: inherit;
-}
-.monument-scope .m-index .m-iname { font-weight: 600; font-size: 0.96rem; white-space: nowrap; }
-.monument-scope .m-index .m-idesc { color: var(--m-faint); font-size: 0.84rem; text-align: right; }
-.monument-scope .m-index a:hover .m-iname { color: var(--m-bronze); }
+/* Stack chips, with one-color brand marks */
+.monument-scope .m-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.monument-scope .m-chip { display: inline-flex; align-items: center; gap: 5px; padding: 5px 9px; border: 1px solid var(--m-line); border-radius: 999px; font-size: 0.75rem; line-height: 1; color: var(--m-dim); white-space: nowrap; }
+.monument-scope .m-ti { width: 11px; height: 11px; flex: none; fill: currentColor; }
+.monument-scope .m-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
 
-/* Data-first */
-.monument-scope .m-creed-big { font-family: var(--font-display), system-ui, sans-serif; font-weight: 700; text-transform: uppercase; font-size: clamp(1.8rem, 8vw, 3.2rem); line-height: 1.02; letter-spacing: 0.005em; max-width: 20ch; margin: 0; }
-.monument-scope .m-creed-big .m-accent { color: var(--m-bronze); }
-.monument-scope .m-creed p { margin-top: 14px; color: var(--m-dim); max-width: 56ch; line-height: 1.5; }
-.monument-scope .m-creed p strong { color: var(--m-ink); font-weight: 600; }
-.monument-scope .m-creds { margin-top: 18px; list-style: none; display: flex; flex-direction: column; gap: 9px; padding: 0; }
-.monument-scope .m-creds li { font-family: var(--font-mono); font-size: 12px; color: var(--m-dim); padding-left: 18px; position: relative; line-height: 1.4; }
-.monument-scope .m-creds li::before { content: "\25C6"; position: absolute; left: 0; top: 3px; color: var(--m-bronze); font-size: 8px; }
-.monument-scope .m-creds li strong { color: var(--m-ink); font-weight: 600; }
+/* The stories: a bold claim, then the dry follow-up */
+.monument-scope .m-facts li { padding: 14px 0; border-bottom: 1px solid var(--m-line); color: var(--m-dim); font-size: 0.9375rem; }
+.monument-scope .m-facts strong { color: var(--m-ink); font-weight: 600; }
 
-/* Stack pills */
-.monument-scope .m-stack { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; }
-.monument-scope .m-stack li { font-family: var(--font-mono); font-size: 11.5px; padding: 7px 12px; border: 1px solid var(--m-line); border-radius: 999px; color: var(--m-dim); }
+/* GitHub and Travel: a line with figures, then the picture */
+.monument-scope .m-line { padding: 14px 0 12px; color: var(--m-dim); font-size: 0.9375rem; }
+.monument-scope .m-fig { color: var(--m-accent); font-weight: 600; font-variant-numeric: tabular-nums; }
+.monument-scope .m-heat { display: grid; grid-template-columns: repeat(var(--m-weeks, 53), minmax(0, 1fr)); grid-template-rows: repeat(7, auto); grid-auto-flow: column; gap: 1.5px; }
+.monument-scope .m-heat i { aspect-ratio: 1; border-radius: 1px; background: var(--m-line); }
+.monument-scope .m-heat .m-blank { visibility: hidden; }
+.monument-scope .m-heat .m-l1 { background: color-mix(in srgb, var(--m-accent) 30%, var(--m-line)); }
+.monument-scope .m-heat .m-l2 { background: color-mix(in srgb, var(--m-accent) 52%, var(--m-line)); }
+.monument-scope .m-heat .m-l3 { background: color-mix(in srgb, var(--m-accent) 76%, var(--m-line)); }
+.monument-scope .m-heat .m-l4 { background: var(--m-accent); }
+.monument-scope .m-heat-axis { display: flex; justify-content: space-between; margin-top: 7px; font-family: var(--font-mono), monospace; font-size: 0.6875rem; color: var(--m-mute); }
+.monument-scope .m-globe { display: block; width: min(100%, 280px); aspect-ratio: 1; margin: 4px auto 0; cursor: grab; touch-action: pan-y; }
+.monument-scope .m-globe:active { cursor: grabbing; }
 
 /* Footer */
-.monument-scope .m-footer { margin: 64px 0 48px; }
-.monument-scope .m-footer-big { font-family: var(--font-display), system-ui, sans-serif; font-weight: 700; text-transform: uppercase; font-size: clamp(2.4rem, 11vw, 4rem); line-height: 1; margin: 0; }
-.monument-scope .m-footer-big a { color: var(--m-bronze); text-decoration: none; }
-.monument-scope .m-footer-big a:hover { text-decoration: underline; text-underline-offset: 6px; }
-.monument-scope .m-footer-row { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px 24px; }
-.monument-scope .m-footer-row a { font-family: var(--font-mono); font-size: 12px; color: var(--m-ink); text-decoration: none; border-bottom: 1px solid var(--m-faint); padding-bottom: 2px; }
-.monument-scope .m-footer-row a:hover { color: var(--m-bronze); border-color: var(--m-bronze); }
-.monument-scope .m-fine { margin-top: 32px; font-family: var(--font-mono); font-size: 10.5px; color: var(--m-faint); }
+.monument-scope .m-foot { margin-top: 64px; }
+.monument-scope .m-foot-big { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.01em; }
+.monument-scope .m-foot-big a { border-bottom: 1.5px solid var(--m-ink); padding-bottom: 1px; }
+.monument-scope .m-foot-links { display: flex; gap: 18px; margin-top: 14px; font-size: 0.9375rem; color: var(--m-dim); }
+.monument-scope .m-quote { margin-top: 32px; font-size: 0.875rem; font-style: italic; color: var(--m-dim); }
+.monument-scope .m-fine { margin-top: 28px; font-size: 0.75rem; color: var(--m-mute); }
 
-/* Desktop enhancements */
+/* Desktop: the same single column, with a little more air */
 @media (min-width: 760px) {
-  .monument-scope .m-wrap { max-width: 920px; }
-  .monument-scope .m-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0 32px; align-items: start; }
-  .monument-scope .m-index { columns: 2; column-gap: 48px; }
-  .monument-scope .m-index a,
-  .monument-scope .m-index .m-index-row { break-inside: avoid; }
+  .monument-scope .m-wrap { padding-bottom: 72px; }
+  .monument-scope .m-top { padding-top: 28px; }
+  .monument-scope .m-intro { padding-top: 72px; }
+  .monument-scope .m-h1 { font-size: 1.75rem; }
+  .monument-scope .m-globe { width: 320px; }
 }
 
-/* Respect reduced motion: drop the vertical travel but keep a gentle opacity
-   fade so the page still reads as alive (the rotator matches this in JS). */
-@keyframes m-fade { from { opacity: 0; } to { opacity: 1; } }
+/* Reduced motion: the dot keeps its halo but stops breathing. The globe handles
+   its own motion in app/components/TravelGlobe.tsx. */
 @media (prefers-reduced-motion: reduce) {
-  .monument-scope .m-anim { animation-name: m-fade; }
-  /* The live dot keeps its halo, it just stops breathing. */
-  .monument-scope .m-dot-live { animation: none; box-shadow: 0 0 0 3px rgba(95, 191, 127, 0.16); }
+  .monument-scope .m-dot { animation: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--m-live) 18%, transparent); }
+  .monument-scope .m-arrow { transition: none; }
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
-   Shared base typography — font-family variables + smoothing, applied site-wide.
+   Shared base typography: font-family variables + smoothing, applied site-wide.
    ───────────────────────────────────────────────────────────────────────── */
 body {
   font-family: var(--font-body), system-ui, -apple-system, sans-serif;

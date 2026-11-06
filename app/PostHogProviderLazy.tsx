@@ -3,21 +3,16 @@
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 
-// Lazy load PostHog components
-const PostHogProviderInner = dynamic(
-  () => import("./providers").then((mod) => mod.PostHogProvider),
-  {
-    ssr: false,
-    loading: () => null,
-  }
-);
+// PostHog is loaded after the first render so it never blocks the page.
+const PostHogAnalytics = dynamic(() => import("./providers").then((mod) => mod.PostHogAnalytics), {
+  ssr: false,
+  loading: () => null,
+});
 
 export function PostHogProviderLazy({ children }: { children: React.ReactNode }) {
   const [shouldLoad, setShouldLoad] = useState(false);
 
   useEffect(() => {
-    // Only load PostHog after initial render
-    // This prevents it from blocking the initial page load
     const timer = setTimeout(() => {
       setShouldLoad(true);
     }, 100);
@@ -25,9 +20,13 @@ export function PostHogProviderLazy({ children }: { children: React.ReactNode })
     return () => clearTimeout(timer);
   }, []);
 
-  if (!shouldLoad) {
-    return <>{children}</>;
-  }
-
-  return <PostHogProviderInner>{children}</PostHogProviderInner>;
+  // Analytics mounts next to the page, never around it. Wrapping `children` in
+  // the provider once it loaded changed the tree's shape, so React threw the
+  // whole page away and rebuilt it a moment after every load.
+  return (
+    <>
+      {children}
+      {shouldLoad && <PostHogAnalytics />}
+    </>
+  );
 }
