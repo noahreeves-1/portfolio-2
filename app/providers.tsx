@@ -6,7 +6,10 @@ import { PostHogProvider as PHProvider } from "posthog-js/react";
 import { useEffect } from "react";
 import PostHogPageView from "./PostHogPageView";
 
-export function PostHogProvider({ children }: { children: React.ReactNode }) {
+// Starts PostHog and records page views. Renders no DOM of its own and takes no
+// children: nothing on the page reads the PostHog context, so the provider only
+// needs to wrap the page-view tracker.
+export function PostHogAnalytics() {
   useEffect(() => {
     if (process.env.NODE_ENV !== "production") return;
     if (!process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN) return;
@@ -19,13 +22,12 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   if (process.env.NODE_ENV !== "production") {
-    return <>{children}</>;
+    return null;
   }
 
   return (
     <PHProvider client={posthog}>
       <PostHogPageView />
-      {children}
     </PHProvider>
   );
 }
