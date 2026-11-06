@@ -76,7 +76,7 @@
 .monument-scope .m-dot {
   display: inline-block; width: 8px; height: 8px; flex: none; margin-right: 8px;
   border-radius: 50%; background: var(--m-live); transform: translateY(-2px);
-  animation: m-pulse 2.6s ease-out infinite;
+  animation: m-pulse 1.8s ease-out infinite;
 }
 @keyframes m-pulse {
   0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--m-live) 45%, transparent); }

@@ -171,8 +171,8 @@ export const STARTUPS: { readonly title: string; readonly entries: readonly Entr
     },
     {
       name: "Muffin",
-      when: "May 2023 - Dec 2024",
-      desc: "Founder. My first startup, an app for personalized food recommendations.",
+      when: "May 2023 - Mar 2025",
+      desc: "Co-founder. My first startup, an app for personalized food recommendations.",
       stack: ["React", "Expo", "NestJS", "Postgres", "Elasticsearch"],
       url: "https://muffinapp.io/",
     },
@@ -215,7 +215,7 @@ export const FLEXES: { readonly title: string; readonly items: readonly Flex[] }
     },
     {
       claim: "Won Franchisee of the Year out of 275+ locations.",
-      detail: "That was a glass repair franchise, and I was the intern running its marketing.",
+      detail: "That was a glass repair franchise, and I was the intern running their entire marketing (sales up 15%, ad spend down 13%).",
     },
     {
       claim: "Learned to code in Southeast Asia.",
