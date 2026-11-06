@@ -194,6 +194,7 @@ export const BEFORE: { readonly title: string; readonly entries: readonly Entry[
       name: "Southern Methodist University",
       when: "2011 - 2016",
       desc: "Bachelor's in marketing, then an MS in Business Analytics in the second cohort of a brand-new program.",
+      url: "https://www.smu.edu/",
     },
   ],
 };
