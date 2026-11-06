@@ -191,9 +191,9 @@ export const BEFORE: { readonly title: string; readonly entries: readonly Entry[
       url: "https://www.accenture.com/",
     },
     {
-      name: "MS, Business Analytics",
-      when: "2015 - 2016",
-      desc: "Southern Methodist University, second cohort of a brand-new program. I got my bachelor's in marketing there too.",
+      name: "Southern Methodist University",
+      when: "2011 - 2016",
+      desc: "Bachelor's in marketing, then an MS in Business Analytics in the second cohort of a brand-new program.",
     },
   ],
 };
