@@ -4,9 +4,11 @@
 
 /* ─────────────────────────────────────────────────────────────────────────
    Landing page theme. One text-first column on a graphite ground, built
-   mobile-first. Two colors carry meaning and nothing else is colored:
+   mobile-first. Two colors carry meaning:
      teal  (--m-accent)  data: the GitHub numbers and heatmap, visited countries
      green (--m-live)    work I am doing right now
+   The only other color is a soft tint of each brand's hue on its stack chip,
+   kept well below the green so current work still stands out.
    Finished work is set one step lighter than current work. All tokens and
    styles are namespaced under .monument-scope (applied by app/page.tsx).
    ───────────────────────────────────────────────────────────────────────── */
@@ -105,6 +107,20 @@
 .monument-scope .m-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
 .monument-scope .m-chip { display: inline-flex; align-items: center; gap: 5px; padding: 5px 9px; border: 1px solid var(--m-line); border-radius: 999px; font-size: 0.75rem; line-height: 1; color: var(--m-dim); white-space: nowrap; }
 .monument-scope .m-ti { width: 11px; height: 11px; flex: none; fill: currentColor; }
+
+/* A chip with a brand color (--chip, set inline) takes that brand's hue only.
+   Lightness and strength are fixed here, so a loud red and a pale lime come out
+   equally soft. To make every chip more or less colorful, change the chroma
+   (the middle number) in these four lines. Browsers without relative colors
+   keep the plain chip above. */
+@supports (color: oklch(from red l c h)) {
+  .monument-scope .m-tint {
+    border-color: oklch(from var(--chip) 0.72 0.1 h / 0.3);
+    background: oklch(from var(--chip) 0.72 0.1 h / 0.08);
+    color: oklch(from var(--chip) 0.76 0.05 h);
+  }
+  .monument-scope .m-tint .m-ti { fill: oklch(from var(--chip) 0.76 0.11 h); }
+}
 .monument-scope .m-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
 
 /* The stories: a bold claim, then the dry follow-up */
