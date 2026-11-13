@@ -47,9 +47,10 @@ export const INTRO: {
     { text: "." },
   ],
   bio: [
-    "I got a perfect math score on the ACT, so I probably should have studied math or engineering. But I liked people and psychology, so I studied marketing. Then I ended up doing analytics, consulting, and engineering anyway.",
-    "At OSMOS I work with early-stage founders to turn their ideas into a working MVP. My title is backend engineer, but I also build web apps and a little mobile. I take a data-first approach, so I always start with what the data should look like. I ask a lot of questions, and people tell me they're good ones.",
-    "I like people and I value my relationships. I still have friends from high school and college. I have a small army of AI sidekicks running parts of my life. Off the clock I exercise, try new ChatGPT recipes, and read. I'm a builder at heart, so I'm always working on something of my own.",
+    "Hey, I'm Noah. I co-founded Dx-Chart and work with early-stage founders at OSMOS to turn their ideas into working products. My title is backend engineer, but I build web and mobile apps too.",
+    "I studied marketing because I liked people and psychology, earned a master's in Business Analytics from SMU, and worked on data projects as a management consultant at Accenture. During the pandemic, before ChatGPT was around, I quit my job and taught myself to code.",
+    "My analytics background still shapes how I build. I ask a lot of questions and usually start by figuring out what the data should look like. I've designed the database and built the backend for nearly every application I've worked on, including Crawler, an NYC happy-hour app that passed 10,000 monthly active users following its 2026 pivot.",
+    "Relationships matter to me. Some of my closest friends go back to high school and college. Outside work, I run, try new recipes, read, and usually have a project of my own going. These days, I also have a small army of AI sidekicks helping me along the way.",
   ],
   cta: { label: "Book 30 minutes", href: CAL_URL },
 };
